@@ -34,9 +34,20 @@ public class Match {
 	}
 	
 	public String toString() {
-		String s = "";
-		//aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-		return s;
+		String typeOfMatchInString;
+		switch (typeOfMatch)
+		{
+			case 0:
+				typeOfMatchInString="Siatkowka";
+				break;
+			case 1:
+				typeOfMatchInString="Dwa ognie";
+				break;
+			case 2:
+				typeOfMatchInString="Przeciaganie liny";
+				break;
+		}
+		return "Konkurencja"+typeOfMatchInString+". "+teamOne+" i "+ teamTwo+". Zwyciezca:"+winner+". Wynik "+finalScore;
 	}
 	
 }

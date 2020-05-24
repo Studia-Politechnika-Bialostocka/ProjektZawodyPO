@@ -15,7 +15,18 @@ public abstract class Team {
 	public void addNewTeam() {
 		
 	}
-	
+
+	public void WonAMatch()
+	{
+		wins+=1;
+		points+=3;
+	}
+
+	public void LostAMatch()
+	{
+		losses+=1;
+	}
+
 	public String getTeamName() {
 		return teamName;
 	}

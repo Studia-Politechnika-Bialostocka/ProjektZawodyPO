@@ -34,9 +34,7 @@ public class Match {
 	}
 	
 	public String toString() {
-		String s = "";
-		//aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-		return s;
+		return teamOne+" i "+ teamTwo+". Zwyciezca:"+winner+". Wynik 3:2";
 	}
 	
 }

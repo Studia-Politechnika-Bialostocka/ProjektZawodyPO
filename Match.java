@@ -26,7 +26,19 @@ public class Match {
 	}
 	
 	public void setResult() {
-		
+		System.out.println("Kto wygral? Wcisnij \'1\', jezeli "+teamOne+", a \'2\', jezeli "+teamTwo);
+		Scanner in = new Scanner("System.in");
+		boolean check=true;
+		int result;
+		do {
+			result=in.nextInt();
+			if(result>=1 && result<=2)
+				check=false;
+		}while(check);
+		if(result==1)
+			winner=teamOne;
+		else
+			winner=teamTwo;
 	}
 	
 	public String getFinalScore() {

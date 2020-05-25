@@ -10,9 +10,8 @@ public class Match {
 	//isScoreSet odpowiada za to, czy wczesniej zostal ustalony wynik.
 	// To glownie decyduje o wyswietlaniu sie prawidlowego komunikatu przy probie wyswietlenia meczu.
 	protected boolean isScoreSet = false;
-	
-	
-	
+
+
 	public Match(Team teamOne, Team teamTwo, Referee ref, int typeOfMatch) {
 		this.teamOne = teamOne;
 		this.teamTwo = teamTwo;

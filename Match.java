@@ -19,12 +19,20 @@ public class Match {
 		referee = ref;
 		this.typeOfMatch = typeOfMatch;
 	}
-	
-	protected void showFinalScore() {
-		
+
+	protected void setFinalScoreString(int setsOfLoserUsedInMethod) {
+		if (winner.equals(teamOne)) {
+			finalScore += "3:";
+			finalScore+=setsOfLoserUsedInMethod;
+		}
+		else {
+			finalScore += setsOfLoserUsedInMethod;
+			finalScore +=":3";
+		}
 	}
 	
 	public void setResult() {
+		finalScore="";
 		int setsOfLoser=0;
 		boolean check=true;
 		System.out.println("Kto wygral? Wcisnij \'1\', jezeli "+teamOne+", a \'2\', jezeli "+teamTwo);
@@ -54,6 +62,7 @@ public class Match {
 		else
 			teamOne.LostAMatch(setsOfLoser);
 		isScoreSet=true;
+		setFinalScoreString(setsOfLoser);
 	}
 	
 	public String getFinalScore() {

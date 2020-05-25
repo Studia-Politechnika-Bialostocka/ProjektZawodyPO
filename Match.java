@@ -4,7 +4,6 @@ public class Match {
 	protected int typeOfMatch; //v = 0, d = 1, t = 2
 	protected Referee referee;
 	protected String finalScore;
-	
 	protected Team teamOne;
 	protected Team teamTwo;
 	protected Team winner;
@@ -37,7 +36,9 @@ public class Match {
 		if(result==1)
 			winner = teamOne;
 		else
-			winner=teamTwo;
+			winner = teamTwo;
+		//wygrany dostaje punkty, wygrana do statystyk oraz wygrane sety
+		winner.WonAMatch();
 		check=true;
 		System.out.println("Ile setow druga druzyna wygrala? Wybierz miedzy wartoscia 0, 1 oraz 2");
 		do {
@@ -45,6 +46,11 @@ public class Match {
 			if(setsOfLoser>=0 && setsOfLoser<=2)
 				check=false;
 		}while(check);
+		//ustalanie przegranego oraz dawanie mu setow, ktore wygral
+		if(winner.equal(teamOne))
+			teamTwo.LostAMatch(setsOfLoser);
+		else
+			teamOne.LostAMatch(setsOfLoser);
 	}
 	
 	public String getFinalScore() {

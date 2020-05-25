@@ -16,9 +16,7 @@ public class Match {
 		this.teamTwo = teamTwo;
 		referee = ref;
 		this.typeOfMatch = typeOfMatch;
-		
 		setResult();
-		
 	}
 	
 	protected void showFinalScore() {
@@ -26,9 +24,10 @@ public class Match {
 	}
 	
 	public void setResult() {
+		int setsOfLoser=0;
+		boolean check=true;
 		System.out.println("Kto wygral? Wcisnij \'1\', jezeli "+teamOne+", a \'2\', jezeli "+teamTwo);
 		Scanner in = new Scanner("System.in");
-		boolean check=true;
 		int result;
 		do {
 			result=in.nextInt();
@@ -36,10 +35,16 @@ public class Match {
 				check=false;
 		}while(check);
 		if(result==1)
-			winner=teamOne;
+			winner = teamOne;
 		else
 			winner=teamTwo;
-		System.out.println("Ile setow druga druzyna wygrala? Wybierz miedzy")
+		check=true;
+		System.out.println("Ile setow druga druzyna wygrala? Wybierz miedzy wartoscia 0, 1 oraz 2");
+		do {
+			setsOfLoser = in.nextInt;
+			if(setsOfLoser>=0 && setsOfLoser<=2)
+				check=false;
+		}while(check);
 	}
 	
 	public String getFinalScore() {

@@ -3,12 +3,12 @@ package def;
 import java.util.LinkedList;
 
 public class Beach {
-	private LinkedList<Volleyball> vTeams;
-	private LinkedList<Dodgeball> dTeams;
-	private LinkedList<Tug_of_War> tTeams;
-	private LinkedList<Referee> listOfReferee;
-	private LinkedList<AssistantReferee> listOfAssistantReferee;
-	private LinkedList<Tournament> listOfTournaments;
+	private LinkedList<Volleyball> vTeams=new LinkedList<>();
+	private LinkedList<Dodgeball> dTeams = new LinkedList<>();
+	private LinkedList<Tug_of_War> tTeams = new LinkedList<>();
+	private LinkedList<Referee> listOfReferee = new LinkedList<>();
+	private LinkedList<AssistantReferee> listOfAssistantReferee = new LinkedList<>();
+	private LinkedList<Tournament> listOfTournaments<>();
 	
 	public void addTournament(Tournament t) {
 		listOfTournaments.add(t);

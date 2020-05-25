@@ -47,7 +47,7 @@ public class Match {
 				check=false;
 		}while(check);
 		//ustalanie przegranego oraz dawanie mu setow, ktore wygral
-		if(winner.equal(teamOne))
+		if(winner.equals(teamOne))
 			teamTwo.LostAMatch(setsOfLoser);
 		else
 			teamOne.LostAMatch(setsOfLoser);

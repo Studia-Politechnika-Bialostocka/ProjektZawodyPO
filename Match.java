@@ -7,6 +7,9 @@ public class Match {
 	protected Team teamOne;
 	protected Team teamTwo;
 	protected Team winner;
+	//isScoreSet odpowiada za to, czy wczesniej zostal ustalony wynik.
+	// To glownie decyduje o wyswietlaniu sie prawidlowego komunikatu przy probie wyswietlenia meczu.
+	protected boolean isScoreSet = false;
 	
 	
 	
@@ -15,7 +18,6 @@ public class Match {
 		this.teamTwo = teamTwo;
 		referee = ref;
 		this.typeOfMatch = typeOfMatch;
-		setResult();
 	}
 	
 	protected void showFinalScore() {
@@ -51,6 +53,7 @@ public class Match {
 			teamTwo.LostAMatch(setsOfLoser);
 		else
 			teamOne.LostAMatch(setsOfLoser);
+		isScoreSet=true;
 	}
 	
 	public String getFinalScore() {
@@ -59,19 +62,24 @@ public class Match {
 	
 	public String toString() {
 		String typeOfMatchInString;
-		switch (typeOfMatch)
-		{
+		switch (typeOfMatch) {
 			case 0:
-				typeOfMatchInString="Siatkowka";
+				typeOfMatchInString = "Siatkowka";
 				break;
 			case 1:
-				typeOfMatchInString="Dwa ognie";
+				typeOfMatchInString = "Dwa ognie";
 				break;
 			case 2:
-				typeOfMatchInString="Przeciaganie liny";
+				typeOfMatchInString = "Przeciaganie liny";
 				break;
 		}
-		return "Konkurencja"+typeOfMatchInString+". "+teamOne+" i "+ teamTwo+". Zwyciezca:"+winner+". Wynik "+finalScore;
+		switch (isScoreSet) {
+			case true:
+				return "Konkurencja" + typeOfMatchInString + ". " + teamOne + " i " + teamTwo + ". Zwyciezca:" + winner + ". Wynik: " + finalScore;
+				break;
+			case false:
+				return "Konkurencja" + typeOfMatchInString + ". " + teamOne + " i " + teamTwo + ". Zwyciezca: nieustalony. Wynik: nieustalony";
+				break;
+		}
 	}
-	
 }

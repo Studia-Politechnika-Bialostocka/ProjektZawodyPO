@@ -6,7 +6,7 @@ public abstract class Team {
 	protected int points=0;
 	protected int wins=0;
 	protected int losses=0;
-	protected double prizesWon;
+	protected double prizesWon=0f;
 	protected int setsWon=0;
 	public int getPlayerAmount() {
 		return playerAmount;
@@ -41,7 +41,8 @@ public abstract class Team {
 		return losses;
 	}
 	
-	public double getPrizesWon() {
+	public double getPrizesWon()
+	{
 		return prizesWon;
 	}
 }

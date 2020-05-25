@@ -39,6 +39,7 @@ public class Match {
 			winner=teamOne;
 		else
 			winner=teamTwo;
+		System.out.println("Ile setow druga druzyna wygrala? Wybierz miedzy")
 	}
 	
 	public String getFinalScore() {

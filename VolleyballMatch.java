@@ -7,7 +7,6 @@ public class VolleyballMatch extends Match {
 		super(teamOne, teamTwo, ref, typeOfMatch);
 		assistantReferees[0] = ar1;
 		assistantReferees[1] = ar2;
-
 	}
 
 	

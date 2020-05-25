@@ -5,9 +5,5 @@ public class Volleyball extends Team {
 	
 	public Volleyball(String teamName) {
 		this.teamName = teamName;
-		points = 0;
-		wins = 0;
-		losses = 0;
-		prizesWon = 0f;
 	}
 }

@@ -51,15 +51,15 @@ public class Beach {
 	}
 	
 	public void showAllVTeams() {
-		
+		for (Volleyball vteam : vTeams) System.out.println(vteam);
 	}
 	
 	public void showAllDTeams() {
-		
+		for (Dodgeball dteam : dTeams) System.out.println(dteam);
 	}
 	
 	public void showAllTTeams() {
-		
+		for (Tug_of_War tteam : tTeams) System.out.println(tteam);
 	}
 	
 	public void addReferee(Referee r) {

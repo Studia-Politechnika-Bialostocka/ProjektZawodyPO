@@ -74,9 +74,14 @@ public class Match {
 		return finalScore;
 	}
 
+
+
+	
+
 	public Team getWinner() {
 		return winner;
 	}
+
 
 	public String toString() {
 		String typeOfMatchInString = null;

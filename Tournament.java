@@ -51,9 +51,7 @@ public class Tournament {
 			}
 		}
 		return sortedTeams;
-	}
-	
-	public LinkedList<Match> matchesOfRoundRobin(LinkedList<Team> listOfTeamsInRoundRobin ) {
+	}public LinkedList<Match> matchesOfRoundRobin(LinkedList<Team> listOfTeamsInRoundRobin ) {
 		teams=listOfTeamsInRoundRobin;
 		for (int i = 0; i < teams.size(); i++) {
 
@@ -134,58 +132,58 @@ public class Tournament {
 	}
 	public Match matchOfFinal(LinkedList<Team> finalTeams)
 	{
-			if (finalTeams.get(0) instanceof Volleyball) {
-				matchOfFinal=(new VolleyballMatch(finalTeams.get(0), finalTeams.get(1), referees.get(refChoice), 0, aReferees.get(aRefChoice), aReferees.get(aRefChoice + 1)));
-				if (aRefChoice + 1 == aReferees.size())
-					aRefChoice = 0;
-				else
-					++aRefChoice;
-			}
-			else {
-				int typeOfMatch;
-				if (finalTeams.get(0) instanceof Dodgeball)
-					typeOfMatch = 1;
-				else
-					typeOfMatch = 2;
-				matchOfFinal=(new Match(finalTeams.get(0), finalTeams.get(1), referees.get(refChoice), typeOfMatch));
-			}
-			if (refChoice + 1 == referees.size())
-				refChoice = 0;
+		if (finalTeams.get(0) instanceof Volleyball) {
+			matchOfFinal=(new VolleyballMatch(finalTeams.get(0), finalTeams.get(1), referees.get(refChoice), 0, aReferees.get(aRefChoice), aReferees.get(aRefChoice + 1)));
+			if (aRefChoice + 1 == aReferees.size())
+				aRefChoice = 0;
 			else
-				++refChoice;
+				++aRefChoice;
+		}
+		else {
+			int typeOfMatch;
+			if (finalTeams.get(0) instanceof Dodgeball)
+				typeOfMatch = 1;
+			else
+				typeOfMatch = 2;
+			matchOfFinal=(new Match(finalTeams.get(0), finalTeams.get(1), referees.get(refChoice), typeOfMatch));
+		}
+		if (refChoice + 1 == referees.size())
+			refChoice = 0;
+		else
+			++refChoice;
 		return matchOfFinal;
 	}
 
 	public void addDonator(Donator d) {
 		donators.add(d);
 	}
-	
+
 	public void showDonators() {
-		
+
 	}
-	
+
 	public void deleteDonator(Donator d) {
 		donators.remove(d);
 	}
-	
+
 	public void showFinalScores() {
-		
+
 	}
-	
+
 	public void addMatch(Match m) {
 		matches.add(m);
 	}
-	
+
 	public LinkedList<Match> getMatches() {
 		return matches;
 	}
 
 	public void saveToFile() {
-		
+
 	}
-	
+
 	public void importFromFile() {
-		
+
 	}
-	
+
 }

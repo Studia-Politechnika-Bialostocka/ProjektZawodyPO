@@ -29,9 +29,20 @@ public class Tournament {
 		for (int i = 0; i < teams.size(); i++) {
 			for (int j = i+1; j < teams.size; j++) {
 
+				int mainRefIdx = refChoice%referees.size();
+				if (teams.get(0) instanceof Volleyball) {
+					int ar1 = aRefChoice % aReferees.size();
+					int ar2 = aRefChoice + 1 % aReferees.size();
+					matches.add(new VolleyballMatch(teams.get(i), teams.get(j), referees.get(mainRefIdx), 0, aReferees.get(ar1), aReferees.get(ar2));
+					aRefChoice += 2;
+				} else {
+					int typeOfMatch;
+					if (teams.get(0) instanceof Dodgeball) typeOfMatch = 1;
+					else if (teams.get(0) instanceof Tug_Of_War) typeOfMatch = 2;
 
+					matches.add(new Match(teams.get(i), teams.get(j), referees.get(mainRefIdx), typeOfMatch));
 				}
-
+				refChoice++;
 			}
 		}
 

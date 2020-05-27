@@ -78,6 +78,10 @@ public class Tournament {
 		return matches;
 	}
 	public LinkedList<Team> roundRobin(){
+		for(Match exampleMatch:matches)
+		{
+			exampleMatch.assignPointsAndSets();
+		}
 		LinkedList<Team> sortedTeams = sortTeams();
 
 		LinkedList<Team> semiTeams = new LinkedList<Team>();

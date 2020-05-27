@@ -3,12 +3,13 @@ package def;
 import java.util.LinkedList;
 import java.util.Random;
 
-
+//zobaczmy czy to dziala
 public class Tournament {
 	private String name;
 	private double prizePool;
 	private LinkedList<Donator> donators;
 	private LinkedList<Match> matches;
+	private LinkedList<Match> matchesOfSemi;
 	private LinkedList<Team> teams;
 	private LinkedList<Referee> referees;
 	private LinkedList<AssistantReferee> aReferees;
@@ -23,7 +24,9 @@ public class Tournament {
 		referees = refs;
 		aReferees = arefs;
 
+
 		Random rand = new Random();
+
 	}
 
 	private boolean sortCondition(Team t1, Team t2) {
@@ -51,6 +54,7 @@ public class Tournament {
 	
 	public LinkedList<Team> roundRobin() {
 		for (int i = 0; i < teams.size(); i++) {
+
 			for (int j = i+1; j < teams.size(); j++) {
 
 				int mainRefIdx = refChoice%referees.size();
@@ -70,40 +74,55 @@ public class Tournament {
 			}
 		}
 		LinkedList<Team> sortedTeams = sortTeams();
+
 		LinkedList<Team> semiTeams = new LinkedList<Team>();
+
 		for (int i = 0; i < 4; i++) semiTeams.add(sortedTeams.get(i));
 		return semiTeams;
 	}
 	
 	public LinkedList<Team> semiFinal(LinkedList<Team> sTeams) {
-		LinkedList<Team> matchOfSemi = new LinkedList;
+
+	}
+	public LinkedList<Match> matchesOfSemiFinals(LinkedList<Team> teamsWinnersFromRoundRobin) {
+		matchesOfSemi = new LinkedList<>();
 		for (int i = 0; i < 4; ++i)
 			for (int j = i + 1; j < 4; ++j) {
-				if (sTeams.get(i) instanceof Volleyball) {
-					matchOfSemi.add(new VolleyballMatch(sTeams.get(i), sTeams.get(j), referees.get(refChoice), 0, aReferees.get(aRefChoice), aReferees.get(aRefChoice + 1)));
+				if (teamsWinnersFromRoundRobin.get(i) instanceof Volleyball)
+					matchesOfSemi.add(new VolleyballMatch(teamsWinnersFromRoundRobin.get(i), teamsWinnersFromRoundRobin.get(j), referees.get(refChoice), 0, aReferees.get(aRefChoice), aReferees.get(aRefChoice + 1)));
 				else{
-						int typeOfMatch;
-						if (sTeams.get(i) instanceof Dodgeball)
-							typeOfMatch = 1;
-						else
-							typeOfMatch = 2;
-						matchOfSemi.add(new Match(sTeams.get(i), sTeams.get(j), referees.get(refChoice),typeOfMatch));
-					}
-					if (aRefChoice + 1 == aReferees.size())
-						aRefChoice = 0;
+					int typeOfMatch;
+					if (teamsWinnersFromRoundRobin.get(i) instanceof Dodgeball)
+						typeOfMatch = 1;
 					else
-						++aRefChoice;
-					if (refChoice + 1 == Referees.size())
-						refChoice = 0;
-					else
-						++refChoice;
+						typeOfMatch = 2;
+					matchesOfSemi.add(new Match(teamsWinnersFromRoundRobin.get(i), teamsWinnersFromRoundRobin.get(j), referees.get(refChoice),typeOfMatch));
 				}
+				if (aRefChoice + 1 == aReferees.size())
+					aRefChoice = 0;
+				else
+					++aRefChoice;
+				if (refChoice + 1 == Referees.size())
+					refChoice = 0;
+				else
+					++refChoice;
 			}
+	}
 		return matchOfSemi;
 	}
-	
+
 	public Team finalGame(LinkedList<Team> fTeams) {
-		return null;
+		Team winner;
+		winner;
+		if (aRefChoice + 1 == aReferees.size())
+			aRefChoice = 0;
+		else
+			++aRefChoice;
+		if (refChoice + 1 == referees.size())
+			refChoice = 0;
+		else
+			++refChoice;
+		return winner;
 	}
 	
 	public void addDonator(Donator d) {

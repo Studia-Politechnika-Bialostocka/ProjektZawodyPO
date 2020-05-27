@@ -6,7 +6,6 @@ import java.util.LinkedList;
 public class Tournament {
 	private String name;
 	private double prizePool;
-
 	private LinkedList<Donator> donators;
 	private LinkedList<Match> matches;
 	private LinkedList<Team> teams;
@@ -27,9 +26,9 @@ public class Tournament {
 	}
 	
 	public LinkedList<Team> roundRobin() {
-
 		for (int i = 0; i < teams.size(); i++) {
 			for (int j = i+1; j < teams.size; j++) {
+
 				int mainRefIdx = refChoice%referees.size();
 				if (teams.get(0) instanceof Volleyball) {
 					int ar1 = aRefChoice % aReferees.size();
@@ -50,8 +49,30 @@ public class Tournament {
 	}
 	
 	public LinkedList<Team> semiFinal(LinkedList<Team> sTeams) {
-		
-		return null;
+		LinkedList<Team> matchOfSemi = new LinkedList;
+		for (int i = 0; i < 4; ++i)
+			for (int j = i + 1; j < 4; ++j) {
+				if (sTeams.get(i) instanceof Volleyball) {
+					matchOfSemi.add(new VolleyballMatch(sTeams.get(i), sTeams.get(j), referees.get(refChoice), 0, aReferees.get(aRefChoice), aReferees.get(aRefChoice + 1)));
+				else{
+						int typeOfMatch;
+						if (sTeams.get(i) instanceof Dodgeball)
+							typeOfMatch = 1;
+						else
+							typeOfMatch = 2;
+						matchOfSemi.add(new Match(sTeams.get(i), sTeams.get(j), referees.get(refChoice),typeOfMatch));
+					}
+					if (aRefChoice + 1 == aReferees.size())
+						aRefChoice = 0;
+					else
+						++aRefChoice;
+					if (refChoice + 1 == Referees.size())
+						refChoice = 0;
+					else
+						++refChoice;
+				}
+			}
+		return matchOfSemi;
 	}
 	
 	public Team finalGame(LinkedList<Team> fTeams) {

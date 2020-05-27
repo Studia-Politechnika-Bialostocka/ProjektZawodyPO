@@ -26,30 +26,43 @@ public class Tournament {
 	}
 	
 	public LinkedList<Team> roundRobin() {
-
 		for (int i = 0; i < teams.size(); i++) {
 			for (int j = i+1; j < teams.size; j++) {
 
-				if (teams.get(0) instanceof Volleyball) {
 
-					matches.add(new Match(teams.get(i), teams.get(j), referees.get()));
-<<<<<<< HEAD
-=======
 				}
 
->>>>>>> 842644f34c9f49aa636e39924911b5c922843aa5
 			}
 		}
 
 	}
 	
 	public LinkedList<Team> semiFinal(LinkedList<Team> sTeams) {
-		for(int i=0; i<4; ++i)
-			for(int j = i+1; j < 4 ;++j)
-			{
-					if(teams.get(i) instanceof )
+		Linked List matches
+		for (int i = 0; i < 4; ++i)
+			for (int j = i + 1; j < 4; ++j) {
+				if (teams.get(i) instanceof Volleyball) {
+					matches.add(new VolleyballMatch(teams.get(i), teams.get(j), referees.get(refChoice), 0, aReferees.get(aRefChoice), aReferees.get(aRefChoice + 1)));
+				else{
+						int typeOfMatch;
+						if (teams.get(i) instanceof Dodgeball)
+							typeOfMatch = 1;
+						else
+							typeOfMatch = 2;
+						matches.add(new Match(teams.get(i), teams.get(j), referees.get(refChoice),typeOfMatch));
+					}
+
+					if (aRefChoice + 1 == aReferees.size())
+						aRefChoice = 0;
+					else
+						++aRefChoice;
+					if (refChoice + 1 == Referees.size())
+						refChoice = 0;
+					else
+						++refChoice;
+				}
 			}
-		return null;
+		return ;
 	}
 	
 	public Team finalGame(LinkedList<Team> fTeams) {

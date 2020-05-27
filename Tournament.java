@@ -2,7 +2,7 @@ package def;
 
 import java.util.LinkedList;
 
-
+//zobaczmy czy to dziala
 public class Tournament {
 	private String name;
 	private double prizePool;

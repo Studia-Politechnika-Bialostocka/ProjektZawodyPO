@@ -32,7 +32,7 @@ public class Match {
 			finalScore +=":3";
 		}
 	}
-	
+	//ustawianie wyniku
 	public void setResult() {
 		finalScore="";
 		boolean check=true;
@@ -58,7 +58,7 @@ public class Match {
 		isScoreSet=true;
 		setFinalScoreString(setsOfLoser);
 	}
-
+	//przypisywanie wyniku, setow, wygranych/przegranych dla danej druzyny
 	public void assignPointsAndSets()
 	{
 		//wygrany dostaje punkty, wygrana do statystyk oraz wygrane sety

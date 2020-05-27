@@ -155,6 +155,7 @@ public class Tournament {
 				++refChoice;
 		return matchOfFinal;
 	}
+
 	public void addDonator(Donator d) {
 		donators.add(d);
 	}

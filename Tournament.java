@@ -24,6 +24,29 @@ public class Tournament {
 
 		rand = new Random();
 	}
+
+	private boolean sortCondition(Team t1, Team t2) {
+		if (t1.getWins() > t2.getWins()) return true;
+		else if (t1.getWins() > t2getWins()) return false;
+		else if (t1.getSetsWon() > t2.getSetsWon()) return true;
+		else return false;
+	}
+
+	private LinkedList<Team> sortTeams() {
+		LinkedList<Team> sortedTeams = teams;
+		int i, j;
+		Team temp;
+		for (i = 0; i<sortedTeams.size()-1; i++) {
+			for (j=0; j<sortedTeams.size()-1-i; j++) {
+				if (sortCondition(sortedTeams.get(j), sortedTeams.get(j+1)) {
+					temp = sortedTeams.get(j+1);
+					sortedTeams.get(j+1) = sortedTeams.get(j);
+					sortedTeams.get(j) = temp;
+				}
+			}
+		}
+		return sortedTeams;
+	}
 	
 	public LinkedList<Team> roundRobin() {
 		for (int i = 0; i < teams.size(); i++) {
@@ -45,7 +68,10 @@ public class Tournament {
 				refChoice++;
 			}
 		}
-
+		LinkedList<Team> sortedTeams = sortTeams();
+		LinkedList<Team> semiTeams;
+		for (int i = 0; i < 4; i++) semiTeams.add(sortedTeams.get(i));
+		return semiTeams;
 	}
 	
 	public LinkedList<Team> semiFinal(LinkedList<Team> sTeams) {

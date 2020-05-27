@@ -9,6 +9,7 @@ public class Tournament {
 	private LinkedList<Donator> donators;
 	private LinkedList<Match> matches;
 	private LinkedList<Match> matchesOfSemi;
+	private Match matchOfFinal;
 	private LinkedList<Team> teams;
 	private LinkedList<Referee> referees;
 	private LinkedList<AssistantReferee> aReferees;
@@ -73,34 +74,32 @@ public class Tournament {
 		return semiTeams;
 	}
 	
-	public LinkedList<Team> semiFinal(LinkedList<Team> sTeams) {
+	public LinkedList<Team> semiFinal(LinkedList<Match> matchesWithScoreUsedInMethod) {
 
 	}
 	public LinkedList<Match> matchesOfSemiFinals(LinkedList<Team> teamsWinnersFromRoundRobin) {
 		matchesOfSemi = new LinkedList<>();
-		for (int i = 0; i < 4; ++i)
-			for (int j = i + 1; j < 4; ++j) {
-				if (teamsWinnersFromRoundRobin.get(i) instanceof Volleyball)
-					matchesOfSemi.add(new VolleyballMatch(teamsWinnersFromRoundRobin.get(i), teamsWinnersFromRoundRobin.get(j), referees.get(refChoice), 0, aReferees.get(aRefChoice), aReferees.get(aRefChoice + 1)));
-				else{
-					int typeOfMatch;
-					if (teamsWinnersFromRoundRobin.get(i) instanceof Dodgeball)
-						typeOfMatch = 1;
-					else
-						typeOfMatch = 2;
-					matchesOfSemi.add(new Match(teamsWinnersFromRoundRobin.get(i), teamsWinnersFromRoundRobin.get(j), referees.get(refChoice),typeOfMatch));
-				}
-				if (aRefChoice + 1 == aReferees.size())
-					aRefChoice = 0;
+		for (int i = 0; i < 2; ++i) {
+			if (teamsWinnersFromRoundRobin.get(i) instanceof Volleyball)
+				matchesOfSemi.add(new VolleyballMatch(teamsWinnersFromRoundRobin.get(i), teamsWinnersFromRoundRobin.get(i + 2), referees.get(refChoice), 0, aReferees.get(aRefChoice), aReferees.get(aRefChoice + 1)));
+			else {
+				int typeOfMatch;
+				if (teamsWinnersFromRoundRobin.get(i) instanceof Dodgeball)
+					typeOfMatch = 1;
 				else
-					++aRefChoice;
-				if (refChoice + 1 == Referees.size())
-					refChoice = 0;
-				else
-					++refChoice;
+					typeOfMatch = 2;
+				matchesOfSemi.add(new Match(teamsWinnersFromRoundRobin.get(i), teamsWinnersFromRoundRobin.get(i + 2), referees.get(refChoice), typeOfMatch));
 			}
-	}
-		return matchOfSemi;
+			if (aRefChoice + 1 == aReferees.size())
+				aRefChoice = 0;
+			else
+				++aRefChoice;
+			if (refChoice + 1 == referees.size())
+				refChoice = 0;
+			else
+				++refChoice;
+		}
+		return matchesOfSemi;
 	}
 
 	public Team finalGame(LinkedList<Team> fTeams) {

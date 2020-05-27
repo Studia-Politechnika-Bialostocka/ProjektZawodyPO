@@ -69,6 +69,8 @@ public class Match {
 	public String getFinalScore() {
 		return finalScore;
 	}
+
+
 	
 	public String toString() {
 		String typeOfMatchInString = null;

@@ -8,9 +8,10 @@ public class Tournament {
 	private double prizePool;
 	private LinkedList<Donator> donators;
 	private LinkedList<Match> matches;
+	private LinkedList<Match> matchesOfSemi;
 	private LinkedList<Team> teams;
 	private LinkedList<Referee> referees;
-	private Linked List<AssistantReferee> aReferees;
+	private LinkedList<AssistantReferee> aReferees;
 	
 	private int refChoice = 0;
 	private int aRefChoice = 0;
@@ -68,24 +69,24 @@ public class Tournament {
 			}
 		}
 		LinkedList<Team> sortedTeams = sortTeams();
-		LinkedList<Team> semiTeams;
+		LinkedList<Team> semiTeams = new LinkedList<>();
 		for (int i = 0; i < 4; i++) semiTeams.add(sortedTeams.get(i));
 		return semiTeams;
 	}
 	
 	public LinkedList<Team> semiFinal(LinkedList<Team> sTeams) {
-		LinkedList<Match> matchOfSemi = new LinkedList<>();
+		LinkedList<Team> teamOfSemi = new LinkedList<>();
 		for (int i = 0; i < 4; ++i)
 			for (int j = i + 1; j < 4; ++j) {
 				if (sTeams.get(i) instanceof Volleyball) {
-					matchOfSemi.add(new VolleyballMatch(sTeams.get(i), sTeams.get(j), referees.get(refChoice), 0, aReferees.get(aRefChoice), aReferees.get(aRefChoice + 1)));
+					matchesOfSemi.add(new VolleyballMatch(sTeams.get(i), sTeams.get(j), referees.get(refChoice), 0, aReferees.get(aRefChoice), aReferees.get(aRefChoice + 1)));
 				else{
 						int typeOfMatch;
 						if (sTeams.get(i) instanceof Dodgeball)
 							typeOfMatch = 1;
 						else
 							typeOfMatch = 2;
-						matchOfSemi.add(new Match(sTeams.get(i), sTeams.get(j), referees.get(refChoice),typeOfMatch));
+						matchesOfSemi.add(new Match(sTeams.get(i), sTeams.get(j), referees.get(refChoice),typeOfMatch));
 					}
 					if (aRefChoice + 1 == aReferees.size())
 						aRefChoice = 0;
@@ -102,7 +103,7 @@ public class Tournament {
 	
 	public Team finalGame(LinkedList<Team> fTeams) {
 		Team winner;
-		winner
+		winner;
 		if (aRefChoice + 1 == aReferees.size())
 			aRefChoice = 0;
 		else

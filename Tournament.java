@@ -14,7 +14,7 @@ public class Tournament {
 	private LinkedList<Team> teams;
 	private LinkedList<Referee> referees;
 	private LinkedList<AssistantReferee> aReferees;
-	
+	private Team winner;
 	private int refChoice = 0;
 	private int aRefChoice = 0;
 	
@@ -115,17 +115,8 @@ public class Tournament {
 		return matchesOfSemi;
 	}
 
-	public Team finalGame(LinkedList<Team> fTeams) {
-		Team winner;
-		winner;
-		if (aRefChoice + 1 == aReferees.size())
-			aRefChoice = 0;
-		else
-			++aRefChoice;
-		if (refChoice + 1 == referees.size())
-			refChoice = 0;
-		else
-			++refChoice;
+	public Team finalGame(Match finalMatch) {
+		winner=finalMatch.winner;
 		return winner;
 	}
 	public Match matchOfFinal(LinkedList<Team> finalTeams)

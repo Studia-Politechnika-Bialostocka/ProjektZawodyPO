@@ -81,7 +81,7 @@ public class Tournament {
 		for (int i = 0; i < 4; i++) semiTeams.add(sortedTeams.get(i));
 		return semiTeams;
 	}
-	
+	//mecze polfinalowe oraz wylonienie finalistow
 	public LinkedList<Team> semiFinal(LinkedList<Match> matchesWithScoreUsedInMethod) {
 		LinkedList<Team> finalTeams = new LinkedList<>();
 		finalTeams.add(matchesWithScoreUsedInMethod.get(0).winner);
@@ -114,7 +114,7 @@ public class Tournament {
 		}
 		return matchesOfSemi;
 	}
-
+	//mecz final oraz wylonienie zwyciezcy
 	public Team finalGame(Match finalMatch) {
 		winner=finalMatch.winner;
 		return winner;

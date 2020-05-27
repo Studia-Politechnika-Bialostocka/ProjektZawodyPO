@@ -76,7 +76,17 @@ public class Tournament {
 	}
 	
 	public Team finalGame(LinkedList<Team> fTeams) {
-		return null;
+		Team winner;
+
+		if (aRefChoice + 1 == aReferees.size())
+			aRefChoice = 0;
+		else
+			++aRefChoice;
+		if (refChoice + 1 == Referees.size())
+			refChoice = 0;
+		else
+			++refChoice;
+		return winner;
 	}
 	
 	public void addDonator(Donator d) {

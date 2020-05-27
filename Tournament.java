@@ -75,8 +75,12 @@ public class Tournament {
 	}
 	
 	public LinkedList<Team> semiFinal(LinkedList<Match> matchesWithScoreUsedInMethod) {
-
+		LinkedList<Team> finalTeams = new LinkedList<>();
+		finalTeams.add(matchesWithScoreUsedInMethod.get(0).winner);
+		finalTeams.add(matchesWithScoreUsedInMethod.get(1).winner);
+		return finalTeams;
 	}
+
 	public LinkedList<Match> matchesOfSemiFinals(LinkedList<Team> teamsWinnersFromRoundRobin) {
 		matchesOfSemi = new LinkedList<>();
 		for (int i = 0; i < 2; ++i) {
@@ -115,7 +119,29 @@ public class Tournament {
 			++refChoice;
 		return winner;
 	}
-	
+	public Match matchOfFinal(LinkedList<Team> finalTeams)
+	{
+			if (finalTeams.get(0) instanceof Volleyball)
+				matchesOfSemi.add(new VolleyballMatch(finalTeams.get(0), finalTeams.get(1), referees.get(refChoice), 0, aReferees.get(aRefChoice), aReferees.get(aRefChoice + 1)));
+			else {
+				int typeOfMatch;
+				if (finalTeams.get(0) instanceof Dodgeball)
+					typeOfMatch = 1;
+				else
+					typeOfMatch = 2;
+				matchesOfSemi.add(new Match(finalTeams.get(0), finalTeams.get(1), referees.get(refChoice), typeOfMatch));
+			}
+			if (aRefChoice + 1 == aReferees.size())
+				aRefChoice = 0;
+			else
+				++aRefChoice;
+			if (refChoice + 1 == referees.size())
+				refChoice = 0;
+			else
+				++refChoice;
+		}
+		return matchOfFinal;
+	}
 	public void addDonator(Donator d) {
 		donators.add(d);
 	}

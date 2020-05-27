@@ -12,6 +12,7 @@ public class Match {
 	//isScoreSet odpowiada za to, czy wczesniej zostal ustalony wynik.
 	// To glownie decyduje o wyswietlaniu sie prawidlowego komunikatu przy probie wyswietlenia meczu.
 	protected boolean isScoreSet = false;
+	protected int setsOfLoser=0;
 
 
 	public Match(Team teamOne, Team teamTwo, Referee ref, int typeOfMatch) {
@@ -34,9 +35,8 @@ public class Match {
 	
 	public void setResult() {
 		finalScore="";
-		int setsOfLoser=0;
 		boolean check=true;
-		System.out.println("Kto wygral? Wcisnij \'1\', jezeli "+teamOne+", a \'2\', jezeli "+teamTwo);
+		System.out.println("\nKto wygral? Wcisnij \'1\', jezeli "+teamOne+", a \'2\', jezeli "+teamTwo+"\nTwoj wybor:");
 		Scanner in = new Scanner("System.in");
 		int result;
 		do {
@@ -48,22 +48,25 @@ public class Match {
 			winner = teamOne;
 		else
 			winner = teamTwo;
-		//wygrany dostaje punkty, wygrana do statystyk oraz wygrane sety
-		winner.WonAMatch();
 		check=true;
-		System.out.println("Ile setow druga druzyna wygrala? Wybierz miedzy wartoscia 0, 1 oraz 2");
+		System.out.println("\nIle setow druga druzyna wygrala? Wybierz miedzy wartoscia 0, 1 oraz 2\nTwoj wybor:");
 		do {
 			setsOfLoser = in.nextInt();
 			if(setsOfLoser>=0 && setsOfLoser<=2)
 				check=false;
 		}while(check);
+		isScoreSet=true;
+		setFinalScoreString(setsOfLoser);
+	}
+	public void assignPointsAndSets()
+	{
+		//wygrany dostaje punkty, wygrana do statystyk oraz wygrane sety
+		winner.WonAMatch();
 		//ustalanie przegranego oraz dawanie mu setow, ktore wygral
 		if(winner.equals(teamOne))
 			teamTwo.LostAMatch(setsOfLoser);
 		else
 			teamOne.LostAMatch(setsOfLoser);
-		isScoreSet=true;
-		setFinalScoreString(setsOfLoser);
 	}
 	
 	public String getFinalScore() {

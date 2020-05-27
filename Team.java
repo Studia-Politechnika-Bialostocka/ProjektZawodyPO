@@ -45,4 +45,6 @@ public abstract class Team {
 	{
 		return prizesWon;
 	}
+
+	public int getSetsWon() {return setsWon;}
 }

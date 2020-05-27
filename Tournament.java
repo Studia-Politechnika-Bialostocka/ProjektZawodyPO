@@ -120,7 +120,8 @@ public class Tournament {
 	}
 	//mecz final oraz wylonienie zwyciezcy
 	public Team finalGame(Match finalMatch) {
-		winner=finalMatch.winner;
+		finalMatch.assignPointsAndSets();
+		winner=finalMatch.getWinner();
 		return winner;
 	}
 	public Match matchOfFinal(LinkedList<Team> finalTeams)
@@ -169,7 +170,7 @@ public class Tournament {
 	public LinkedList<Match> getMatches() {
 		return matches;
 	}
-	
+
 	public void saveToFile() {
 		
 	}

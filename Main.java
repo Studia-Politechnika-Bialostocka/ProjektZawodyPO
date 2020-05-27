@@ -6,7 +6,6 @@ public class Main {
 		System.out.println("Nie wiem co się stało, że usunąłem pozostałe dwie komendy");
 		System.out.println("Hello World");
 		System.out.println("Lol jestem w programie");
-		System.out.println("Eluwina");
 	}
 	
 }

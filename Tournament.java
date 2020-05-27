@@ -8,17 +8,29 @@ public class Tournament {
 	private LinkedList<Donator> donators;
 	private LinkedList<Match> matches;
 	private LinkedList<Team> teams;
+	private LinkedList<Referee> referees;
+	private Linked List<AssistantReferee> aReferees;
 	
 	
 	
-	public Tournament(String name, double prize, LinkedList<Team> teams) {
+	public Tournament(String name, double prize, LinkedList<Team> teams, LinkedList<Referee> refs, LinkedList<AssistantReferee> arefs) {
 		this.name = name;
 		prizePool = prize;
 		this.teams = teams;
+		referees = refs;
+		aReferees = arefs;
 	}
 	
 	public LinkedList<Team> roundRobin() {
-		return null;
+
+		for (int i = 0; i < teams.size(); i++) {
+			for (int j = i+1; j < teams.size; j++) {
+				if (teams.get(0) instanceof Volleyball)
+					matches.add(new Match(teams.get(i), teams.get(j), referees.get()));
+
+			}
+		}
+
 	}
 	
 	public LinkedList<Team> semiFinal(LinkedList<Team> sTeams) {

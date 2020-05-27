@@ -5,7 +5,6 @@ import java.util.LinkedList;
 public class Tournament {
 	private String name;
 	private double prizePool;
-
 	private LinkedList<Donator> donators;
 	private LinkedList<Match> matches;
 	private LinkedList<Team> teams;
@@ -28,14 +27,17 @@ public class Tournament {
 			for (int j = i+1; j < teams.size; j++) {
 				if (teams.get(0) instanceof Volleyball)
 					matches.add(new Match(teams.get(i), teams.get(j), referees.get()));
-
 			}
 		}
 
 	}
 	
 	public LinkedList<Team> semiFinal(LinkedList<Team> sTeams) {
-		
+		for(int i=0; i<4; ++i)
+			for(int j = i+1; j < 4 ;++j)
+			{
+					if(teams.get(i) instanceof )
+			}
 		return null;
 	}
 	

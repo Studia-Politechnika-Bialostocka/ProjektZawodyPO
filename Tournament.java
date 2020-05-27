@@ -22,7 +22,6 @@ public class Tournament {
 		this.teams = teams;
 		referees = refs;
 		aReferees = arefs;
-
 		rand = new Random();
 	}
 
@@ -111,7 +110,7 @@ public class Tournament {
 			aRefChoice = 0;
 		else
 			++aRefChoice;
-		if (refChoice + 1 == Referees.size())
+		if (refChoice + 1 == referees.size())
 			refChoice = 0;
 		else
 			++refChoice;

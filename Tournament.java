@@ -1,6 +1,7 @@
 package def;
 
 import java.util.LinkedList;
+import java.util.Random;
 
 //zobaczmy czy to dziala
 public class Tournament {
@@ -22,12 +23,15 @@ public class Tournament {
 		this.teams = teams;
 		referees = refs;
 		aReferees = arefs;
-		rand = new Random();
+
+
+		Random rand = new Random();
+
 	}
 
 	private boolean sortCondition(Team t1, Team t2) {
 		if (t1.getWins() > t2.getWins()) return true;
-		else if (t1.getWins() > t2getWins()) return false;
+		else if (t1.getWins() < t2.getWins()) return false;
 		else if (t1.getSetsWon() > t2.getSetsWon()) return true;
 		else return false;
 	}
@@ -38,10 +42,10 @@ public class Tournament {
 		Team temp;
 		for (i = 0; i<sortedTeams.size()-1; i++) {
 			for (j=0; j<sortedTeams.size()-1-i; j++) {
-				if (sortCondition(sortedTeams.get(j), sortedTeams.get(j+1)) {
+				if (sortCondition(sortedTeams.get(j), sortedTeams.get(j+1))) {
 					temp = sortedTeams.get(j+1);
-					sortedTeams.get(j+1) = sortedTeams.get(j);
-					sortedTeams.get(j) = temp;
+					sortedTeams.set(j+1, sortedTeams.get(j));
+					sortedTeams.set(j, temp);
 				}
 			}
 		}
@@ -50,17 +54,19 @@ public class Tournament {
 	
 	public LinkedList<Team> roundRobin() {
 		for (int i = 0; i < teams.size(); i++) {
-			for (int j = i+1; j < teams.size; j++) {
+
+			for (int j = i+1; j < teams.size(); j++) {
+
 				int mainRefIdx = refChoice%referees.size();
 				if (teams.get(0) instanceof Volleyball) {
 					int ar1 = aRefChoice % aReferees.size();
 					int ar2 = aRefChoice + 1 % aReferees.size();
-					matches.add(new VolleyballMatch(teams.get(i), teams.get(j), referees.get(mainRefIdx), 0, aReferees.get(ar1), aReferees.get(ar2));
+					matches.add(new VolleyballMatch(teams.get(i), teams.get(j), referees.get(mainRefIdx), 0, aReferees.get(ar1), aReferees.get(ar2)));
 					aRefChoice += 2;
 				} else {
-					int typeOfMatch;
+					int typeOfMatch = 1;
 					if (teams.get(0) instanceof Dodgeball) typeOfMatch = 1;
-					else if (teams.get(0) instanceof Tug_Of_War) typeOfMatch = 2;
+					else if (teams.get(0) instanceof Tug_of_War) typeOfMatch = 2;
 
 					matches.add(new Match(teams.get(i), teams.get(j), referees.get(mainRefIdx), typeOfMatch));
 				}
@@ -68,7 +74,9 @@ public class Tournament {
 			}
 		}
 		LinkedList<Team> sortedTeams = sortTeams();
-		LinkedList<Team> semiTeams = new LinkedList<>();
+
+		LinkedList<Team> semiTeams = new LinkedList<Team>();
+
 		for (int i = 0; i < 4; i++) semiTeams.add(sortedTeams.get(i));
 		return semiTeams;
 	}

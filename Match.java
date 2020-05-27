@@ -1,5 +1,7 @@
 package def;
 
+import java.util.Scanner;
+
 public class Match {
 	protected int typeOfMatch; //v = 0, d = 1, t = 2
 	protected Referee referee;
@@ -38,9 +40,9 @@ public class Match {
 		Scanner in = new Scanner("System.in");
 		int result;
 		do {
-			result=in.nextInt();
-			if(result>=1 && result<=2)
-				check=false;
+			result = in.nextInt();
+			if(result >= 1 && result <= 2)
+				check = false;
 		}while(check);
 		if(result==1)
 			winner = teamOne;
@@ -51,7 +53,7 @@ public class Match {
 		check=true;
 		System.out.println("Ile setow druga druzyna wygrala? Wybierz miedzy wartoscia 0, 1 oraz 2");
 		do {
-			setsOfLoser = in.nextInt;
+			setsOfLoser = in.nextInt();
 			if(setsOfLoser>=0 && setsOfLoser<=2)
 				check=false;
 		}while(check);
@@ -69,7 +71,7 @@ public class Match {
 	}
 	
 	public String toString() {
-		String typeOfMatchInString;
+		String typeOfMatchInString = null;
 		switch (typeOfMatch) {
 			case 0:
 				typeOfMatchInString = "Siatkowka";
@@ -80,16 +82,13 @@ public class Match {
 			case 2:
 				typeOfMatchInString = "Przeciaganie liny";
 				break;
-		}
-		switch (isScoreSet) {
-			case true:
-				return "Konkurencja" + typeOfMatchInString + ". " + teamOne + " i " + teamTwo + ". Zwyciezca:" + winner + ". Wynik: " + finalScore;
-				break;
-			case false:
-				return "Konkurencja" + typeOfMatchInString + ". " + teamOne + " i " + teamTwo + ". Zwyciezca: nieustalony. Wynik: nieustalony";
-				break;
 			default:
-				return "Blad krytyczny";
+				break;
+		}
+		if (isScoreSet) {
+			return "Konkurencja" + typeOfMatchInString + ". " + teamOne + " i " + teamTwo + ". Zwyciezca:" + winner + ". Wynik: " + finalScore;
+		} else {
+			return "Konkurencja" + typeOfMatchInString + ". " + teamOne + " i " + teamTwo + ". Zwyciezca: nieustalony. Wynik: nieustalony";
 		}
 	}
 }

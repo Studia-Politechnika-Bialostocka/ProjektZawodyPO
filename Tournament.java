@@ -22,7 +22,6 @@ public class Tournament {
 		this.teams = teams;
 		referees = refs;
 		aReferees = arefs;
-
 		rand = new Random();
 	}
 
@@ -75,32 +74,35 @@ public class Tournament {
 	}
 	
 	public LinkedList<Team> semiFinal(LinkedList<Team> sTeams) {
-		LinkedList<Team> teamOfSemi = new LinkedList<>();
+
+	}
+	public LinkedList<Match> matchesOfSemiFinals(LinkedList<Team> teamsWinnersFromRoundRobin) {
+		matchesOfSemi = new LinkedList<>();
 		for (int i = 0; i < 4; ++i)
 			for (int j = i + 1; j < 4; ++j) {
-				if (sTeams.get(i) instanceof Volleyball) {
-					matchesOfSemi.add(new VolleyballMatch(sTeams.get(i), sTeams.get(j), referees.get(refChoice), 0, aReferees.get(aRefChoice), aReferees.get(aRefChoice + 1)));
+				if (teamsWinnersFromRoundRobin.get(i) instanceof Volleyball)
+					matchesOfSemi.add(new VolleyballMatch(teamsWinnersFromRoundRobin.get(i), teamsWinnersFromRoundRobin.get(j), referees.get(refChoice), 0, aReferees.get(aRefChoice), aReferees.get(aRefChoice + 1)));
 				else{
-						int typeOfMatch;
-						if (sTeams.get(i) instanceof Dodgeball)
-							typeOfMatch = 1;
-						else
-							typeOfMatch = 2;
-						matchesOfSemi.add(new Match(sTeams.get(i), sTeams.get(j), referees.get(refChoice),typeOfMatch));
-					}
-					if (aRefChoice + 1 == aReferees.size())
-						aRefChoice = 0;
+					int typeOfMatch;
+					if (teamsWinnersFromRoundRobin.get(i) instanceof Dodgeball)
+						typeOfMatch = 1;
 					else
-						++aRefChoice;
-					if (refChoice + 1 == Referees.size())
-						refChoice = 0;
-					else
-						++refChoice;
+						typeOfMatch = 2;
+					matchesOfSemi.add(new Match(teamsWinnersFromRoundRobin.get(i), teamsWinnersFromRoundRobin.get(j), referees.get(refChoice),typeOfMatch));
 				}
+				if (aRefChoice + 1 == aReferees.size())
+					aRefChoice = 0;
+				else
+					++aRefChoice;
+				if (refChoice + 1 == Referees.size())
+					refChoice = 0;
+				else
+					++refChoice;
 			}
+	}
 		return matchOfSemi;
 	}
-	
+
 	public Team finalGame(LinkedList<Team> fTeams) {
 		Team winner;
 		winner;
@@ -108,7 +110,7 @@ public class Tournament {
 			aRefChoice = 0;
 		else
 			++aRefChoice;
-		if (refChoice + 1 == Referees.size())
+		if (refChoice + 1 == referees.size())
 			refChoice = 0;
 		else
 			++refChoice;

@@ -53,12 +53,13 @@ public class Tournament {
 		return sortedTeams;
 	}
 	
-	public LinkedList<Team> roundRobin() {
+	public LinkedList<Match> matchesOfRoundRobin(LinkedList<Team> listOfTeamsInRoundRobin ) {
+		teams=listOfTeamsInRoundRobin;
 		for (int i = 0; i < teams.size(); i++) {
 
-			for (int j = i+1; j < teams.size(); j++) {
+			for (int j = i + 1; j < teams.size(); j++) {
 
-				int mainRefIdx = refChoice%referees.size();
+				int mainRefIdx = refChoice % referees.size();
 				if (teams.get(0) instanceof Volleyball) {
 					int ar1 = aRefChoice % aReferees.size();
 					int ar2 = aRefChoice + 1 % aReferees.size();
@@ -74,6 +75,9 @@ public class Tournament {
 				refChoice++;
 			}
 		}
+		return matches;
+	}
+	public LinkedList<Team> roundRobin(){
 		LinkedList<Team> sortedTeams = sortTeams();
 
 		LinkedList<Team> semiTeams = new LinkedList<Team>();

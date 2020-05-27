@@ -88,6 +88,8 @@ public class Match {
 			case false:
 				return "Konkurencja" + typeOfMatchInString + ". " + teamOne + " i " + teamTwo + ". Zwyciezca: nieustalony. Wynik: nieustalony";
 				break;
+			default:
+				return "Blad krytyczny";
 		}
 	}
 }

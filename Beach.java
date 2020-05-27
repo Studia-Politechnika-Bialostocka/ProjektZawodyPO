@@ -8,7 +8,7 @@ public class Beach {
 	private LinkedList<Tug_of_War> tTeams = new LinkedList<>();
 	private LinkedList<Referee> listOfReferee = new LinkedList<>();
 	private LinkedList<AssistantReferee> listOfAssistantReferee = new LinkedList<>();
-	private LinkedList<Tournament> listOfTournaments = new listOfTournaments<>();
+	private LinkedList<Tournament> listOfTournaments = new LinkedList<>();
 	
 	public void addTournament(Tournament t) {
 		listOfTournaments.add(t);

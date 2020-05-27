@@ -1,5 +1,9 @@
 package def;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.Random;
 
@@ -184,6 +188,15 @@ public class Tournament {
 
 	public void importFromFile() {
 
+	}
+
+	private int linesInFile() throws IOException {
+		BufferedReader reader = new BufferedReader(new FileReader(name + ".txt"));
+		int lines = 0;
+		while (reader.readLine() != null)
+			lines++;
+		reader.close();
+		return lines;
 	}
 
 }

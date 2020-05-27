@@ -38,20 +38,19 @@ public class Tournament {
 	}
 	
 	public LinkedList<Team> semiFinal(LinkedList<Team> sTeams) {
-		Linked List matches
+		LinkedList<Team> matchOfSemi = new LinkedList;
 		for (int i = 0; i < 4; ++i)
 			for (int j = i + 1; j < 4; ++j) {
-				if (teams.get(i) instanceof Volleyball) {
-					matches.add(new VolleyballMatch(teams.get(i), teams.get(j), referees.get(refChoice), 0, aReferees.get(aRefChoice), aReferees.get(aRefChoice + 1)));
+				if (sTeams.get(i) instanceof Volleyball) {
+					matchOfSemi.add(new VolleyballMatch(sTeams.get(i), sTeams.get(j), referees.get(refChoice), 0, aReferees.get(aRefChoice), aReferees.get(aRefChoice + 1)));
 				else{
 						int typeOfMatch;
-						if (teams.get(i) instanceof Dodgeball)
+						if (sTeams.get(i) instanceof Dodgeball)
 							typeOfMatch = 1;
 						else
 							typeOfMatch = 2;
-						matches.add(new Match(teams.get(i), teams.get(j), referees.get(refChoice),typeOfMatch));
+						matcheOfSemi.add(new Match(sTeams.get(i), sTeams.get(j), referees.get(refChoice),typeOfMatch));
 					}
-
 					if (aRefChoice + 1 == aReferees.size())
 						aRefChoice = 0;
 					else

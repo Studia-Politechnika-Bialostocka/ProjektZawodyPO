@@ -58,6 +58,7 @@ public class Match {
 		isScoreSet=true;
 		setFinalScoreString(setsOfLoser);
 	}
+
 	public void assignPointsAndSets()
 	{
 		//wygrany dostaje punkty, wygrana do statystyk oraz wygrane sety

@@ -87,6 +87,10 @@ public class Tournament {
 	}
 	//mecze polfinalowe oraz wylonienie finalistow
 	public LinkedList<Team> semiFinal(LinkedList<Match> matchesWithScoreUsedInMethod) {
+		for(Match exampleMatch:matchesWithScoreUsedInMethod)
+		{
+			exampleMatch.assignPointsAndSets();
+		}
 		LinkedList<Team> finalTeams = new LinkedList<>();
 		finalTeams.add(matchesWithScoreUsedInMethod.get(0).winner);
 		finalTeams.add(matchesWithScoreUsedInMethod.get(1).winner);

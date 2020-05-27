@@ -51,9 +51,7 @@ public class Tournament {
 			}
 		}
 		return sortedTeams;
-	}
-
-	public LinkedList<Match> matchesOfRoundRobin(LinkedList<Team> listOfTeamsInRoundRobin ) {
+	}public LinkedList<Match> matchesOfRoundRobin(LinkedList<Team> listOfTeamsInRoundRobin ) {
 		teams=listOfTeamsInRoundRobin;
 		for (int i = 0; i < teams.size(); i++) {
 

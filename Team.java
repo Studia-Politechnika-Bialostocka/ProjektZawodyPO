@@ -47,4 +47,8 @@ public abstract class Team {
 	}
 
 	public int getSetsWon() {return setsWon;}
+
+	public String toString() {
+		return "Name: " + teamName + "\nWins: " + wins + "\nLosses: " + losses + "\nSets Won: " + setsWon;
+	}
 }

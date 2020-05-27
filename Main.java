@@ -1,6 +1,5 @@
 package def;
 
-
 import java.util.Scanner;
 
 public class Main {
@@ -23,7 +22,7 @@ public class Main {
 			switch (wybór){
 				case 1:{
 					System.out.println("Napisz nazwę turnieju, którego chcesz dodać: ");
-					String nazwa = klawiatura.nextLine();
+					String nazwa = klawiatura.next();
 				}break;
 				case 2:{
 					//wyświetla listę turniejów
@@ -41,6 +40,7 @@ public class Main {
 	}
 
 	private static void menu2(){
+		System.out.println("---------------MENU2---------------");
 		Scanner klawiatura = new Scanner(System.in);
 		int cofnijSię = 0;
 		int wybór2 = 0;
@@ -83,6 +83,8 @@ public class Main {
 		wybór = klawiatura.nextInt();
 		switch (wybór){
 			case 1:{
+				System.out.println("Wpisz nazwę drużyny: ");
+				String nazwaDrużyny = klawiatura.next();
 				//dodaj drużynę
 			}break;
 			case 2:{
@@ -108,6 +110,8 @@ public class Main {
 		wybór = klawiatura.nextInt();
 		switch (wybór){
 			case 1:{
+				System.out.println("Wpisz nazwę sędziego: ");
+				String nazwaSędziego = klawiatura.next();
 				//dodaj sędziego
 			}break;
 			case 2:{
@@ -133,6 +137,8 @@ public class Main {
 		wybór = klawiatura.nextInt();
 		switch (wybór){
 			case 1:{
+				System.out.println("Wpisz nazwę sponsora: ");
+				String nazwaSponsora = klawiatura.next();
 				//dodaj sponsora
 			}break;
 			case 2:{
@@ -153,11 +159,12 @@ public class Main {
 		int menu = 0;
 		int wybór = 0;
 		while(menu == 0){
+			System.out.println("---------------MENU3---------------");
 			System.out.println("1. Stwórz mecz");
 			System.out.println("2. Pokaż wyniki meczów");
 			System.out.println("3. Wyświetlanie wszysktich meczy");
 			System.out.println("4. Ustaw wynik meczu");
-			System.out.println("5. Cofnij się wynik meczu");
+			System.out.println("5. Cofnij się");
 			wybór = klawiatura.nextInt();
 			switch (wybór){
 				case 1:{

@@ -6,6 +6,7 @@ import java.util.LinkedList;
 public class Tournament {
 	private String name;
 	private double prizePool;
+
 	private LinkedList<Donator> donators;
 	private LinkedList<Match> matches;
 	private LinkedList<Team> teams;

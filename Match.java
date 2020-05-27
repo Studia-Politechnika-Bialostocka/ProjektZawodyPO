@@ -72,8 +72,11 @@ public class Match {
 	public String getFinalScore() {
 		return finalScore;
 	}
-	public Team getWinner()
+
+	public Team getWinner() {
 		return winner;
+	}
+
 	public String toString() {
 		String typeOfMatchInString = null;
 		switch (typeOfMatch) {

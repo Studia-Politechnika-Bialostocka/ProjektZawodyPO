@@ -20,6 +20,7 @@ public class Match {
 		this.teamTwo = teamTwo;
 		referee = ref;
 		this.typeOfMatch = typeOfMatch;
+		referee.documentMatch();
 	}
 
 	protected void setFinalScoreString(int setsOfLoserUsedInMethod) {
@@ -57,6 +58,7 @@ public class Match {
 		}while(check);
 		isScoreSet=true;
 		setFinalScoreString(setsOfLoser);
+
 	}
 	//przypisywanie wyniku, setow, wygranych/przegranych dla danej druzyny
 	public void assignPointsAndSets()

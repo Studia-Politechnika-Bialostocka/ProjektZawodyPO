@@ -79,11 +79,11 @@ public class Beach {
 	}
 	
 	public void showAllReferee() {
-		
+		for (Referee ref : listOfReferee) System.out.println(ref);
 	}
 	
 	public void showAllAssistantReferee() {
-		
+		for (AssistantReferee aref : listOfAssistantReferee) System.out.println(aref);
 	}
 	
 	public void saveToFile() {

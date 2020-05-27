@@ -82,11 +82,11 @@ public class Tournament {
 	}
 	
 	public LinkedList<Team> semiFinal(LinkedList<Team> sTeams) {
-
+		return null;
 	}
 	public LinkedList<Match> matchesOfSemiFinals(LinkedList<Team> teamsWinnersFromRoundRobin) {
 		matchesOfSemi = new LinkedList<>();
-		for (int i = 0; i < 4; ++i)
+		for (int i = 0; i < 4; ++i) {
 			for (int j = i + 1; j < 4; ++j) {
 				if (teamsWinnersFromRoundRobin.get(i) instanceof Volleyball)
 					matchesOfSemi.add(new VolleyballMatch(teamsWinnersFromRoundRobin.get(i), teamsWinnersFromRoundRobin.get(j), referees.get(refChoice), 0, aReferees.get(aRefChoice), aReferees.get(aRefChoice + 1)));
@@ -102,13 +102,13 @@ public class Tournament {
 					aRefChoice = 0;
 				else
 					++aRefChoice;
-				if (refChoice + 1 == Referees.size())
+				if (refChoice + 1 == referees.size())
 					refChoice = 0;
 				else
 					++refChoice;
 			}
 	}
-		return matchOfSemi;
+		return matchesOfSemi;
 	}
 
 	public Team finalGame(LinkedList<Team> fTeams) {

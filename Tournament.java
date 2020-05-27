@@ -49,7 +49,7 @@ public class Tournament {
 							typeOfMatch = 1;
 						else
 							typeOfMatch = 2;
-						matcheOfSemi.add(new Match(sTeams.get(i), sTeams.get(j), referees.get(refChoice),typeOfMatch));
+						matchOfSemi.add(new Match(sTeams.get(i), sTeams.get(j), referees.get(refChoice),typeOfMatch));
 					}
 					if (aRefChoice + 1 == aReferees.size())
 						aRefChoice = 0;
@@ -61,7 +61,7 @@ public class Tournament {
 						++refChoice;
 				}
 			}
-		return ;
+		return matchOfSemi;
 	}
 	
 	public Team finalGame(LinkedList<Team> fTeams) {

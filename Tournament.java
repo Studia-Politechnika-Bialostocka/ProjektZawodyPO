@@ -181,7 +181,8 @@ public class Tournament  {
 	}
 
 	public void showDonators() {
-
+		for(Donator exampleDonators: donators)
+			System.out.println(exampleDonators);
 	}
 
 	public void deleteDonator(Donator d) {
@@ -189,6 +190,7 @@ public class Tournament  {
 	}
 
 	public void showFinalScores() {
+
 	}
 
 	public void addMatch(Match m) {

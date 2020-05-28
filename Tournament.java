@@ -4,7 +4,6 @@ import java.io.*;
 import java.util.LinkedList;
 import java.util.Random;
 
-//zobaczmy czy to dziala
 public class Tournament  {
 	private String name;
 	private double prizePool;
@@ -123,10 +122,11 @@ public class Tournament  {
 		}
 		return matchesOfSemi;
 	}
-	//mecz finalowy oraz wylonienie zwyciezcy
+	//mecz finalowy, wylonienie zwyciezcy oraz przydzielenie nagrod 4 pierwszym miejscom
 	public Team finalGame(Match finalMatch) {
 		finalMatch.assignPointsAndSets();
 		winner=finalMatch.getWinner();
+		assignPrizes();
 		return winner;
 	}
 
@@ -153,7 +153,7 @@ public class Tournament  {
 	}
 
     // do ustalania przydzielanych nagrod
-    public void assignPrizes()
+    private void assignPrizes()
     {
         Team loserOfFirstSemiFinals = matchesOfSemi.get(0).getLoser();
         Team loserOfSecondSemiFinals = matchesOfSemi.get(1).getLoser();

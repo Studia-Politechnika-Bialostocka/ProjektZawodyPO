@@ -18,9 +18,9 @@ public class Tournament  {
 	private int refChoice = 0;
 	private int aRefChoice = 0;
 
-	public Tournament(String name, double prize, LinkedList<Team> teams, LinkedList<Referee> refs, LinkedList<AssistantReferee> arefs) {
+	public Tournament(String name, double Initialprize, LinkedList<Team> teams, LinkedList<Referee> refs, LinkedList<AssistantReferee> arefs) {
 		this.name = name;
-		prizePool = prize;
+		prizePool = Initialprize;
 		this.teams = teams;
 		referees = refs;
 		aReferees = arefs;
@@ -73,6 +73,7 @@ public class Tournament  {
 		}
 		return matches;
 	}
+
 	public LinkedList<Team> roundRobin(){
 		for(Match exampleMatch:matches)
 		{
@@ -85,6 +86,7 @@ public class Tournament  {
 		for (int i = 0; i < 4; i++) semiTeams.add(sortedTeams.get(i));
 		return semiTeams;
 	}
+
 	//mecze polfinalowe oraz wylonienie finalistow
 	public LinkedList<Team> semiFinal(LinkedList<Match> matchesWithScoreUsedInMethod) {
 		for(Match exampleMatch:matchesWithScoreUsedInMethod)

@@ -131,6 +131,7 @@ public class Tournament {
 		winner=finalMatch.getWinner();
 		return winner;
 	}
+
 	public Match matchOfFinal(LinkedList<Team> finalTeams)
 	{
 		if (finalTeams.get(0) instanceof Volleyball) {
@@ -168,7 +169,6 @@ public class Tournament {
 	}
 
 	public void showFinalScores() {
-
 	}
 
 	public void addMatch(Match m) {

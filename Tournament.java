@@ -18,9 +18,9 @@ public class Tournament  {
 	private int refChoice = 0;
 	private int aRefChoice = 0;
 
-	public Tournament(String name, double prize, LinkedList<Team> teams, LinkedList<Referee> refs, LinkedList<AssistantReferee> arefs) {
+	public Tournament(String name, double Initialprize, LinkedList<Team> teams, LinkedList<Referee> refs, LinkedList<AssistantReferee> arefs) {
 		this.name = name;
-		prizePool = prize;
+		prizePool = Initialprize;
 		this.teams = teams;
 		referees = refs;
 		aReferees = arefs;
@@ -73,6 +73,7 @@ public class Tournament  {
 		}
 		return matches;
 	}
+
 	public LinkedList<Team> roundRobin(){
 		for(Match exampleMatch:matches)
 		{
@@ -85,6 +86,7 @@ public class Tournament  {
 		for (int i = 0; i < 4; i++) semiTeams.add(sortedTeams.get(i));
 		return semiTeams;
 	}
+
 	//mecze polfinalowe oraz wylonienie finalistow
 	public LinkedList<Team> semiFinal(LinkedList<Match> matchesWithScoreUsedInMethod) {
 		for(Match exampleMatch:matchesWithScoreUsedInMethod)
@@ -104,9 +106,8 @@ public class Tournament  {
 			if (teamsWinnersFromRoundRobin.get(i) instanceof Volleyball) {
 				int numberOfFirstReferee = aRefChoice%aReferees.size();
 				int numberOfSecondReferee = (aRefChoice+1) % aReferees.size();
-				matchesOfSemi.add(new VolleyballMatch(teamsWinnersFromRoundRobin.get(i),
-						teamsWinnersFromRoundRobin.get(i + 2), referees.get(numberOfMainReferee),
-						0, aReferees.get(numberOfFirstReferee), aReferees.get(numberOfSecondReferee)));
+				matchesOfSemi.add(new VolleyballMatch(teamsWinnersFromRoundRobin.get(i), teamsWinnersFromRoundRobin.get(i + 2),
+						referees.get(numberOfMainReferee),0, aReferees.get(numberOfFirstReferee), aReferees.get(numberOfSecondReferee)));
 					aRefChoice+=2;
 			}
 			else {
@@ -138,7 +139,7 @@ public class Tournament  {
 			int numberOfSecondReferee = (aRefChoice+1) % aReferees.size();
 			matchOfFinal=(new VolleyballMatch(finalTeams.get(0), finalTeams.get(1), referees.get(numberOfMainReferee),
 					0, aReferees.get(numberOfFirstReferee), aReferees.get(numberOfSecondReferee)));
-			++aRefChoice;
+			aRefChoice+=2;
 		}
 		else {
 			int typeOfMatch;
@@ -181,7 +182,8 @@ public class Tournament  {
 	}
 
 	public void showDonators() {
-
+		for(Donator exampleDonators: donators)
+			System.out.println(exampleDonators);
 	}
 
 	public void deleteDonator(Donator d) {
@@ -189,6 +191,7 @@ public class Tournament  {
 	}
 
 	public void showFinalScores() {
+
 	}
 
 	public void addMatch(Match m) {

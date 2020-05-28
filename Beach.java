@@ -1,8 +1,11 @@
 package def;
 
+import java.io.*;
 import java.util.LinkedList;
+import java.io.Reader;
 
-public class Beach {
+
+public class Beach{
 	private LinkedList<Volleyball> vTeams=new LinkedList<>();
 	private LinkedList<Dodgeball> dTeams = new LinkedList<>();
 	private LinkedList<Tug_of_War> tTeams = new LinkedList<>();
@@ -13,17 +16,19 @@ public class Beach {
 	public void addTournament(Tournament t) {
 		listOfTournaments.add(t);
 	}
-	
-	public Volleyball getVTeam(int index) {
-		return vTeams.get(index);
+
+	public void newvTeamList(LinkedList<Volleyball> s){
+		vTeams= s;
 	}
 	
-	public Dodgeball getDTeam(int index) {
-		return dTeams.get(index);
+	public LinkedList<Volleyball> getVTeam() { return vTeams; }
+	
+	public LinkedList<Dodgeball> getDTeam() {
+		return dTeams;
 	}
 	
-	public Tug_of_War getTTeam(int index) {
-		return tTeams.get(index);
+	public LinkedList<Tug_of_War> getTTeam() {
+		return tTeams;
 	}
 	
 	public void addVTeam(Volleyball v) {
@@ -85,14 +90,46 @@ public class Beach {
 	public void showAllAssistantReferee() {
 		for (AssistantReferee aref : listOfAssistantReferee) System.out.println(aref);
 	}
-	
-	public void saveToFile() {
-		
+
+	public void saveToFileVolleyball(LinkedList<Volleyball> v) {
+		try {
+			FileWriter fileWriter = new FileWriter("VolleyballFile.txt");
+			PrintWriter printWriter = new PrintWriter(fileWriter);
+for(Volleyball volleyball : v) {
+	printWriter.print(volleyball.toString());
+	printWriter.print("\n");
+}
+			printWriter.close();
+		} catch (Exception e) {
+			System.out.println(e+"wwwww");
+		}
 	}
-	
-	public void importFromFile() {
-		
+
+	public LinkedList<Volleyball> importFromFileVolleyball() {
+		LinkedList<Volleyball> v = new LinkedList<Volleyball>();
+		BufferedReader in = null;
+		try {
+			in = new BufferedReader(new FileReader("VolleyballFile.txt"));
+			String buf;
+			int index=0;
+			while ((buf = in.readLine()) != null)
+			{
+				String[] s = buf.split(" ");
+				Volleyball v1 = new Volleyball(s[0]);
+				v1.setWins(Integer.parseInt(s[1]));
+				v1.setLosses(Integer.parseInt(s[2]));
+				v1.setSetsWon(Integer.parseInt(s[3]));
+				v.add(v1);
+			}
+			} catch (FileNotFoundException fileNotFoundException) {
+			fileNotFoundException.printStackTrace();
+		} catch (IOException ioException) {
+			ioException.printStackTrace();
+		}
+
+		return v;
 	}
-	
-	
+
+
+
 }

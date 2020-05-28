@@ -101,12 +101,13 @@ public class Tournament  {
 	public LinkedList<Match> matchesOfSemiFinals(LinkedList<Team> teamsWinnersFromRoundRobin) {
 		matchesOfSemi = new LinkedList<>();
 		for (int i = 0; i < 2; ++i) {
-			int ar1 = aRefChoice%aReferees.size();
-			int ar2 = (aRefChoice+1) % aReferees.size();
+			int numberOfMainReferee = refChoice % referees.size();
 			if (teamsWinnersFromRoundRobin.get(i) instanceof Volleyball) {
+				int numberOfFirstReferee = aRefChoice%aReferees.size();
+				int numberOfSecondReferee = (aRefChoice+1) % aReferees.size();
 				matchesOfSemi.add(new VolleyballMatch(teamsWinnersFromRoundRobin.get(i),
-						teamsWinnersFromRoundRobin.get(i + 2), referees.get(refChoice),
-						0, aReferees.get(ar1), aReferees.get(ar2));
+						teamsWinnersFromRoundRobin.get(i + 2), referees.get(numberOfMainReferee),
+						0, aReferees.get(numberOfFirstReferee), aReferees.get(numberOfSecondReferee)));
 					aRefChoice+=2;
 			}
 			else {
@@ -115,11 +116,9 @@ public class Tournament  {
 					typeOfMatch = 1;
 				else
 					typeOfMatch = 2;
-				matchesOfSemi.add(new Match(teamsWinnersFromRoundRobin.get(i), teamsWinnersFromRoundRobin.get(i + 2), referees.get(refChoice), typeOfMatch));
+				matchesOfSemi.add(new Match(teamsWinnersFromRoundRobin.get(i), teamsWinnersFromRoundRobin.get(i + 2),
+						referees.get(numberOfMainReferee), typeOfMatch));
 			}
-			if (refChoice + 1 == referees.size())
-				refChoice = 0;
-			else
 				++refChoice;
 		}
 		return matchesOfSemi;
@@ -133,12 +132,13 @@ public class Tournament  {
 
 	public Match matchOfFinal(LinkedList<Team> finalTeams)
 	{
+		int numberOfMainReferee = refChoice%referees.size();
 		if (finalTeams.get(0) instanceof Volleyball) {
-			matchOfFinal=(new VolleyballMatch(finalTeams.get(0), finalTeams.get(1), referees.get(refChoice), 0, aReferees.get(aRefChoice), aReferees.get(aRefChoice + 1)));
-			if (aRefChoice + 1 == aReferees.size())
-				aRefChoice = 0;
-			else
-				++aRefChoice;
+			int numberOfFirstReferee = aRefChoice%aReferees.size();
+			int numberOfSecondReferee = (aRefChoice+1) % aReferees.size();
+			matchOfFinal=(new VolleyballMatch(finalTeams.get(0), finalTeams.get(1), referees.get(numberOfMainReferee),
+					0, aReferees.get(numberOfFirstReferee), aReferees.get(numberOfSecondReferee)));
+			++aRefChoice;
 		}
 		else {
 			int typeOfMatch;
@@ -146,14 +146,12 @@ public class Tournament  {
 				typeOfMatch = 1;
 			else
 				typeOfMatch = 2;
-			matchOfFinal=(new Match(finalTeams.get(0), finalTeams.get(1), referees.get(refChoice), typeOfMatch));
+			matchOfFinal=(new Match(finalTeams.get(0), finalTeams.get(1), referees.get(numberOfMainReferee), typeOfMatch));
 		}
-		if (refChoice + 1 == referees.size())
-			refChoice = 0;
-		else
 			++refChoice;
 		return matchOfFinal;
 	}
+
     // do ustalania przydzielanych nagrod
     public void assignPrizes()
     {

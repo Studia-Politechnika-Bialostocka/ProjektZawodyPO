@@ -156,6 +156,29 @@ public class Tournament {
 		return matchOfFinal;
 	}
 
+    public void assignPrizes()
+    {
+        winner.addPrizesWon(0.5*prizePool);
+        matchOfFinal.getLoser().addPrizesWon(0.25*prizePool);
+        Team loserOfFirstSemiFinals = matchesOfSemi.get(0).getLoser();
+        Team loserOfSecondSemiFinals = matchesOfSemi.get(1).getLoser();
+        if(loserOfFirstSemiFinals.getSetsWon() > loserOfSecondSemiFinals)
+        {
+            loserOfFirstSemiFinals.addPrizesWon(0.15*prizePool);
+            loserOfSecondSemiFinals.addPrizesWon(0.1*prizePool);
+        }
+        else if(loserOfFirstSemiFinals.getSetsWon() < loserOfSecondSemiFinals)
+        {
+            loserOfFirstSemiFinals.addPrizesWon(0.1*prizePool);
+            loserOfSecondSemiFinals.addPrizesWon(0.15*prizePool);
+        }
+        else
+        {
+            loserOfFirstSemiFinals.addPrizesWon(0.125*prizePool);
+            loserOfSecondSemiFinals.addPrizesWon(0.125*prizePool);
+        }
+    }
+
 	public void addDonator(Donator d) {
 		donators.add(d);
 	}

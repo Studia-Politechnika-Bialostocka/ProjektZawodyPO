@@ -49,6 +49,7 @@ public class Match {
 			winner = teamOne;
 		else
 			winner = teamTwo;
+
 		check=true;
 		System.out.println("\nIle setow druga druzyna wygrala? Wybierz miedzy wartoscia 0, 1 oraz 2\nTwoj wybor:");
 		do {
@@ -82,6 +83,14 @@ public class Match {
 
 	public Team getWinner() {
 		return winner;
+	}
+
+	public Team getLoser()
+	{
+		if (winner.equals(teamOne))
+			return teamTwo;
+		else
+			return teamOne;
 	}
 
 

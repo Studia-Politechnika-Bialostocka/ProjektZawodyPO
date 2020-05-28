@@ -46,6 +46,8 @@ public abstract class Team {
 		return prizesWon;
 	}
 
+	public void addPrizesWon(double moneyWon){prizesWon+=moneyWon;}
+
 	public int getSetsWon() {return setsWon;}
 
 	public String toString() {

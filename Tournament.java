@@ -152,15 +152,13 @@ public class Tournament  {
 			++refChoice;
 		return matchOfFinal;
 	}
-
+    // do ustalania przydzielanych nagrod
     public void assignPrizes()
     {
-        Team loserOfFirstSemiFinals;
-        Team loserOfSecondSemiFinals;
+        Team loserOfFirstSemiFinals = matchesOfSemi.get(0).getLoser();
+        Team loserOfSecondSemiFinals = matchesOfSemi.get(1).getLoser();
         winner.addPrizesWon(0.5*prizePool);
         matchOfFinal.getLoser().addPrizesWon(0.25*prizePool);
-        loserOfFirstSemiFinals = matchesOfSemi.get(0).getLoser();
-        loserOfSecondSemiFinals = matchesOfSemi.get(1).getLoser();
         if(loserOfFirstSemiFinals.getSetsWon() > loserOfSecondSemiFinals.getSetsWon())
         {
             loserOfFirstSemiFinals.addPrizesWon(0.15*prizePool);
@@ -217,5 +215,4 @@ public class Tournament  {
 		reader.close();
 		return lines;
 	}
-
 }

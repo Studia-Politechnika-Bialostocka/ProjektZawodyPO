@@ -1,6 +1,8 @@
 package def;
 
-public class Referee {
+
+
+public class Referee{
 	protected String name;
 	protected String lastName;
 	protected int numOfMatches = 0;

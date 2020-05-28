@@ -1,13 +1,12 @@
 package def;
 
+import java.util.LinkedList;
 import java.util.Scanner;
-
+import java.io.*;
 public class Main {
-
 
 	public static void main(String[] args) {
 		Scanner klawiatura = new Scanner(System.in);
-
 		int menu = 0;
 		int menu2 = 0;
 		int wybór = 0;

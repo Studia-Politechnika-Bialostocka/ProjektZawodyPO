@@ -1,6 +1,6 @@
 package def;
 
-public abstract class Team {
+public abstract class Team{
 	protected int playerAmount;
 	protected String teamName;
 	protected int points=0;
@@ -50,7 +50,19 @@ public abstract class Team {
 
 	public int getSetsWon() {return setsWon;}
 
-	public String toString() {
-		return "Name: " + teamName + "\nWins: " + wins + "\nLosses: " + losses + "\nSets Won: " + setsWon;
+	public void setWins(int i)
+	{
+		this.wins=i;
 	}
+	public void setLosses(int i)
+	{
+		this.losses=i;
+	}
+	public void setSetsWon(int i)
+	{
+		this.setsWon=i;
+	}
+
+	public String toString() {
+		return  teamName + " " + wins + " " + losses + " "+setsWon; }
 }

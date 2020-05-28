@@ -54,14 +54,13 @@ public class Tournament  {
 	public LinkedList<Match> matchesOfRoundRobin(LinkedList<Team> listOfTeamsInRoundRobin ) {
 		teams=listOfTeamsInRoundRobin;
 		for (int i = 0; i < teams.size(); i++) {
-
 			for (int j = i + 1; j < teams.size(); j++) {
-
 				int mainRefIdx = refChoice % referees.size();
 				if (teams.get(0) instanceof Volleyball) {
 					int ar1 = aRefChoice % aReferees.size();
-					int ar2 = aRefChoice + 1 % aReferees.size();
-					matches.add(new VolleyballMatch(teams.get(i), teams.get(j), referees.get(mainRefIdx), 0, aReferees.get(ar1), aReferees.get(ar2)));
+					int ar2 = (aRefChoice + 1) % aReferees.size();
+					matches.add(new VolleyballMatch(teams.get(i), teams.get(j), referees.get(mainRefIdx),
+							0, aReferees.get(ar1), aReferees.get(ar2)));
 					aRefChoice += 2;
 				} else {
 					int typeOfMatch = 1;
@@ -102,12 +101,13 @@ public class Tournament  {
 	public LinkedList<Match> matchesOfSemiFinals(LinkedList<Team> teamsWinnersFromRoundRobin) {
 		matchesOfSemi = new LinkedList<>();
 		for (int i = 0; i < 2; ++i) {
+			int ar1 = aRefChoice%aReferees.size();
+			int ar2 = (aRefChoice+1) % aReferees.size();
 			if (teamsWinnersFromRoundRobin.get(i) instanceof Volleyball) {
-				matchesOfSemi.add(new VolleyballMatch(teamsWinnersFromRoundRobin.get(i), teamsWinnersFromRoundRobin.get(i + 2), referees.get(refChoice), 0, aReferees.get(aRefChoice), aReferees.get(aRefChoice + 1)));
-				if (aRefChoice + 1 == aReferees.size())
-					aRefChoice = 0;
-				else
-					++aRefChoice;
+				matchesOfSemi.add(new VolleyballMatch(teamsWinnersFromRoundRobin.get(i),
+						teamsWinnersFromRoundRobin.get(i + 2), referees.get(refChoice),
+						0, aReferees.get(ar1), aReferees.get(ar2));
+					aRefChoice+=2;
 			}
 			else {
 				int typeOfMatch;
@@ -124,7 +124,7 @@ public class Tournament  {
 		}
 		return matchesOfSemi;
 	}
-	//mecz final oraz wylonienie zwyciezcy
+	//mecz finalowy oraz wylonienie zwyciezcy
 	public Team finalGame(Match finalMatch) {
 		finalMatch.assignPointsAndSets();
 		winner=finalMatch.getWinner();

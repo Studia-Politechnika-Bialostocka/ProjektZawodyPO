@@ -1,14 +1,11 @@
 package def;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.LinkedList;
 import java.util.Random;
 
 //zobaczmy czy to dziala
-public class Tournament {
+public class Tournament  {
 	private String name;
 	private double prizePool;
 	private LinkedList<Donator> donators;

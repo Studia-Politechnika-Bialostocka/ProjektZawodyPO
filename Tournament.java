@@ -21,17 +21,14 @@ public class Tournament {
 	private Team winner;
 	private int refChoice = 0;
 	private int aRefChoice = 0;
-	//lol
+
 	public Tournament(String name, double prize, LinkedList<Team> teams, LinkedList<Referee> refs, LinkedList<AssistantReferee> arefs) {
 		this.name = name;
 		prizePool = prize;
 		this.teams = teams;
 		referees = refs;
 		aReferees = arefs;
-
-
 		Random rand = new Random();
-
 	}
 
 	private boolean sortCondition(Team t1, Team t2) {

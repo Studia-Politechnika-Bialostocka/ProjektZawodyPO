@@ -18,17 +18,14 @@ public class Tournament  {
 	private Team winner;
 	private int refChoice = 0;
 	private int aRefChoice = 0;
-	//lol
+
 	public Tournament(String name, double prize, LinkedList<Team> teams, LinkedList<Referee> refs, LinkedList<AssistantReferee> arefs) {
 		this.name = name;
 		prizePool = prize;
 		this.teams = teams;
 		referees = refs;
 		aReferees = arefs;
-
-
 		Random rand = new Random();
-
 	}
 
 	private boolean sortCondition(Team t1, Team t2) {
@@ -131,6 +128,7 @@ public class Tournament  {
 		winner=finalMatch.getWinner();
 		return winner;
 	}
+
 	public Match matchOfFinal(LinkedList<Team> finalTeams)
 	{
 		if (finalTeams.get(0) instanceof Volleyball) {
@@ -154,6 +152,29 @@ public class Tournament  {
 			++refChoice;
 		return matchOfFinal;
 	}
+    // do ustalania przydzielanych nagrod
+    public void assignPrizes()
+    {
+        Team loserOfFirstSemiFinals = matchesOfSemi.get(0).getLoser();
+        Team loserOfSecondSemiFinals = matchesOfSemi.get(1).getLoser();
+        winner.addPrizesWon(0.5*prizePool);
+        matchOfFinal.getLoser().addPrizesWon(0.25*prizePool);
+        if(loserOfFirstSemiFinals.getSetsWon() > loserOfSecondSemiFinals.getSetsWon())
+        {
+            loserOfFirstSemiFinals.addPrizesWon(0.15*prizePool);
+            loserOfSecondSemiFinals.addPrizesWon(0.1*prizePool);
+        }
+        else if(loserOfFirstSemiFinals.getSetsWon() < loserOfSecondSemiFinals.getSetsWon())
+        {
+            loserOfFirstSemiFinals.addPrizesWon(0.1*prizePool);
+            loserOfSecondSemiFinals.addPrizesWon(0.15*prizePool);
+        }
+        else
+        {
+            loserOfFirstSemiFinals.addPrizesWon(0.125*prizePool);
+            loserOfSecondSemiFinals.addPrizesWon(0.125*prizePool);
+        }
+    }
 
 	public void addDonator(Donator d) {
 		donators.add(d);
@@ -168,7 +189,6 @@ public class Tournament  {
 	}
 
 	public void showFinalScores() {
-
 	}
 
 	public void addMatch(Match m) {
@@ -195,5 +215,4 @@ public class Tournament  {
 		reader.close();
 		return lines;
 	}
-
 }

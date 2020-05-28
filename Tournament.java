@@ -138,7 +138,7 @@ public class Tournament  {
 			int numberOfSecondReferee = (aRefChoice+1) % aReferees.size();
 			matchOfFinal=(new VolleyballMatch(finalTeams.get(0), finalTeams.get(1), referees.get(numberOfMainReferee),
 					0, aReferees.get(numberOfFirstReferee), aReferees.get(numberOfSecondReferee)));
-			++aRefChoice;
+			aRefChoice+=2;
 		}
 		else {
 			int typeOfMatch;

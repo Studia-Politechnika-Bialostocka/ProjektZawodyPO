@@ -104,9 +104,8 @@ public class Tournament  {
 			if (teamsWinnersFromRoundRobin.get(i) instanceof Volleyball) {
 				int numberOfFirstReferee = aRefChoice%aReferees.size();
 				int numberOfSecondReferee = (aRefChoice+1) % aReferees.size();
-				matchesOfSemi.add(new VolleyballMatch(teamsWinnersFromRoundRobin.get(i),
-						teamsWinnersFromRoundRobin.get(i + 2), referees.get(numberOfMainReferee),
-						0, aReferees.get(numberOfFirstReferee), aReferees.get(numberOfSecondReferee)));
+				matchesOfSemi.add(new VolleyballMatch(teamsWinnersFromRoundRobin.get(i), teamsWinnersFromRoundRobin.get(i + 2),
+						referees.get(numberOfMainReferee),0, aReferees.get(numberOfFirstReferee), aReferees.get(numberOfSecondReferee)));
 					aRefChoice+=2;
 			}
 			else {

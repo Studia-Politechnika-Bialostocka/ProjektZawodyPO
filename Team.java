@@ -28,28 +28,21 @@ public abstract class Team{
 	public String getTeamName() {
 		return teamName;
 	}
-	
 	public int getPoints() {
 		return points;
 	}
-	
 	public int getWins() {
 		return wins;
 	}
-	
 	public int getLosses() {
 		return losses;
 	}
-	
 	public double getPrizesWon()
 	{
 		return prizesWon;
 	}
-
-	public void addPrizesWon(double moneyWon){prizesWon+=moneyWon;}
-
 	public int getSetsWon() {return setsWon;}
-
+	public void addPrizesWon(double moneyWon){prizesWon+=moneyWon;}
 	public void setWins(int i)
 	{
 		this.wins=i;

@@ -174,6 +174,33 @@ public class Tournament  {
         }
     }
 
+    public boolean areAllMatchesPlayedInRoundRobin()
+	{
+		for(Match exampleMatch:matches)
+		{
+			if(exampleMatch.isScoreSet==false)
+				return false;
+		}
+		return true;
+	}
+
+	public boolean areAllMatchesPlayedInSemiFinals()
+	{
+		for(Match exampleMatch:matchesOfSemiFinal)
+		{
+			if(exampleMatch.isScoreSet==false)
+				return false;
+		}
+		return true;
+	}
+
+	public boolean areAllMatchesPlayedInFinals()
+	{
+		if(matchOfFinal.isScoreSet==false)
+			return false;
+		return true;
+	}
+
 	public void addDonator(Donator d) {
 		donators.add(d);
 	}

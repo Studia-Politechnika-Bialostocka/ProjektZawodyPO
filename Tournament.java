@@ -248,8 +248,8 @@ public class Tournament  {
 		return s;
 	}
 	public void showAllMatchesIn_RoundRobin_SemiFinals_Finals(int parameter) {
+		int i=0;
 		switch (parameter) {
-			int i=0;
 			case 0:
 				for (Match exampleMatch : matches) {
 					System.out.println(i + ":" + exampleMatch);

@@ -25,8 +25,8 @@ public class Tournament  {
 		this.teams = teams;
 		referees = refs;
 		aReferees = arefs;
-		rand = new Random();
 		Random rand = new Random();
+		//Random rand = new Random();
 		this.typeOfTournament=typeOfTournament;
 	}
 

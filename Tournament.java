@@ -209,6 +209,20 @@ public class Tournament  {
 	public void importFromFile() {
 
 	}
+	public String matchtoString(LinkedList<Match> round, LinkedList<Match> semi, Match finals)
+	{
+		String s="";
+		for(Match match : round)
+		{
+			s+=match.toString();
+		}
+		for(Match match : semi)
+		{
+			s+=match.toString();
+		}
+		s+=finals.toString();
+		return s;
+	}
 
 	private int linesInFile() throws IOException {
 		BufferedReader reader = new BufferedReader(new FileReader(name + ".txt"));
@@ -217,5 +231,10 @@ public class Tournament  {
 			lines++;
 		reader.close();
 		return lines;
+	}
+	public String toString(){
+		String prize = Double.toString(prizePool);
+		String s = matchtoString(matches, matchesOfSemi, matchOfFinal);
+		return name + " "+ prize + " " + winner.toString() + "\n" + s;
 	}
 }

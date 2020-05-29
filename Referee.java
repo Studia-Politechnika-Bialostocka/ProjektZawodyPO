@@ -21,6 +21,6 @@ public class Referee{
 	}
 
 	public String toString() {
-		return "Name: " + getFullName() + "\nMatches reffed: " + numOfMatches;
+		return name + " " +lastName + " " + numOfMatches;
 	}
 }

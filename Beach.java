@@ -91,20 +91,74 @@ public class Beach{
 		for (AssistantReferee aref : listOfAssistantReferee) System.out.println(aref);
 	}
 
-	public void saveToFileVolleyball(LinkedList<Volleyball> v) {
+	public void saveToFile(LinkedList<Volleyball> v,LinkedList<Dodgeball> d,LinkedList<Tug_of_War> t, LinkedList<Referee> r, LinkedList<AssistantReferee> ar, LinkedList<Tournament> tour) {
 		try {
 			FileWriter fileWriter = new FileWriter("VolleyballFile.txt");
 			PrintWriter printWriter = new PrintWriter(fileWriter);
-for(Volleyball volleyball : v) {
-	printWriter.print(volleyball.toString());
-	printWriter.print("\n");
-}
+			for (Volleyball volleyball : v) {
+				printWriter.print(volleyball.toString());
+				printWriter.print("\n");
+			}
 			printWriter.close();
 		} catch (Exception e) {
-			System.out.println(e+"wwwww");
+			System.out.println(e);
+		}
+		try {
+			FileWriter fileWriter = new FileWriter("DodgeballFile.txt");
+			PrintWriter printWriter = new PrintWriter(fileWriter);
+			for (Dodgeball dodgeball : d) {
+				printWriter.print(dodgeball.toString());
+				printWriter.print("\n");
+			}
+			printWriter.close();
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		try {
+			FileWriter fileWriter = new FileWriter("Tug_of_WarFile.txt");
+			PrintWriter printWriter = new PrintWriter(fileWriter);
+			for (Tug_of_War tug_of_war : t) {
+				printWriter.print(tug_of_war.toString());
+				printWriter.print("\n");
+			}
+			printWriter.close();
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		try {
+			FileWriter fileWriter = new FileWriter("RefereeFile.txt");
+			PrintWriter printWriter = new PrintWriter(fileWriter);
+			for (Referee referee : r) {
+				printWriter.print(referee.toString());
+				printWriter.print("\n");
+			}
+			printWriter.close();
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		try {
+			FileWriter fileWriter = new FileWriter("AssistanceRefereeFile");
+			PrintWriter printWriter = new PrintWriter(fileWriter);
+			for (AssistantReferee assistantReferee : ar) {
+				printWriter.print(assistantReferee.toString());
+				printWriter.print("\n");
+			}
+			printWriter.close();
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		try {
+			FileWriter fileWriter = new FileWriter("TournamentFile");
+			PrintWriter printWriter = new PrintWriter(fileWriter);
+			for (Tournament tournament : tour) {
+				printWriter.print(tournament.toString());
+				printWriter.print("\n");
+			}
+			printWriter.close();
+		} catch (Exception e) {
+			System.out.println(e);
 		}
 	}
-
 	public LinkedList<Volleyball> importFromFileVolleyball() {
 		LinkedList<Volleyball> v = new LinkedList<Volleyball>();
 		BufferedReader in = null;

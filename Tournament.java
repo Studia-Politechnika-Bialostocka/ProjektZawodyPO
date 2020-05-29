@@ -209,18 +209,18 @@ public class Tournament  {
 	public void importFromFile() {
 
 	}
-	public String matchtoString(LinkedList<Match> round, LinkedList<Match> semi, Match finals)
+	private String matchtoString()
 	{
 		String s="";
-		for(Match match : round)
+		for(Match match : matches)
 		{
 			s+=match.toString();
 		}
-		for(Match match : semi)
+		for(Match match : matchesOfSemi)
 		{
 			s+=match.toString();
 		}
-		s+=finals.toString();
+		s+=matchOfFinal.toString();
 		return s;
 	}
 

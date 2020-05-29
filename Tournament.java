@@ -5,22 +5,30 @@ import java.util.LinkedList;
 import java.util.Random;
 
 public class Tournament  {
+
 	private String nameOfTheTournament;
+
 	private double prizePool;
 	private int typeOfTournament; // 0=Volleyball, 1=Dodgeball, 2 = Tug_of_War
 	private LinkedList<Donator> donators;
 	private LinkedList<Match> matches;
-	private LinkedList<Match> matchesOfSemi;
+	private LinkedList<Match> matchesOfSemiFinal;
 	private Match matchOfFinal;
 	private LinkedList<Team> teams;
+	private LinkedList<Team> semiTeams;
+	private LinkedList<Team> finalTeams;
 	private LinkedList<Referee> referees;
 	private LinkedList<AssistantReferee> aReferees;
 	private Team winner;
 	private int refChoice = 0;
 	private int aRefChoice = 0;
 
+
 	public Tournament(String nameOfTheTournament, double Initialprize, LinkedList<Team> teams, LinkedList<Referee> refs, LinkedList<AssistantReferee> arefs,int typeOfTournament) {
 		this.nameOfTheTournament = nameOfTheTournament;
+
+
+	
 		prizePool = Initialprize;
 		this.teams = teams;
 		referees = refs;
@@ -53,8 +61,7 @@ public class Tournament  {
 		return sortedTeams;
 	}
 
-	public LinkedList<Match> matchesOfRoundRobin(LinkedList<Team> listOfTeamsInRoundRobin ) {
-		teams=listOfTeamsInRoundRobin;
+	public void matchesOfRoundRobin() {
 		for (int i = 0; i < teams.size(); i++) {
 			for (int j = i + 1; j < teams.size(); j++) {
 				int mainRefIdx = refChoice % referees.size();
@@ -74,10 +81,9 @@ public class Tournament  {
 				refChoice++;
 			}
 		}
-		return matches;
 	}
 
-	public LinkedList<Team> roundRobin(){
+	public void roundRobin(){
 		for(Match exampleMatch:matches)
 		{
 			exampleMatch.assignPointsAndSets();
@@ -87,53 +93,49 @@ public class Tournament  {
 		LinkedList<Team> semiTeams = new LinkedList<Team>();
 
 		for (int i = 0; i < 4; i++) semiTeams.add(sortedTeams.get(i));
-		return semiTeams;
 	}
 
 	//mecze polfinalowe oraz wylonienie finalistow
-	public LinkedList<Team> semiFinal(LinkedList<Match> matchesWithScoreUsedInMethod) {
-		for(Match exampleMatch:matchesWithScoreUsedInMethod)
+	public void semiFinal() {
+		for(Match exampleMatch:matchesOfSemiFinal)
 		{
 			exampleMatch.assignPointsAndSets();
 		}
-		LinkedList<Team> finalTeams = new LinkedList<>();
-		finalTeams.add(matchesWithScoreUsedInMethod.get(0).winner);
-		finalTeams.add(matchesWithScoreUsedInMethod.get(1).winner);
-		return finalTeams;
+		finalTeams = new LinkedList<>();
+		finalTeams.add(matchesOfSemiFinal.get(0).winner);
+		finalTeams.add(matchesOfSemiFinal.get(1).winner);
 	}
 
-	public LinkedList<Match> matchesOfSemiFinals(LinkedList<Team> teamsWinnersFromRoundRobin) {
-		matchesOfSemi = new LinkedList<>();
+	public void matchesOfSemiFinals() {
+		matchesOfSemiFinal = new LinkedList<>();
 		for (int i = 0; i < 2; ++i) {
 			int numberOfMainReferee = refChoice % referees.size();
-			if (teamsWinnersFromRoundRobin.get(i) instanceof Volleyball) {
+			if (semiTeams.get(i) instanceof Volleyball) {
 				int numberOfFirstReferee = aRefChoice%aReferees.size();
 				int numberOfSecondReferee = (aRefChoice+1) % aReferees.size();
-				matchesOfSemi.add(new VolleyballMatch(teamsWinnersFromRoundRobin.get(i), teamsWinnersFromRoundRobin.get(i + 2),
+				matchesOfSemiFinal.add(new VolleyballMatch(semiTeams.get(i), semiTeams.get(i + 2),
 						referees.get(numberOfMainReferee),0, aReferees.get(numberOfFirstReferee), aReferees.get(numberOfSecondReferee)));
 					aRefChoice+=2;
 			}
 			else {
-				if (teamsWinnersFromRoundRobin.get(i) instanceof Dodgeball)
-					matchesOfSemi.add(new Match(teamsWinnersFromRoundRobin.get(i), teamsWinnersFromRoundRobin.get(i + 2),
+				if (semiTeams.get(i) instanceof Dodgeball)
+					matchesOfSemiFinal.add(new Match(semiTeams.get(i), semiTeams.get(i + 2),
 							referees.get(numberOfMainReferee), 1));
 				else
-					matchesOfSemi.add(new Match(teamsWinnersFromRoundRobin.get(i), teamsWinnersFromRoundRobin.get(i + 2),
+					matchesOfSemiFinal.add(new Match(semiTeams.get(i), semiTeams.get(i + 2),
 							referees.get(numberOfMainReferee), 2));
 			}
 				++refChoice;
 		}
-		return matchesOfSemi;
 	}
 	//mecz finalowy, wylonienie zwyciezcy oraz przydzielenie nagrod 4 pierwszym miejscom
-	public Team finalGame(Match finalMatch) {
-		finalMatch.assignPointsAndSets();
-		winner=finalMatch.getWinner();
+	public void finalGame() {
+		matchOfFinal.assignPointsAndSets();
+		winner=matchOfFinal.getWinner();
 		assignPrizes();
-		return winner;
 	}
 
-	public Match matchOfFinal(LinkedList<Team> finalTeams)
+	public void matchOfFinal()
 	{
 		int numberOfMainReferee = refChoice%referees.size();
 		if (finalTeams.get(0) instanceof Volleyball) {
@@ -150,14 +152,13 @@ public class Tournament  {
 				matchOfFinal=(new Match(finalTeams.get(0), finalTeams.get(1), referees.get(numberOfMainReferee), 2));
 		}
 			++refChoice;
-		return matchOfFinal;
 	}
 
     // do ustalania przydzielanych nagrod
     private void assignPrizes()
     {
-        Team loserOfFirstSemiFinals = matchesOfSemi.get(0).getLoser();
-        Team loserOfSecondSemiFinals = matchesOfSemi.get(1).getLoser();
+        Team loserOfFirstSemiFinals = matchesOfSemiFinal.get(0).getLoser();
+        Team loserOfSecondSemiFinals = matchesOfSemiFinal.get(1).getLoser();
         winner.addPrizesWon(0.5*prizePool);
         matchOfFinal.getLoser().addPrizesWon(0.25*prizePool);
         if(loserOfFirstSemiFinals.getSetsWon() > loserOfSecondSemiFinals.getSetsWon())
@@ -176,6 +177,33 @@ public class Tournament  {
             loserOfSecondSemiFinals.addPrizesWon(0.125*prizePool);
         }
     }
+
+    public boolean areAllMatchesPlayedInRoundRobin()
+	{
+		for(Match exampleMatch:matches)
+		{
+			if(exampleMatch.isScoreSet==false)
+				return false;
+		}
+		return true;
+	}
+
+	public boolean areAllMatchesPlayedInSemiFinals()
+	{
+		for(Match exampleMatch:matchesOfSemiFinal)
+		{
+			if(exampleMatch.isScoreSet==false)
+				return false;
+		}
+		return true;
+	}
+
+	public boolean areAllMatchesPlayedInFinals()
+	{
+		if(matchOfFinal.isScoreSet==false)
+			return false;
+		return true;
+	}
 
 	public void addDonator(Donator d) {
 		donators.add(d);
@@ -218,7 +246,7 @@ public class Tournament  {
 		String s="";
 		for(Match match : matches)
 			s+=match.toString();
-		for(Match match : matchesOfSemi)
+		for(Match match : matchesOfSemiFinal)
 			s+=match.toString();
 		s+=matchOfFinal.toString();
 		return s;
@@ -235,5 +263,6 @@ public class Tournament  {
 	public String toString(){
 		String prize = Double.toString(prizePool);
 		return nameOfTheTournament + " "+ prize + " " + winner.toString() + "\n" + matchesToString();
+	
 	}
 }

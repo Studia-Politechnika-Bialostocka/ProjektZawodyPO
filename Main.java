@@ -6,13 +6,12 @@ public class Main {
 	public static Beach beach = new Beach();
 	public static void main(String[] args) {
 
-
-		Scanner keyboard = new Scanner(System.in);
 		int menu = 0;
 		int menu2 = 0;
 		int choice = 0;
 		int choice2 = 0;
 		while(true){
+			Scanner keyboard = new Scanner(System.in);
 			System.out.println("---------------MENU---------------");
 			System.out.println("1. Add a tournament.");
 			System.out.println("2. Display list of tournaments.");
@@ -23,7 +22,7 @@ public class Main {
 				case 1:{
 					System.out.println("Enter desired tournament name: ");
 					String nazwa = keyboard.next();
-					//listOfTournaments.add(new Tournament(nazwa), 100,listOfReferees,);
+					beach.addTournament(new Tournament());
 				}break;
 				case 2:{
 					//wyświetla listę turniejów
@@ -152,6 +151,7 @@ public class Main {
 				tournament.addDonator(new Donator(sponsorName[0], sponsorName[1], initialDonation));
 			}break;
 			case 2:{
+
 				//usuń sponsora
 			}break;
 			case 3:{
@@ -164,34 +164,53 @@ public class Main {
 		}
 	}
 
-	private static void goToPlayoffs(){
+	private static void goToPlayoffs(Tournament tournament){
 		Scanner keyboard = new Scanner(System.in);
 		int menu = 0;
 		int choice = 0;
+		int levelOfGaming = 0;
 		while(menu == 0){
 			System.out.println("---------------MENU3---------------");
-
-			System.out.println("1. Create a match");
+			System.out.println("1. Create a match/semifinals/finals");
 			System.out.println("2. Show match results");
-			System.out.println("3. Show all matches");
-			System.out.println("4. Set a match result");
-			System.out.println("5. Go back");
+			System.out.println("3. Set a match result");
+			System.out.println("4. Go back");
 
 			choice = keyboard.nextInt();
 			switch (choice){
 				case 1:{
-					//stwórz mecz
+					if(levelOfGaming==0) {
+						tournament.roundRobin();
+						++levelOfGaming;
+					}
+					if(levelOfGaming==1 && tournament.areAllMatchesPlayedInRoundRobin()==true) {
+						tournament.matchesOfSemiFinals();
+						++levelOfGaming;
+					}
+					if(levelOfGaming==2 && tournament.areAllMatchesPlayedInSemiFinals()==true) {
+						tournament.matchOfFinal();
+						++levelOfGaming;
+					}
 				}break;
 				case 2:{
 					//pokaż wyniki meczów
+					switch (levelOfGaming) {
+						case 0:
+
+							break;
+						case 1:
+							break;
+						case 2:
+							break;
+						default:
+							break;
+
+					}
 				}break;
 				case 3:{
-					//wyświetlanie wszystkich meczy
-				}break;
-				case 4:{
 					//ustaw wynik meczu
 				}break;
-				case 5:{
+				case 4:{
 					menu = 1;
 				}
 			}

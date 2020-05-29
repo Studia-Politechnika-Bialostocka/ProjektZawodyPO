@@ -229,6 +229,10 @@ public class Tournament  {
 	public LinkedList<Match> getMatches() {
 		return matches;
 	}
+	public Match getMatchRoundRobin(int index)
+	{
+		return matches.get(index);
+	}
 
 	public void saveToFile() {
 
@@ -252,19 +256,32 @@ public class Tournament  {
 		return s;
 	}
 	public void showAllMatchesIn_RoundRobin_SemiFinals_Finals(int parameter) {
+		int i=0;
 		switch (parameter) {
 			case 0:
-				for (Match exampleMatch : matches)
-					System.out.println(exampleMatch);
+				for (Match exampleMatch : matches) {
+					System.out.println(i + ":" + exampleMatch);
+					++i;
+				}
 				break;
 			case 1:
-				for(Match exampleMatch:matchesOfSemiFinal)
-					System.out.println(exampleMatch);
+				for(Match exampleMatch:matchesOfSemiFinal) {
+					System.out.println(i + ":" + exampleMatch);
+					++i;
+				}
 				break;
 			case 2:
-				System.out.println(matchOfFinal);
+				System.out.println("0" + matchOfFinal);
 				break;
 		}
+	}
+
+	public int countingAmountOfMatchesInRoundRobin()
+	{
+		int i=0;
+		for(Match exampleMatch:matches)
+			++i;
+		return i;
 	}
 
 	private int linesInFile() throws IOException {

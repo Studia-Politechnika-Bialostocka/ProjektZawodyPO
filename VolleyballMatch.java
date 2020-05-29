@@ -13,9 +13,9 @@ public class VolleyballMatch extends Match {
 
 	public String toString()
 	{
-		if (isScoreSet) {
+		if (isScoreSet)
 			return "Konkurencja:Siatkowka. " + teamOne + " i " + teamTwo + ". Zwyciezca:" + winner + ". Wynik: " + finalScore+"\n";
-		} else {
+		else
 			return "Konkurencja:Siatkowka. " + teamOne + " i " + teamTwo + ". Zwyciezca: nieustalony. Wynik: nieustalony\n";
 	}
 

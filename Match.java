@@ -106,10 +106,10 @@ public class Match {
 			default:
 				break;
 		}
-		if (isScoreSet) {
+		if (isScoreSet)
 			return "Konkurencja" + typeOfMatchInString + ". " + teamOne + " i " + teamTwo + ". Zwyciezca:" + winner + ". Wynik: " + finalScore+"\n";
-		} else {
+		 else
 			return "Konkurencja" + typeOfMatchInString + ". " + teamOne + " i " + teamTwo + ". Zwyciezca: nieustalony. Wynik: nieustalony\n";
-		}
+
 	}
 }

@@ -6,8 +6,6 @@ import java.io.*;
 public class Main {
 	public static Beach beach = new Beach();
 	public static void main(String[] args) {
-
-
 		Scanner klawiatura = new Scanner(System.in);
 		int menu = 0;
 		int menu2 = 0;
@@ -153,6 +151,7 @@ public class Main {
 				tournament.addDonator(new Donator(nazwaSponsora[0], nazwaSponsora[1], initialDonation));
 			}break;
 			case 2:{
+
 				//usuń sponsora
 			}break;
 			case 3:{

@@ -111,13 +111,12 @@ public class Tournament  {
 					aRefChoice+=2;
 			}
 			else {
-				int typeOfMatch;
 				if (teamsWinnersFromRoundRobin.get(i) instanceof Dodgeball)
-					typeOfMatch = 1;
+					matchesOfSemi.add(new Match(teamsWinnersFromRoundRobin.get(i), teamsWinnersFromRoundRobin.get(i + 2),
+							referees.get(numberOfMainReferee), 1));
 				else
-					typeOfMatch = 2;
-				matchesOfSemi.add(new Match(teamsWinnersFromRoundRobin.get(i), teamsWinnersFromRoundRobin.get(i + 2),
-						referees.get(numberOfMainReferee), typeOfMatch));
+					matchesOfSemi.add(new Match(teamsWinnersFromRoundRobin.get(i), teamsWinnersFromRoundRobin.get(i + 2),
+							referees.get(numberOfMainReferee), 2));
 			}
 				++refChoice;
 		}

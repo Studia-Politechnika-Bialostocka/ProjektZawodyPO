@@ -203,8 +203,8 @@ public class Main {
 					//ustaw wynik meczu
 					int wybor;
 					tournament.showAllMatchesIn_RoundRobin_SemiFinals_Finals(levelOfGaming);
-					System.out.println("Podaj swoj wybor <1:"+tournament.countingAmountOfMatchesInRoundRobin()+">:");
-					wybor = wczytaj(1,tournament.countingAmountOfMatchesInRoundRobin());
+					System.out.println("Podaj swoj wybor <0:"+tournament.countingAmountOfMatchesInRoundRobin()+">:");
+					wybor = wczytaj(0,tournament.countingAmountOfMatchesInRoundRobin());
 					tournament.getMatchRoundRobin(wybor).setResult();
 				}break;
 				case 4:{

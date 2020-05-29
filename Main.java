@@ -164,58 +164,61 @@ public class Main {
 		}
 	}
 
-	private static void goToPlayoffs(Tournament tournament){
+	private static void goToPlayoffs(Tournament tournament) {
 		Scanner keyboard = new Scanner(System.in);
 		int menu = 0;
 		int choice = 0;
 		int levelOfGaming = 0;
-		while(menu == 0){
+		while (menu == 0) {
 			System.out.println("---------------MENU3---------------");
 			System.out.println("1. Create a match/semifinals/finals");
 			System.out.println("2. Show match results");
 			System.out.println("3. Set a match result");
 			System.out.println("4. Go back");
 			choice = keyboard.nextInt();
-			switch (choice){
-				case 1:{
-					if(levelOfGaming==0) {
+			switch (choice) {
+				case 1: {
+					if (levelOfGaming == 0) {
 						tournament.roundRobin();
 						++levelOfGaming;
 					}
-					if(levelOfGaming==1 && tournament.areAllMatchesPlayedInRoundRobin()==true) {
+					if (levelOfGaming == 1 && tournament.areAllMatchesPlayedInRoundRobin() == true) {
 						tournament.matchesOfSemiFinals();
 						++levelOfGaming;
 					}
-					if(levelOfGaming==2 && tournament.areAllMatchesPlayedInSemiFinals()==true) {
+					if (levelOfGaming == 2 && tournament.areAllMatchesPlayedInSemiFinals() == true) {
 						tournament.matchOfFinal();
 						++levelOfGaming;
 					}
-					if(levelOfGaming==3 && tournament.areAllMatchesPlayedInFinals()==true){
+					if (levelOfGaming == 3 && tournament.areAllMatchesPlayedInFinals() == true) {
 						tournament.finalGame();
 						++levelOfGaming;
 					}
-					if(levelOfGaming==4)
-						System.out.println("Zwyciezyl:"+tournament.getWinner().getTeamName());
-				}break;
-				case 2:{
+					if (levelOfGaming == 4)
+						System.out.println("Zwyciezyl:" + tournament.getWinner().getTeamName());
+				}
+				break;
+				case 2: {
 					//pokaż wyniki meczów
 					tournament.showAllMatchesIn_RoundRobin_SemiFinals_Finals(levelOfGaming);
-					}
-				}break;
-				case 3:{
+
+				}
+				break;
+				case 3: {
 					//ustaw wynik meczu
 					int wybor;
 					tournament.showAllMatchesIn_RoundRobin_SemiFinals_Finals(levelOfGaming);
-					System.out.println("Podaj swoj wybor <0:"+tournament.countingAmountOfMatchesInRoundRobin()+">:");
-					wybor = wczytaj(0,tournament.countingAmountOfMatchesInRoundRobin());
+					System.out.println("Podaj swoj wybor <0:" + tournament.countingAmountOfMatchesInRoundRobin() + ">:");
+					wybor = wczytaj(0, tournament.countingAmountOfMatchesInRoundRobin());
 					tournament.getMatchRoundRobin(wybor).setResult();
-				}break;
-				case 4:{
+				}
+				break;
+				case 4: {
 					menu = 1;
 				}
 			}
 		}
-
+	}
 		private static int wczytaj(int d_gran, int g_gran) {
 		int wybor;
 		Scanner in = new Scanner(System.in);
@@ -224,6 +227,5 @@ public class Main {
 		}while(wybor>d_gran  || wybor < g_gran);
 		return wybor;
 	}
-
-	}
 }
+

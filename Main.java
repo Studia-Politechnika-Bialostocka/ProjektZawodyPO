@@ -200,10 +200,12 @@ public class Main {
 					}
 				}break;
 				case 3:{
-					tournament.showAllMatchesIn_RoundRobin_SemiFinals_Finals(levelOfGaming);
-					System.out.println("Podaj swoj wybor :");
-					wczytaj(1,)
 					//ustaw wynik meczu
+					int wybor;
+					tournament.showAllMatchesIn_RoundRobin_SemiFinals_Finals(levelOfGaming);
+					System.out.println("Podaj swoj wybor <1:"+tournament.countingAmountOfMatchesInRoundRobin()+">:");
+					wybor = wczytaj(1,tournament.countingAmountOfMatchesInRoundRobin());
+					tournament.getMatchRoundRobin(wybor).setResult();
 				}break;
 				case 4:{
 					menu = 1;
@@ -211,7 +213,7 @@ public class Main {
 			}
 		}
 
-		private int wczytaj(int d_gran, int g_gran) {
+		private static int wczytaj(int d_gran, int g_gran) {
 		int wybor;
 		Scanner in = new Scanner(System.in);
 		do {

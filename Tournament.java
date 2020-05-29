@@ -225,6 +225,10 @@ public class Tournament  {
 	public LinkedList<Match> getMatches() {
 		return matches;
 	}
+	public Match getMatchRoundRobin(int index)
+	{
+		return matches.get(index);
+	}
 
 	public void saveToFile() {
 

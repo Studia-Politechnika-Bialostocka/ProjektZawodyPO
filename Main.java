@@ -145,6 +145,7 @@ public class Main {
 			case 1:{
 				System.out.println("Wpisz nazwę sponsora: ");
 				String nazwaSponsora = klawiatura.next();
+
 				//dodaj sponsora
 			}break;
 			case 2:{

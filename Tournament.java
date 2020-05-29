@@ -249,16 +249,21 @@ public class Tournament  {
 	}
 	public void showAllMatchesIn_RoundRobin_SemiFinals_Finals(int parameter) {
 		switch (parameter) {
+			int i=0;
 			case 0:
-				for (Match exampleMatch : matches)
-					System.out.println(exampleMatch);
+				for (Match exampleMatch : matches) {
+					System.out.println(i + ":" + exampleMatch);
+					++i;
+				}
 				break;
 			case 1:
-				for(Match exampleMatch:matchesOfSemiFinal)
-					System.out.println(exampleMatch);
+				for(Match exampleMatch:matchesOfSemiFinal) {
+					System.out.println(i + ":" + exampleMatch);
+					++i;
+				}
 				break;
 			case 2:
-				System.out.println(matchOfFinal);
+				System.out.println("0" + matchOfFinal);
 				break;
 		}
 	}

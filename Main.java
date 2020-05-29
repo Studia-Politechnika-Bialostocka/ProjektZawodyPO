@@ -201,7 +201,8 @@ public class Main {
 				}break;
 				case 3:{
 					tournament.showAllMatchesIn_RoundRobin_SemiFinals_Finals(levelOfGaming);
-
+					System.out.println("Podaj swoj wybor :");
+					wczytaj(1,)
 					//ustaw wynik meczu
 				}break;
 				case 4:{
@@ -209,5 +210,15 @@ public class Main {
 				}
 			}
 		}
+
+		private int wczytaj(int d_gran, int g_gran) {
+		int wybor;
+		Scanner in = new Scanner(System.in);
+		do {
+			wybor = in.nextInt();
+		}while(wybor>d_gran  || wybor < g_gran);
+		return wybor;
+	}
+
 	}
 }

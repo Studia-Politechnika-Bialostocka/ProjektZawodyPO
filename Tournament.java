@@ -7,6 +7,7 @@ import java.util.Random;
 public class Tournament  {
 	private String name;
 	private double prizePool;
+	private int typeOfTournament; // 0=Volleyball, 1=Dodgeball, 2 = Tug_of_War
 	private LinkedList<Donator> donators;
 	private LinkedList<Match> matches;
 	private LinkedList<Match> matchesOfSemi;
@@ -18,13 +19,14 @@ public class Tournament  {
 	private int refChoice = 0;
 	private int aRefChoice = 0;
 
-	public Tournament(String name, double Initialprize, LinkedList<Team> teams, LinkedList<Referee> refs, LinkedList<AssistantReferee> arefs) {
+	public Tournament(String name, double Initialprize, LinkedList<Team> teams, LinkedList<Referee> refs, LinkedList<AssistantReferee> arefs,int typeOfTournament) {
 		this.name = name;
 		prizePool = Initialprize;
 		this.teams = teams;
 		referees = refs;
 		aReferees = arefs;
 		Random rand = new Random();
+		this.typeOfTournament=typeOfTournament;
 	}
 
 	private boolean sortCondition(Team t1, Team t2) {

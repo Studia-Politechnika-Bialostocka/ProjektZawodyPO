@@ -25,12 +25,12 @@ public class Main {
 				case 1:{
 					System.out.println("Napisz nazwę turnieju, którego chcesz dodać: ");
 					String nazwa = klawiatura.next();
-					//listOfTournaments.add(new Tournament(nazwa), 100,listOfReferees );
+					//listOfTournaments.add(new Tournament(nazwa), 100,listOfReferees,);
 				}break;
 				case 2:{
 					//wyświetla listę turniejów
 					for(Tournament exampleTournament: listOfTournaments)
-						exampleTournament.getNameOfTournament();
+						System.out.println(exampleTournament.getNameOfTournament());
 				}break;
 				case 3:{
 					menu2();
@@ -72,6 +72,7 @@ public class Main {
 				case 5:{
 					cofnijSię = 1;
 				}
+				break;
 				default: break;
 
 			}

@@ -192,7 +192,10 @@ public class Main {
 					}
 					if(levelOfGaming==3 && tournament.areAllMatchesPlayedInFinals()==true){
 						tournament.finalGame();
+						++levelOfGaming;
 					}
+					if(levelOfGaming==4)
+						System.out.println("Zwyciezyl:"+tournament.getWinner().getTeamName());
 				}break;
 				case 2:{
 					//pokaż wyniki meczów

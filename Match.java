@@ -1,5 +1,7 @@
 package def;
 
+import java.util.Scanner;
+
 public class Match {
 	protected int typeOfMatch; //v = 0, d = 1, t = 2
 	protected Referee referee;

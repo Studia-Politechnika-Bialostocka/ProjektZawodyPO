@@ -11,7 +11,7 @@ public class Tournament {
 	private LinkedList<Match> matches;
 	private LinkedList<Team> teams;
 	private LinkedList<Referee> referees;
-	private Linked List<AssistantReferee> aReferees;
+	private LinkedList<AssistantReferee> aReferees;
 	
 	private int refChoice = 0;
 	private int aRefChoice = 0;
@@ -22,7 +22,6 @@ public class Tournament {
 		this.teams = teams;
 		referees = refs;
 		aReferees = arefs;
-
 		rand = new Random();
 	}
 	

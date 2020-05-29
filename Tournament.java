@@ -111,13 +111,12 @@ public class Tournament  {
 					aRefChoice+=2;
 			}
 			else {
-				int typeOfMatch;
 				if (teamsWinnersFromRoundRobin.get(i) instanceof Dodgeball)
-					typeOfMatch = 1;
+					matchesOfSemi.add(new Match(teamsWinnersFromRoundRobin.get(i), teamsWinnersFromRoundRobin.get(i + 2),
+							referees.get(numberOfMainReferee), 1));
 				else
-					typeOfMatch = 2;
-				matchesOfSemi.add(new Match(teamsWinnersFromRoundRobin.get(i), teamsWinnersFromRoundRobin.get(i + 2),
-						referees.get(numberOfMainReferee), typeOfMatch));
+					matchesOfSemi.add(new Match(teamsWinnersFromRoundRobin.get(i), teamsWinnersFromRoundRobin.get(i + 2),
+							referees.get(numberOfMainReferee), 2));
 			}
 				++refChoice;
 		}
@@ -142,12 +141,10 @@ public class Tournament  {
 			aRefChoice+=2;
 		}
 		else {
-			int typeOfMatch;
 			if (finalTeams.get(0) instanceof Dodgeball)
-				typeOfMatch = 1;
+				matchOfFinal=(new Match(finalTeams.get(0), finalTeams.get(1), referees.get(numberOfMainReferee), 1));
 			else
-				typeOfMatch = 2;
-			matchOfFinal=(new Match(finalTeams.get(0), finalTeams.get(1), referees.get(numberOfMainReferee), typeOfMatch));
+				matchOfFinal=(new Match(finalTeams.get(0), finalTeams.get(1), referees.get(numberOfMainReferee), 2));
 		}
 			++refChoice;
 		return matchOfFinal;
@@ -209,17 +206,17 @@ public class Tournament  {
 	public void importFromFile() {
 
 	}
+
+	public String getNameOfTournament(){
+		return name;
+	}
 	private String matchesToString()
 	{
 		String s="";
 		for(Match match : matches)
-		{
 			s+=match.toString();
-		}
 		for(Match match : matchesOfSemi)
-		{
 			s+=match.toString();
-		}
 		s+=matchOfFinal.toString();
 		return s;
 	}

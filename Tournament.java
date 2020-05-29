@@ -234,6 +234,6 @@ public class Tournament  {
 	}
 	public String toString(){
 		String prize = Double.toString(prizePool);
-		return nameofTheTurnament + " "+ prize + " " + winner.toString() + "\n" + matchesToString();
+		return nameOfTheTurnament + " "+ prize + " " + winner.toString() + "\n" + matchesToString();
 	}
 }

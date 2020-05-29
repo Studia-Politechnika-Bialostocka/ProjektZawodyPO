@@ -213,13 +213,9 @@ public class Tournament  {
 	{
 		String s="";
 		for(Match match : matches)
-		{
 			s+=match.toString();
-		}
 		for(Match match : matchesOfSemi)
-		{
 			s+=match.toString();
-		}
 		s+=matchOfFinal.toString();
 		return s;
 	}

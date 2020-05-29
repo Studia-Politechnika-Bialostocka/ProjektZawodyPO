@@ -1,34 +1,41 @@
 package def;
 
+import java.util.LinkedList;
 import java.util.Scanner;
-
+import java.io.*;
 public class Main {
-
-
+	public static Beach beach = new Beach();
 	public static void main(String[] args) {
-		Scanner klawiatura = new Scanner(System.in);
 
+
+		Scanner klawiatura = new Scanner(System.in);
 		int menu = 0;
 		int menu2 = 0;
 		int wybór = 0;
 		int wybór2 = 0;
 		while(true){
 			System.out.println("---------------MENU---------------");
-			System.out.println("1. Dodaj turniej.");
-			System.out.println("2. Wyświetl listę turniejów.");
-			System.out.println("3. Przejdź do turnieju.");
-			System.out.println("4. Zakończ program.");
+			System.out.println("1. Add a tournament.");
+			System.out.println("2. Display list of tournaments.");
+			System.out.println("3. Select a tournament.");
+			System.out.println("4. Exit the program.");
 			wybór = klawiatura.nextInt();
 			switch (wybór){
 				case 1:{
-					System.out.println("Napisz nazwę turnieju, którego chcesz dodać: ");
+					System.out.println("Enter desired tournament name: ");
 					String nazwa = klawiatura.next();
+					//listOfTournaments.add(new Tournament(nazwa), 100,listOfReferees,);
 				}break;
 				case 2:{
 					//wyświetla listę turniejów
+					int i=1;
+					beach.showAllTournaments();
 				}break;
 				case 3:{
-					menu2();
+					beach.showAllTournaments();
+					System.out.print("Choose a tournament: ");
+					int tIndex = klawiatura.nextInt() - 1; //-1 bo showTournaments zaczyna od jedynki
+					menu2(beach.getTournaments().get(tIndex));
 					//przejdź do turnieju
 				}break;
 				case 4:{
@@ -39,17 +46,17 @@ public class Main {
 
 	}
 
-	private static void menu2(){
+	private static void menu2(Tournament tournament){
 		System.out.println("---------------MENU2---------------");
 		Scanner klawiatura = new Scanner(System.in);
 		int cofnijSię = 0;
 		int wybór2 = 0;
 		while(cofnijSię == 0){
-			System.out.println("1. Zarządzaj drużynami");
-			System.out.println("2. Zarządzaj sędziami");
-			System.out.println("3. Zarządzaj sponsorami");
-			System.out.println("4. Przejdź do rozgrywek");
-			System.out.println("5. Cofnij się");
+			System.out.println("1. Manage teams");
+			System.out.println("2. Manage referees");
+			System.out.println("3. Manage sponsors");
+			System.out.println("4. Go to playoffs");
+			System.out.println("5. Go back");
 			wybór2 = klawiatura.nextInt();
 			switch (wybór2){
 				case 1:{
@@ -59,14 +66,15 @@ public class Main {
 					zarządzajSędziami();
 				}break;
 				case 3:{
-					zarządzajSponsorami();
+					zarządzajSponsorami(tournament);
 				}break;
 				case 4:{
-					przejdźDoRozgrywek();
+					przejdzDoRozgrywek();
 				}break;
 				case 5:{
 					cofnijSię = 1;
 				}
+				break;
 				default: break;
 
 			}
@@ -74,16 +82,16 @@ public class Main {
 	}
 
 	private static void zarządzajDrużynami(){
-		System.out.println("1. Dodaj drużynę");
-		System.out.println("2. Usuń drużynę");
-		System.out.println("3. Pokaż wszystkie drużyny");
-		System.out.println("4. Cofnij się");
+		System.out.println("1. Add a team");
+		System.out.println("2. Remove a team");
+		System.out.println("3. Show all teams");
+		System.out.println("4. Go back");
 		Scanner klawiatura = new Scanner(System.in);
 		int wybór = 0;
 		wybór = klawiatura.nextInt();
 		switch (wybór){
 			case 1:{
-				System.out.println("Wpisz nazwę drużyny: ");
+				System.out.println("Entered desired team name: ");
 				String nazwaDrużyny = klawiatura.next();
 				//dodaj drużynę
 			}break;
@@ -101,16 +109,16 @@ public class Main {
 	}
 
 	private static void zarządzajSędziami(){
-		System.out.println("1. Dodaj sędziego");
-		System.out.println("2. Usuń sędziego");
-		System.out.println("3. Pokaż wszystkich sędziów");
-		System.out.println("4. Cofnij się");
+		System.out.println("1. Add a referee");
+		System.out.println("2. Remove a referee");
+		System.out.println("3. Show all referees");
+		System.out.println("4. Go back");
 		Scanner klawiatura = new Scanner(System.in);
 		int wybór = 0;
 		wybór = klawiatura.nextInt();
 		switch (wybór){
 			case 1:{
-				System.out.println("Wpisz nazwę sędziego: ");
+				System.out.println("Enter name of referee: ");
 				String nazwaSędziego = klawiatura.next();
 				//dodaj sędziego
 			}break;
@@ -127,25 +135,28 @@ public class Main {
 		}
 	}
 
-	private static void zarządzajSponsorami(){
-		System.out.println("1. Dodaj sponsora");
-		System.out.println("2. Usuń sponsora");
-		System.out.println("3. Pokaż wszystkich sponsoró");
-		System.out.println("4. Cofnij się");
+	private static void zarządzajSponsorami(Tournament tournament){
+		System.out.println("1. Add a sponsor");
+		System.out.println("2. Remove a sponsor");
+		System.out.println("3. Show all sponsors");
+		System.out.println("4. Go back");
 		Scanner klawiatura = new Scanner(System.in);
 		int wybór = 0;
 		wybór = klawiatura.nextInt();
 		switch (wybór){
 			case 1:{
-				System.out.println("Wpisz nazwę sponsora: ");
-				String nazwaSponsora = klawiatura.next();
+				System.out.println("Enter name of sponsor: ");
+				String[] nazwaSponsora = klawiatura.next().split(" ");
+				System.out.println("Enter initial donation of sponsor: ");
+				int initialDonation = klawiatura.nextInt();
 				//dodaj sponsora
+				tournament.addDonator(new Donator(nazwaSponsora[0], nazwaSponsora[1], initialDonation));
 			}break;
 			case 2:{
 				//usuń sponsora
 			}break;
 			case 3:{
-				//pokaż wszystkich sponsorów
+				tournament.showDonators();
 			}
 			case 4:{
 				break;
@@ -154,17 +165,19 @@ public class Main {
 		}
 	}
 
-	private static void przejdźDoRozgrywek(){
+	private static void przejdzDoRozgrywek(){
 		Scanner klawiatura = new Scanner(System.in);
 		int menu = 0;
 		int wybór = 0;
 		while(menu == 0){
 			System.out.println("---------------MENU3---------------");
-			System.out.println("1. Stwórz mecz");
-			System.out.println("2. Pokaż wyniki meczów");
-			System.out.println("3. Wyświetlanie wszysktich meczy");
-			System.out.println("4. Ustaw wynik meczu");
-			System.out.println("5. Cofnij się");
+
+			System.out.println("1. Create a match");
+			System.out.println("2. Show match results");
+			System.out.println("3. Show all matches");
+			System.out.println("4. Set a match result");
+			System.out.println("5. Go back");
+
 			wybór = klawiatura.nextInt();
 			switch (wybór){
 				case 1:{

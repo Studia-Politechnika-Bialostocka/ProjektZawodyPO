@@ -7,8 +7,16 @@ public class VolleyballMatch extends Match {
 		super(teamOne, teamTwo, ref, typeOfMatch);
 		assistantReferees[0] = ar1;
 		assistantReferees[1] = ar2;
+		ar1.documentMatch();
+		ar2.documentMatch();
 	}
 
-	
+	public String toString()
+	{
+		if (isScoreSet)
+			return "Konkurencja:Siatkowka. " + teamOne + " i " + teamTwo + ". Zwyciezca:" + winner + ". Wynik: " + finalScore+"\n";
+		else
+			return "Konkurencja:Siatkowka. " + teamOne + " i " + teamTwo + ". Zwyciezca: nieustalony. Wynik: nieustalony\n";
+	}
 
 }

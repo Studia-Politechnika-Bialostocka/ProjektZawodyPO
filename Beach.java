@@ -12,7 +12,17 @@ public class Beach{
 	private LinkedList<Referee> listOfReferee = new LinkedList<>();
 	private LinkedList<AssistantReferee> listOfAssistantReferee = new LinkedList<>();
 	private LinkedList<Tournament> listOfTournaments = new LinkedList<>();
-	
+
+	public LinkedList<Tournament> getTournaments() {
+		return listOfTournaments;
+	}
+
+	public void showAllTournaments() {
+		for (int i = 0; i < listOfTournaments.size(); i++) {
+			System.out.println((i+1) + ". " + listOfTournaments.get(i).getNameOfTournament());
+		}
+	}
+
 	public void addTournament(Tournament t) {
 		listOfTournaments.add(t);
 	}

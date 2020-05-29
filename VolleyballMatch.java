@@ -11,6 +11,12 @@ public class VolleyballMatch extends Match {
 		ar2.documentMatch();
 	}
 
-	
+	public String toString()
+	{
+		if (isScoreSet) {
+			return "Konkurencja:Siatkowka. " + teamOne + " i " + teamTwo + ". Zwyciezca:" + winner + ". Wynik: " + finalScore+"\n";
+		} else {
+			return "Konkurencja:Siatkowka. " + teamOne + " i " + teamTwo + ". Zwyciezca: nieustalony. Wynik: nieustalony\n";
+	}
 
 }

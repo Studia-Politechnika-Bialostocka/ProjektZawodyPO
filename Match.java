@@ -97,9 +97,6 @@ public class Match {
 	public String toString() {
 		String typeOfMatchInString = null;
 		switch (typeOfMatch) {
-			case 0:
-				typeOfMatchInString = "Siatkowka";
-				break;
 			case 1:
 				typeOfMatchInString = "Dwa ognie";
 				break;

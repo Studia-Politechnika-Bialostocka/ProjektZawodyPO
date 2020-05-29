@@ -207,6 +207,9 @@ public class Tournament  {
 
 	}
 
+	public String getNameOfTournament(){
+		return name;
+	}
 	private String matchesToString()
 	{
 		String s="";

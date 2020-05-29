@@ -6,6 +6,9 @@ import java.io.*;
 public class Main {
 
 	public static void main(String[] args) {
+		LinkedList<Tournament> listOfTournaments = new LinkedList<>();
+		LinkedList<Referee> listOfReferees = new LinkedList<>();
+		LinkedList<AssistantReferee> listOfAssistantReferees = new LinkedList<>();
 		Scanner klawiatura = new Scanner(System.in);
 		int menu = 0;
 		int menu2 = 0;
@@ -22,9 +25,12 @@ public class Main {
 				case 1:{
 					System.out.println("Napisz nazwę turnieju, którego chcesz dodać: ");
 					String nazwa = klawiatura.next();
+					//listOfTournaments.add(new Tournament(nazwa), 100,listOfReferees );
 				}break;
 				case 2:{
 					//wyświetla listę turniejów
+					for(Tournament exampleTournament: listOfTournaments)
+						exampleTournament.getNameOfTournament();
 				}break;
 				case 3:{
 					menu2();

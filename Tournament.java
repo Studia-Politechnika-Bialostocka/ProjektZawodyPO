@@ -241,7 +241,10 @@ public class Tournament  {
 	public void importFromFile() {
 
 	}
-
+	public Team getWinner()
+	{
+		return winner;
+	}
 	public String getNameOfTournament(){
 		return nameOfTheTournament;
 	}

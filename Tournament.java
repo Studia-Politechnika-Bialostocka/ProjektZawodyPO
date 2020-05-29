@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import java.util.Random;
 
 public class Tournament  {
+
 	private String nameOfTheTurnament;
 	private double prizePool;
 	private int typeOfTournament; // 0=Volleyball, 1=Dodgeball, 2 = Tug_of_War
@@ -20,6 +21,7 @@ public class Tournament  {
 	private Team winner;
 	private int refChoice = 0;
 	private int aRefChoice = 0;
+
 
 	public Tournament(String nameOfTheTurnament, double Initialprize, LinkedList<Team> teams, LinkedList<Referee> refs, LinkedList<AssistantReferee> arefs,int typeOfTournament) {
 		this.nameOfTheTurnament = nameOfTheTurnament;
@@ -172,6 +174,33 @@ public class Tournament  {
         }
     }
 
+    public boolean areAllMatchesPlayedInRoundRobin()
+	{
+		for(Match exampleMatch:matches)
+		{
+			if(exampleMatch.isScoreSet==false)
+				return false;
+		}
+		return true;
+	}
+
+	public boolean areAllMatchesPlayedInSemiFinals()
+	{
+		for(Match exampleMatch:matchesOfSemiFinal)
+		{
+			if(exampleMatch.isScoreSet==false)
+				return false;
+		}
+		return true;
+	}
+
+	public boolean areAllMatchesPlayedInFinals()
+	{
+		if(matchOfFinal.isScoreSet==false)
+			return false;
+		return true;
+	}
+
 	public void addDonator(Donator d) {
 		donators.add(d);
 	}
@@ -229,6 +258,6 @@ public class Tournament  {
 	}
 	public String toString(){
 		String prize = Double.toString(prizePool);
-		return nameofTheTurnament + " "+ prize + " " + winner.toString() + "\n" + matchesToString();
+		return nameOfTheTurnament + " "+ prize + " " + winner.toString() + "\n" + matchesToString();
 	}
 }

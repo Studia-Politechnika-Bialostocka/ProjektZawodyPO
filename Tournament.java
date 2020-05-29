@@ -209,7 +209,7 @@ public class Tournament  {
 	public void importFromFile() {
 
 	}
-	private String matchtoString()
+	private String matchesToString()
 	{
 		String s="";
 		for(Match match : matches)
@@ -234,7 +234,6 @@ public class Tournament  {
 	}
 	public String toString(){
 		String prize = Double.toString(prizePool);
-		String s = matchtoString(matches, matchesOfSemi, matchOfFinal);
-		return name + " "+ prize + " " + winner.toString() + "\n" + s;
+		return name + " "+ prize + " " + winner.toString() + "\n" + matchesToString();
 	}
 }

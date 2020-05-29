@@ -175,7 +175,6 @@ public class Main {
 			System.out.println("2. Show match results");
 			System.out.println("3. Set a match result");
 			System.out.println("4. Go back");
-
 			choice = keyboard.nextInt();
 			switch (choice){
 				case 1:{
@@ -191,23 +190,18 @@ public class Main {
 						tournament.matchOfFinal();
 						++levelOfGaming;
 					}
+					if(levelOfGaming==3 && tournament.areAllMatchesPlayedInFinals()==true){
+						tournament.finalGame();
+					}
 				}break;
 				case 2:{
 					//pokaż wyniki meczów
-					switch (levelOfGaming) {
-						case 0:
-
-							break;
-						case 1:
-							break;
-						case 2:
-							break;
-						default:
-							break;
-
+					tournament.showAllMatchesIn_RoundRobin_SemiFinals_Finals(levelOfGaming);
 					}
 				}break;
 				case 3:{
+					tournament.showAllMatchesIn_RoundRobin_SemiFinals_Finals(levelOfGaming);
+
 					//ustaw wynik meczu
 				}break;
 				case 4:{

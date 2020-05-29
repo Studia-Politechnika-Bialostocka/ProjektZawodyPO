@@ -268,6 +268,14 @@ public class Tournament  {
 		}
 	}
 
+	public int countingAmountOfMatchesInRoundRobin()
+	{
+		int i=0;
+		for(Match exampleMatch:matches)
+			++i;
+		return i;
+	}
+
 	private int linesInFile() throws IOException {
 		BufferedReader reader = new BufferedReader(new FileReader(nameOfTheTurnament + ".txt"));
 		int lines = 0;

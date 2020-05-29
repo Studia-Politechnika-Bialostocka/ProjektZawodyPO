@@ -34,7 +34,9 @@ public class Main {
 						System.out.println(exampleTournament.getNameOfTournament());
 				}break;
 				case 3:{
-					menu2();
+					//Tutaj trzeba dać wybór turniejow z listy i podac do menu 2
+					Tournament temp = new Tournament("name", 100, new LinkedList<Team>(), listOfReferees, listOfAssistantReferees, 0);
+					menu2(temp);
 					//przejdź do turnieju
 				}break;
 				case 4:{
@@ -45,7 +47,7 @@ public class Main {
 
 	}
 
-	private static void menu2(){
+	private static void menu2(Tournament tournament){
 		System.out.println("---------------MENU2---------------");
 		Scanner klawiatura = new Scanner(System.in);
 		int cofnijSię = 0;
@@ -65,7 +67,7 @@ public class Main {
 					zarządzajSędziami();
 				}break;
 				case 3:{
-					zarządzajSponsorami();
+					zarządzajSponsorami(tournament);
 				}break;
 				case 4:{
 					przejdzDoRozgrywek();
@@ -134,7 +136,7 @@ public class Main {
 		}
 	}
 
-	private static void zarządzajSponsorami(){
+	private static void zarządzajSponsorami(Tournament tournament){
 		System.out.println("1. Add a sponsor");
 		System.out.println("2. Remove a sponsor");
 		System.out.println("3. Show all sponsors");
@@ -145,15 +147,17 @@ public class Main {
 		switch (wybór){
 			case 1:{
 				System.out.println("Enter name of sponsor: ");
-				String nazwaSponsora = klawiatura.next();
-
+				String[] nazwaSponsora = klawiatura.next().split(" ");
+				System.out.println("Enter initial donation of sponsor: ");
+				int initialDonation = klawiatura.nextInt();
 				//dodaj sponsora
+				tournament.addDonator(new Donator(nazwaSponsora[0], nazwaSponsora[1], initialDonation));
 			}break;
 			case 2:{
 				//usuń sponsora
 			}break;
 			case 3:{
-				//pokaż wszystkich sponsorów
+				tournament.showDonators();
 			}
 			case 4:{
 				break;

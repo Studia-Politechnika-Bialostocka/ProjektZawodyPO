@@ -6,7 +6,8 @@ import java.util.Random;
 
 public class Tournament  {
 
-	private String nameOfTheTurnament;
+	private String nameOfTheTournament;
+
 	private double prizePool;
 	private int typeOfTournament; // 0=Volleyball, 1=Dodgeball, 2 = Tug_of_War
 	private LinkedList<Donator> donators;
@@ -23,8 +24,11 @@ public class Tournament  {
 	private int aRefChoice = 0;
 
 
-	public Tournament(String nameOfTheTurnament, double Initialprize, LinkedList<Team> teams, LinkedList<Referee> refs, LinkedList<AssistantReferee> arefs,int typeOfTournament) {
-		this.nameOfTheTurnament = nameOfTheTurnament;
+	public Tournament(String nameOfTheTournament, double Initialprize, LinkedList<Team> teams, LinkedList<Referee> refs, LinkedList<AssistantReferee> arefs,int typeOfTournament) {
+		this.nameOfTheTournament = nameOfTheTournament;
+
+
+	
 		prizePool = Initialprize;
 		this.teams = teams;
 		referees = refs;
@@ -235,7 +239,7 @@ public class Tournament  {
 	}
 
 	public String getNameOfTournament(){
-		return nameOfTheTurnament;
+		return nameOfTheTournament;
 	}
 	private String matchesToString()
 	{
@@ -249,7 +253,7 @@ public class Tournament  {
 	}
 
 	private int linesInFile() throws IOException {
-		BufferedReader reader = new BufferedReader(new FileReader(nameOfTheTurnament + ".txt"));
+		BufferedReader reader = new BufferedReader(new FileReader(nameOfTheTournament + ".txt"));
 		int lines = 0;
 		while (reader.readLine() != null)
 			lines++;
@@ -258,6 +262,7 @@ public class Tournament  {
 	}
 	public String toString(){
 		String prize = Double.toString(prizePool);
-		return nameOfTheTurnament + " "+ prize + " " + winner.toString() + "\n" + matchesToString();
+		return nameOfTheTournament + " "+ prize + " " + winner.toString() + "\n" + matchesToString();
+	
 	}
 }

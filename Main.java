@@ -4,11 +4,10 @@ import java.util.LinkedList;
 import java.util.Scanner;
 import java.io.*;
 public class Main {
-
+	public static Beach beach = new Beach();
 	public static void main(String[] args) {
-		LinkedList<Tournament> listOfTournaments = new LinkedList<>();
-		LinkedList<Referee> listOfReferees = new LinkedList<>();
-		LinkedList<AssistantReferee> listOfAssistantReferees = new LinkedList<>();
+
+
 		Scanner klawiatura = new Scanner(System.in);
 		int menu = 0;
 		int menu2 = 0;
@@ -30,13 +29,13 @@ public class Main {
 				case 2:{
 					//wyświetla listę turniejów
 					int i=1;
-					for(Tournament exampleTournament: listOfTournaments)
-						System.out.println(exampleTournament.getNameOfTournament());
+					beach.showAllTournaments();
 				}break;
 				case 3:{
-					//Tutaj trzeba dać wybór turniejow z listy i podac do menu 2
-					Tournament temp = new Tournament("name", 100, new LinkedList<Team>(), listOfReferees, listOfAssistantReferees, 0);
-					menu2(temp);
+					beach.showAllTournaments();
+					System.out.print("Choose a tournament: ");
+					int tIndex = klawiatura.nextInt() - 1; //-1 bo showTournaments zaczyna od jedynki
+					menu2(beach.getTournaments().get(tIndex));
 					//przejdź do turnieju
 				}break;
 				case 4:{

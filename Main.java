@@ -168,10 +168,10 @@ public class Main {
 		Scanner keyboard = new Scanner(System.in);
 		int menu = 0;
 		int choice = 0;
+		int levelOfGaming = 0;
 		while(menu == 0){
 			System.out.println("---------------MENU3---------------");
-
-			System.out.println("1. Create a match");
+			System.out.println("1. Create a match/semifinals/finals");
 			System.out.println("2. Show match results");
 			System.out.println("3. Show all matches");
 			System.out.println("4. Set a match result");
@@ -180,7 +180,9 @@ public class Main {
 			choice = keyboard.nextInt();
 			switch (choice){
 				case 1:{
-					//stwórz mecz
+					if(levelOfGaming==0)
+						tournament.roundRobin();
+					++levelOfGaming;
 				}break;
 				case 2:{
 					//pokaż wyniki meczów

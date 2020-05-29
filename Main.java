@@ -173,30 +173,44 @@ public class Main {
 			System.out.println("---------------MENU3---------------");
 			System.out.println("1. Create a match/semifinals/finals");
 			System.out.println("2. Show match results");
-			System.out.println("3. Show all matches");
-			System.out.println("4. Set a match result");
-			System.out.println("5. Go back");
+			System.out.println("3. Set a match result");
+			System.out.println("4. Go back");
 
 			choice = keyboard.nextInt();
 			switch (choice){
 				case 1:{
-					if(levelOfGaming==0)
+					if(levelOfGaming==0) {
 						tournament.roundRobin();
-					++levelOfGaming;
+						++levelOfGaming;
+					}
+					if(levelOfGaming==1 && tournament.areAllMatchesPlayedInRoundRobin()==true) {
+						tournament.matchesOfSemiFinals();
+						++levelOfGaming;
+					}
+					if(levelOfGaming==2 && tournament.areAllMatchesPlayedInSemiFinals()==true) {
+						tournament.matchOfFinal();
+						++levelOfGaming;
+					}
 				}break;
 				case 2:{
 					//pokaż wyniki meczów
+					switch (levelOfGaming) {
+						case 0:
 
+							break;
+						case 1:
+							break;
+						case 2:
+							break;
+						default:
+							break;
+
+					}
 				}break;
 				case 3:{
-					//wyświetlanie wszystkich meczy
-
+					//ustaw wynik meczu
 				}break;
 				case 4:{
-					//ustaw wynik meczu
-
-				}break;
-				case 5:{
 					menu = 1;
 				}
 			}

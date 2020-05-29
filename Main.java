@@ -29,6 +29,7 @@ public class Main {
 				}break;
 				case 2:{
 					//wyświetla listę turniejów
+					int i=1;
 					for(Tournament exampleTournament: listOfTournaments)
 						System.out.println(exampleTournament.getNameOfTournament());
 				}break;
@@ -67,7 +68,7 @@ public class Main {
 					zarządzajSponsorami();
 				}break;
 				case 4:{
-					przejdźDoRozgrywek();
+					przejdzDoRozgrywek();
 				}break;
 				case 5:{
 					cofnijSię = 1;
@@ -161,13 +162,13 @@ public class Main {
 		}
 	}
 
-	private static void przejdźDoRozgrywek(){
+	private static void przejdzDoRozgrywek(){
 		Scanner klawiatura = new Scanner(System.in);
 		int menu = 0;
 		int wybór = 0;
 		while(menu == 0){
 			System.out.println("---------------MENU3---------------");
-			System.out.println("1. Stwórz mecz");
+			System.out.println("1. Stwórz mecze");
 			System.out.println("2. Pokaż wyniki meczów");
 			System.out.println("3. Wyświetlanie wszysktich meczy");
 			System.out.println("4. Ustaw wynik meczu");

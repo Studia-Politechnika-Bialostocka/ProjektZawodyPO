@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import java.util.Random;
 
 public class Tournament  {
-	private String name;
+	private String nameOfTournament;
 	private double prizePool;
 	private int typeOfTournament; // 0=Volleyball, 1=Dodgeball, 2 = Tug_of_War
 	private LinkedList<Donator> donators;
@@ -22,7 +22,7 @@ public class Tournament  {
 	private int aRefChoice = 0;
 
 	public Tournament(String name, double Initialprize, LinkedList<Team> teams, LinkedList<Referee> refs, LinkedList<AssistantReferee> arefs,int typeOfTournament) {
-		this.name = name;
+		this.nameOfTournament = name;
 		prizePool = Initialprize;
 		this.teams = teams;
 		referees = refs;
@@ -206,7 +206,7 @@ public class Tournament  {
 	}
 
 	public String getNameOfTournament(){
-		return name;
+		return nameOfTournament;
 	}
 	private String matchesToString()
 	{
@@ -220,7 +220,7 @@ public class Tournament  {
 	}
 
 	private int linesInFile() throws IOException {
-		BufferedReader reader = new BufferedReader(new FileReader(name + ".txt"));
+		BufferedReader reader = new BufferedReader(new FileReader(nameOfTournament + ".txt"));
 		int lines = 0;
 		while (reader.readLine() != null)
 			lines++;
@@ -229,6 +229,6 @@ public class Tournament  {
 	}
 	public String toString(){
 		String prize = Double.toString(prizePool);
-		return name + " "+ prize + " " + winner.toString() + "\n" + matchesToString();
+		return nameOfTournament + " "+ prize + " " + winner.toString() + "\n" + matchesToString();
 	}
 }

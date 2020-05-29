@@ -247,6 +247,21 @@ public class Tournament  {
 		s+=matchOfFinal.toString();
 		return s;
 	}
+	public void showAllMatchesIn_RoundRobin_SemiFinals_Finals(int parameter) {
+		switch (parameter) {
+			case 0:
+				for (Match exampleMatch : matches)
+					System.out.println(exampleMatch);
+				break;
+			case 1:
+				for(Match exampleMatch:matchesOfSemiFinal)
+					System.out.println(exampleMatch);
+				break;
+			case 2:
+				System.out.println(matchOfFinal);
+				break;
+		}
+	}
 
 	private int linesInFile() throws IOException {
 		BufferedReader reader = new BufferedReader(new FileReader(nameOfTheTurnament + ".txt"));

@@ -275,12 +275,20 @@ public class Tournament  {
 		}
 	}
 
-	public int countingAmountOfMatchesInRoundRobin()
+	public int countingAmountOfMatchesInRoundRobin(int parameter)
 	{
-		int i=0;
-		for(Match exampleMatch:matches)
-			++i;
-		return i;
+		switch(parameter) {
+
+			case 0:
+				int i = -1;
+				for (Match exampleMatch : matches)
+					++i;
+				return i;
+			case 1:
+				return 3;
+			default:
+				return 0;
+		}
 	}
 
 	private int linesInFile() throws IOException {

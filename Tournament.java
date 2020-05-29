@@ -141,12 +141,10 @@ public class Tournament  {
 			aRefChoice+=2;
 		}
 		else {
-			int typeOfMatch;
 			if (finalTeams.get(0) instanceof Dodgeball)
-				typeOfMatch = 1;
+				matchOfFinal=(new Match(finalTeams.get(0), finalTeams.get(1), referees.get(numberOfMainReferee), 1));
 			else
-				typeOfMatch = 2;
-			matchOfFinal=(new Match(finalTeams.get(0), finalTeams.get(1), referees.get(numberOfMainReferee), typeOfMatch));
+				matchOfFinal=(new Match(finalTeams.get(0), finalTeams.get(1), referees.get(numberOfMainReferee), 2));
 		}
 			++refChoice;
 		return matchOfFinal;

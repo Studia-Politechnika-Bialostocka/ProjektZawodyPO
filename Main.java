@@ -151,11 +151,12 @@ public class Main {
 				tournament.addDonator(new Donator(sponsorName[0], sponsorName[1], initialDonation));
 			}break;
 			case 2:{
+				//usuń sponsora
 				int choice_2;
 				tournament.showDonators();
-				System.out.println("Wybierz swoj wybor:");
-				choice_2=getChoice(0,)
-				//usuń sponsora
+				System.out.println("Wybierz swoj wybor<0:"+tournament.getAmountOfDonators()+"> :");
+				choice_2=getChoice(0,tournament.getAmountOfDonators());
+				tournament.removeDonator(choice_2);
 			}break;
 			case 3:{
 				tournament.showDonators();

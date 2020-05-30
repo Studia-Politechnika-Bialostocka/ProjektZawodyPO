@@ -210,10 +210,15 @@ public class Tournament  {
 	}
 
 	public void showDonators() {
-		for(Donator exampleDonators: donators)
-			System.out.println(exampleDonators);
+		int i = 0;
+		for (Donator exampleDonators : donators) {
+			System.out.println(i+" "+exampleDonators);
+			++i;
+		}
 	}
-
+	public void removeDonator(int index) {
+		donators.remove(index);
+	}
 	public int getAmountOfDonators(){
 		int i=-1;
 		for(Donator exampleDonators:donators)

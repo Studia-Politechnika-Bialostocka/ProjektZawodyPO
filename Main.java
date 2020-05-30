@@ -155,7 +155,9 @@ public class Main {
 			}break;
 			case 2: {
 				beach.showAllDonatorsFromBeach();
-
+				System.out.println("Wybierz swoj wybor<0:"+beach.getAmountOfDonators()+"> :");
+				int choice_2=getChoice(0,beach.getAmountOfDonators());
+				tournament.addDonator(beach.getDonator(choice_2));
 			}break;
 			case 3:{
 				//usuń sponsora

@@ -25,10 +25,26 @@ public class Beach{
 
 	public void showAllDonatorsFromBeach()
 	{
+		int i=0;
 		for(Donator exampleDonator: listOfDonators)
-			System.out.println(exampleDonator);
+		{
+			System.out.println(i+" :"+exampleDonator);
+			++i;
+		}
 	}
 
+	public int getAmountOfDonators()
+	{
+		int i=-1;
+		for(Donator exampleDonator: listOfDonators)
+			++i;
+		return i;
+	}
+
+	public Donator getDonator(int index){
+		return listOfDonators.get(index);
+
+	}
 	public void showAllTournaments() {
 		for (int i = 0; i < listOfTournaments.size(); i++) {
 			System.out.println((i+1) + ". " + listOfTournaments.get(i).getNameOfTournament());

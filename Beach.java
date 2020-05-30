@@ -90,6 +90,11 @@ public class Beach{
 	public void showAllAssistantReferee() {
 		for (AssistantReferee aref : listOfAssistantReferee) System.out.println(aref);
 	}
+	public LinkedList<Referee> getReferee(){ return listOfReferee;}
+
+	public LinkedList<AssistantReferee> getAssistantReferee(){return listOfAssistantReferee;}
+
+	public LinkedList<Tournament> getTournament(){return listOfTournaments;}
 
 	public void saveToFile(LinkedList<Volleyball> v,LinkedList<Dodgeball> d,LinkedList<Tug_of_War> t, LinkedList<Referee> r, LinkedList<AssistantReferee> ar, LinkedList<Tournament> tour) {
 		try {
@@ -137,7 +142,7 @@ public class Beach{
 			System.out.println(e);
 		}
 		try {
-			FileWriter fileWriter = new FileWriter("AssistanceRefereeFile");
+			FileWriter fileWriter = new FileWriter("AssistanceRefereeFile.txt");
 			PrintWriter printWriter = new PrintWriter(fileWriter);
 			for (AssistantReferee assistantReferee : ar) {
 				printWriter.print(assistantReferee.toString());
@@ -148,7 +153,7 @@ public class Beach{
 			System.out.println(e);
 		}
 		try {
-			FileWriter fileWriter = new FileWriter("TournamentFile");
+			FileWriter fileWriter = new FileWriter("TournamentFile.txt");
 			PrintWriter printWriter = new PrintWriter(fileWriter);
 			for (Tournament tournament : tour) {
 				printWriter.print(tournament.toString());

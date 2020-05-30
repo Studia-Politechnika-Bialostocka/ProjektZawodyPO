@@ -128,19 +128,19 @@ public class Main {
 					case 0:
 						beach.showAllVTeams();
 						System.out.print("Choose a volleyball team: ");
-						teamIndex = keyboard.nextInt() - 1;
+						teamIndex = keyboard.nextInt();
 						tournament.addTeam(beach.getVTeams().get(teamIndex));
 						break;
 					case 1:
 						beach.showAllDTeams();
 						System.out.print("Choose a dodgeball team: ");
-						teamIndex = keyboard.nextInt() - 1;
+						teamIndex = keyboard.nextInt();
 						tournament.addTeam(beach.getDTeams().get(teamIndex));
 						break;
 					case 2:
 						beach.showAllTTeams();
 						System.out.print("Choose a tug of war team: ");
-						teamIndex = keyboard.nextInt() - 1;
+						teamIndex = keyboard.nextInt();
 						tournament.addTeam(beach.getTTeams().get(teamIndex));
 						break;
 				}

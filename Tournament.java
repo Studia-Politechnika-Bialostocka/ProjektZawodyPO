@@ -224,9 +224,6 @@ public class Tournament  {
 			++i;
 		return i;
 	}
-	public void deleteDonator(Donator d) {
-		donators.remove(d);
-	}
 
 	public void showFinalScores() {
 

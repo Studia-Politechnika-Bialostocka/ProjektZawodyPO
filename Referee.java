@@ -12,9 +12,6 @@ public class Referee{
 		this.lastName = lastName;
 	}
 
-	public String getFullName() {
-		return name + " " + lastName;
-	}
 
 	public void documentMatch() {
 		numOfMatches++;

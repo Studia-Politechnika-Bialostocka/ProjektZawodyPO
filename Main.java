@@ -330,16 +330,26 @@ public class Main {
 				break;
 				case 2: {
 					//pokaż wyniki meczów
-					tournament.showAllMatchesIn_RoundRobin_SemiFinals_Finals(levelOfGaming);
+					tournament.showAllMatchesIn_RoundRobin_SemiFinals_Finals(levelOfGaming-1);
 				}
 				break;
 				case 3: {
 					//ustaw wynik meczu
 					int wybor;
-					tournament.showAllMatchesIn_RoundRobin_SemiFinals_Finals(levelOfGaming);
-					System.out.println("Podaj swoj wybor <0:" + tournament.countingAmountOfMatchesInRoundRobin(levelOfGaming) + ">:");
-					wybor = getChoice(0, tournament.countingAmountOfMatchesInRoundRobin(levelOfGaming));
+					tournament.showAllMatchesIn_RoundRobin_SemiFinals_Finals(levelOfGaming-1);
+					System.out.println("Podaj swoj wybor <0:" + tournament.countingAmountOfMatchesInRoundRobin(levelOfGaming-1) + ">:");
+					wybor = getChoice(0, tournament.countingAmountOfMatchesInRoundRobin(levelOfGaming-1));
+					switch(levelOfGaming-1){
+						case 0:
 					tournament.getMatchRoundRobin(wybor).setResult();
+					break;
+						case 1:
+							tournament.getMatchSemiFinals(wybor).setResult();
+							break;
+						case 2:
+							tournament.getMatchFinal().setResult();
+							break;
+					}
 				}
 				break;
 				case 4: {

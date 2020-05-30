@@ -139,7 +139,14 @@ public class Beach{
 			System.out.println(i + " :" + exampleAssReferee);
 			++i;
 		}
-
+	}
+	public void showReferees_MainAndAssistant(){
+		System.out.println("Sedziowie glowni");
+		for (Referee exampleReferee : listOfReferee)
+			System.out.println(exampleReferee);
+		System.out.println("Sedziowie asystujacy");
+		for (AssistantReferee exampleAssReferee : listOfAssistantReferee)
+			System.out.println(exampleAssReferee);
 	}
 
 	public int getAmountOfReferee()

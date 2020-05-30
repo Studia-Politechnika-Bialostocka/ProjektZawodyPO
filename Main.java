@@ -347,6 +347,7 @@ public class Main {
 				} break;
 				case 3: {
 					//pokaż wszystkich sędziów
+					beach.showReferees_MainAndAssistant();
 				}
 				case 4: {
 					break;

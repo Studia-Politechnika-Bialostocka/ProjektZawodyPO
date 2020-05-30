@@ -315,38 +315,40 @@ public class Main {
 		Scanner keyboard = new Scanner(System.in);
 		int choice = 0;
 		choice = keyboard.nextInt();
-		switch (choice){
+		switch (choice) {
 			case 1: {
 				//dodaj sędziego
 				System.out.println("Enter name of referee: ");
 				String[] refereename = keyboard.next().split(" ");
 				System.out.println("Czy to sedzia glowny(0) czy sedzia asystujacy(1):");
-				int typeOfReferee=keyboard.nextInt();
-				if(typeOfReferee==0)
-					beach.addReferee(new Referee(refereename[0],refereename[1]));
+				int typeOfReferee = keyboard.nextInt();
+				if (typeOfReferee == 0)
+					beach.addReferee(new Referee(refereename[0], refereename[1]));
 				else
-					beach.addAssistantReferee(new AssistantReferee(refereename[0],refereename[1]));
-			}break;
-			case 2:{
+					beach.addAssistantReferee(new AssistantReferee(refereename[0], refereename[1]));
+			}
+			break;
+			case 2: {
 				//usun sedziow
 				System.out.println("Pokazac sedziow glownych(0) czy asystujacych(1):");
-				int choice_oftype=getChoice(0,1);
-				if(choice_oftype==0)
-				{
+				int choice_oftype = getChoice(0, 1);
+				if (choice_oftype == 0) {
 					beach.showAllReferees();
 					System.out.println("Podaj swoj wybor:");
-					int delete=getChoice(0,)
+					int delete = getChoice(0, )
 					beach.deleteReferee();
 
 
-			}break;
-			case 3:{
-				//pokaż wszystkich sędziów
+				} break;
+				case 3: {
+					//pokaż wszystkich sędziów
+				}
+				case 4: {
+					break;
+				}
+				default:
+					break;
 			}
-			case 4:{
-				break;
-			}
-			default:break;
 		}
 	}
 

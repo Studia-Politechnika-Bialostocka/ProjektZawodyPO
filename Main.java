@@ -433,8 +433,7 @@ public class Main {
 
 			}break;
 			case 3:{
-				//pokaż wszystkie drużyny
-				beach.show
+				beach.showAllVDTTeams();
 			}
 			case 4:{
 				break;

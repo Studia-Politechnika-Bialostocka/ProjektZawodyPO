@@ -120,7 +120,22 @@ public class Beach{
 			++i;
 		}
 	}
-
+	public void showAllVDTTeams()
+	{
+		int i=0;
+		for(Volleyball exampleMatch: vTeams) {
+			System.out.println(i+" :"+exampleMatch);
+			++i;
+		}
+		for(Dodgeball exampleMatch: dTeams) {
+			System.out.println(i + " :" + exampleMatch);
+			++i;
+		}
+		for(Tug_of_War exampleMatch: tTeams){
+			System.out.println(i+" :"+exampleMatch);
+			++i;
+		}
+	}
 	public int getAmountOfTeams(int parameter)
 	{
 		int i=-1;

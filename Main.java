@@ -14,7 +14,7 @@ public class Main {
 			Scanner keyboard = new Scanner(System.in);
 			System.out.println("---------------MENU---------------");
 			System.out.println("1. Add a tournament.");
-			System.out.println("2. Display list of tournaments.");
+			System.out.println("2. Diments.");
 			System.out.println("3. Select a tournament.");
 			System.out.println("4. Manage teams, referees etc. in beach(main base for info)");
 			System.out.println("5. Exit the program.");
@@ -32,6 +32,7 @@ public class Main {
 				case 2:{
 					//wyświetla listę turniejów
 					beach.showAllTournaments();
+					beach.saveToFile(beach.getVTeams(), beach.getDTeams(), beach.getTTeams(), beach.getListOfReferee(), beach.getListOfAssistantReferee(), beach.getTournaments());
 				}break;
 				case 3:{
 					beach.showAllTournaments();
@@ -189,23 +190,25 @@ public class Main {
 		switch (choice){
 			case 1:{
 				System.out.println("Enter name of referee: ");
-				String[] refereeName = keyboard.next().split(" ");
+				String refereeName = keyboard.next();
+				System.out.println("Enter lastname of referee: ");
+				String refereelastName = keyboard.next();
 				//dodaj sędziego
 				if(tournament.getTypeOfTournament()==0) {
 					System.out.println("Czy to sedzia glowny(0) czy sedzia asystujacy(1):");
 					int typeOfReferee = getChoice(0,1);
 					if (typeOfReferee == 0) {
-						tournament.addReferee(new Referee(refereeName[0], refereeName[1]));
-						beach.addReferee(new Referee(refereeName[0],refereeName[1]));
+						tournament.addReferee(new Referee(refereeName, refereelastName));
+						beach.addReferee(new Referee(refereeName,refereelastName));
 					}
 					else {
-						tournament.addAssistantReferee(new AssistantReferee(refereeName[0], refereeName[1]));
-						beach.addAssistantReferee(new AssistantReferee(refereeName[0],refereeName[1]));
+						tournament.addAssistantReferee(new AssistantReferee(refereeName, refereelastName));
+						beach.addAssistantReferee(new AssistantReferee(refereeName, refereelastName));
 					}
 				}
 				else				{
-					tournament.addReferee(new Referee(refereeName[0],refereeName[1]));
-					beach.addReferee(new Referee(refereeName[0],refereeName[1]));
+					tournament.addReferee(new Referee(refereeName, refereelastName));
+					beach.addReferee(new Referee(refereeName, refereelastName));
 				}
 			}break;
 			case 2:{

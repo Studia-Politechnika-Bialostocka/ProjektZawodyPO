@@ -45,6 +45,7 @@ public class Tournament  {
 	}
 
 	private boolean sortCondition(Team t1, Team t2) {
+		System.out.println("halo");
 		if (t1.getWins() > t2.getWins()) return true;
 		else if (t1.getWins() < t2.getWins()) return false;
 		else if (t1.getSetsWon() > t2.getSetsWon()) return true;

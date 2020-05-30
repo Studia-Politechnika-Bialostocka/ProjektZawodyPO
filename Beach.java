@@ -83,31 +83,59 @@ public class Beach{
 		tTeams.add(t);
 	}
 	
-	public void deleteVTeam(Volleyball v) {
-		vTeams.remove(v);
+	public void deleteVTeam(int index) {
+		vTeams.remove(index);
 	}
 	
-	public void deleteDTeam(Dodgeball d) {
-		dTeams.remove(d);
+	public void deleteDTeam(int index) {
+		dTeams.remove(index);
 	}
 	
-	public void deleteTTeam(Tug_of_War t) {
-		tTeams.remove(t);
+	public void deleteTTeam(int index) {
+		tTeams.remove(index);
 	}
 	
 	public void showAllVTeams() {
-		int i = 1;
-		for (Volleyball vteam : vTeams) {System.out.println(i + ". " + vteam); i++;}
+		int i = 0;
+		for (Volleyball vteam : vTeams) {
+			System.out.println(i + " :" + vteam);
+			i++;
+		}
 	}
 	
-	public void showAllDTeams() {
-		for (Dodgeball dteam : dTeams) System.out.println(dteam);
+	public void showAllDTeams()
+	{
+		int i=0;
+		for (Dodgeball dteam : dTeams) {
+			System.out.println(i+" :"+dteam);
+			++i;
+		}
 	}
 	
-	public void showAllTTeams() {
-		for (Tug_of_War tteam : tTeams) System.out.println(tteam);
+	public void showAllTTeams()
+	{
+		int i=0;
+		for (Tug_of_War tteam : tTeams) {
+			System.out.println(i + " :" + tteam);
+			++i;
+		}
 	}
-
+	public void showAllVDTTeams()
+	{
+		int i=0;
+		for(Volleyball exampleMatch: vTeams) {
+			System.out.println(i+" :"+exampleMatch);
+			++i;
+		}
+		for(Dodgeball exampleMatch: dTeams) {
+			System.out.println(i + " :" + exampleMatch);
+			++i;
+		}
+		for(Tug_of_War exampleMatch: tTeams){
+			System.out.println(i+" :"+exampleMatch);
+			++i;
+		}
+	}
 	public int getAmountOfTeams(int parameter)
 	{
 		int i=-1;

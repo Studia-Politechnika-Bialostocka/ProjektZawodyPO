@@ -415,23 +415,25 @@ public class Main {
 						beach.showAllVTeams();
 						System.out.println("Enter index of desired team:");
 						int delete0 = getChoice(0,beach.getAmountOfTeams(0));
+						beach.deleteVTeam(delete0);
 						break;
 					case 1:
 						beach.showAllDTeams();
 						System.out.println("Enter index of desired team:");
 						int delete1 = getChoice(0,beach.getAmountOfTeams(1));
-
+						beach.deleteDTeam(delete1);
 						break;
 					case 2:
 						beach.showAllTTeams();
 						System.out.println("Enter index of desired team:");
 						int delete2 = getChoice(0,beach.getAmountOfTeams(2));
+						beach.deleteTTeam(delete2);
 						break;
 				}
 
 			}break;
 			case 3:{
-				//pokaż wszystkie drużyny
+				beach.showAllVDTTeams();
 			}
 			case 4:{
 				break;

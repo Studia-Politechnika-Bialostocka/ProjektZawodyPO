@@ -151,7 +151,10 @@ public class Main {
 				tournament.addDonator(new Donator(sponsorName[0], sponsorName[1], initialDonation));
 			}break;
 			case 2:{
-
+				int choice_2;
+				tournament.showDonators();
+				System.out.println("Wybierz swoj wybor:");
+				choice_2=getChoice(0,)
 				//usuń sponsora
 			}break;
 			case 3:{
@@ -209,7 +212,7 @@ public class Main {
 					int wybor;
 					tournament.showAllMatchesIn_RoundRobin_SemiFinals_Finals(levelOfGaming);
 					System.out.println("Podaj swoj wybor <0:" + tournament.countingAmountOfMatchesInRoundRobin(levelOfGaming) + ">:");
-					wybor = wczytaj(0, tournament.countingAmountOfMatchesInRoundRobin(levelOfGaming));
+					wybor = getChoice(0, tournament.countingAmountOfMatchesInRoundRobin(levelOfGaming));
 					tournament.getMatchRoundRobin(wybor).setResult();
 				}
 				break;
@@ -219,13 +222,13 @@ public class Main {
 			}
 		}
 	}
-		private static int wczytaj(int d_gran, int g_gran) {
-		int wybor;
+		private static int getChoice(int d_gran, int g_gran) {
+		int choice_within_method;
 		Scanner in = new Scanner(System.in);
 		do {
-			wybor = in.nextInt();
-		}while(wybor>d_gran  || wybor < g_gran);
-		return wybor;
+			choice_within_method = in.nextInt();
+		}while(choice_within_method<d_gran  || choice_within_method > g_gran);
+		return choice_within_method;
 	}
 }
 

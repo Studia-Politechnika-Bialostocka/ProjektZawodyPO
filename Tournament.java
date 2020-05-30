@@ -214,6 +214,12 @@ public class Tournament  {
 			System.out.println(exampleDonators);
 	}
 
+	public int getAmountOfDonators(){
+		int i=-1;
+		for(Donator exampleDonators:donators)
+			++i;
+		return i;
+	}
 	public void deleteDonator(Donator d) {
 		donators.remove(d);
 	}

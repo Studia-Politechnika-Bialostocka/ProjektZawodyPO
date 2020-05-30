@@ -20,8 +20,11 @@ public class Tournament  {
 	private LinkedList<Referee> referees;
 	private LinkedList<AssistantReferee> aReferees;
 	private Team winner;
+	public String AllMaches="";
 	private int refChoice = 0;
 	private int aRefChoice = 0;
+	private int nrofMatches;
+
 
 
 	public Tournament(String nameOfTheTournament, double Initialprize, LinkedList<Referee> refs, LinkedList<AssistantReferee> arefs,int typeOfTournament) {
@@ -141,6 +144,7 @@ public class Tournament  {
 		matchOfFinal.assignPointsAndSets();
 		winner=matchOfFinal.getWinner();
 		assignPrizes();
+		matchesToString();
 	}
 
 	public void matchOfFinal()
@@ -350,7 +354,7 @@ public class Tournament  {
 	public String getNameOfTournament(){
 		return nameOfTheTournament;
 	}
-	private String matchesToString()
+	public String matchesToString()
 	{
 		String s="";
 		for(Match match : matches)
@@ -358,6 +362,7 @@ public class Tournament  {
 		for(Match match : matchesOfSemiFinal)
 			s+=match.toString();
 		s+=matchOfFinal.toString();
+		AllMaches = s;
 		return s;
 	}
 	public void showAllMatchesIn_RoundRobin_SemiFinals_Finals(int parameter) {
@@ -389,8 +394,10 @@ public class Tournament  {
 				int i = -1;
 				for (Match exampleMatch : matches)
 					++i;
+				nrofMatches =i+6;
 				return i;
 			case 1:
+				nrofMatches=3+6;
 				return 3;
 			default:
 				return 0;
@@ -406,8 +413,7 @@ public class Tournament  {
 		return lines;
 	}
 	public String toString(){
-		String prize = Double.toString(prizePool);
-		return nameOfTheTournament + " "+ prize + " " + winner.toString() + "\n" + matchesToString();
-	
+		return nameOfTheTournament + " "+ prizePool + " " +typeOfTournament+" "+nrofMatches+  "\n" ;
 	}
+
 }

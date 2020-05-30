@@ -15,9 +15,9 @@ public class VolleyballMatch extends Match {
 	public String toString()
 	{
 		if (isScoreSet)
-			return "Konkurencja:Siatkowka. " + teamOne + " i " + teamTwo + ". Zwyciezca:" + winner + ". Wynik: " + finalScore+"\n";
+			return "Konkurencja:Siatkowka. " + teamOne + " i " + teamTwo +" Sędzia:"+referee+ " Sędziowie pomocniczy:"+ assistantReferees[0] +" "+ assistantReferees[1]+ ". Zwyciezca:" + winner + ". Wynik: " + finalScore+"\n";
 		else
-			return "Konkurencja:Siatkowka. " + teamOne + " i " + teamTwo + ". Zwyciezca: nieustalony. Wynik: nieustalony\n";
+			return "Konkurencja:Siatkowka. " + teamOne + " i " + teamTwo + " Sędzia:"+referee+ " Sędziowie pomocniczy:"+ assistantReferees[0] +" "+ assistantReferees[1]+". Zwyciezca: nieustalony. Wynik: nieustalony\n";
 	}
 
 }

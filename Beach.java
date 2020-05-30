@@ -107,7 +107,27 @@ public class Beach{
 	public void showAllTTeams() {
 		for (Tug_of_War tteam : tTeams) System.out.println(tteam);
 	}
-	
+
+	public int getAmountOfTeams(int parameter)
+	{
+		int i=-1;
+		switch(parameter){
+			case 0:
+				for(Volleyball exampleTeam: vTeams)
+					++i;
+				return i;
+			case 1:
+				for(Dodgeball exampleTeam: dTeams)
+					++i;
+				return i;
+			case 2:
+				for(Tug_of_War exampleTeam: tTeams)
+					++i;
+				return i;
+			default:
+				return 0;
+		}
+	}
 	public void addReferee(Referee r) {
 		listOfReferee.add(r);
 	}

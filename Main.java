@@ -388,13 +388,47 @@ public class Main {
 		choice = keyboard.nextInt();
 		switch (choice){
 			case 1:{
+				//dodaj drużynę
 				System.out.println("Entered desired team name: ");
 				String teamName = keyboard.next();
-				System.out.println("");
-				//dodaj drużynę
+				System.out.println("What type of team is that? Volleyball (0), dodgeball(1) or tug_of_war(2)");
+				int typeOfTournament=getChoice(0,2);
+				switch(typeOfTournament){
+					case 0:
+						beach.addVTeam(new Volleyball(teamName));
+						break;
+					case 1:
+						beach.addDTeam(new Dodgeball(teamName));
+						break;
+					case 2:
+						beach.addTTeam(new Tug_of_War(teamName));
+						break;
+				}
 			}break;
 			case 2:{
 				//usuń drużynę
+				System.out.println("What type of team you want to delete? Volleyball (0), dodgeball(1), tyg_of_war(2)?");
+				int typeOfTournament=getChoice(0,2);
+				switch(typeOfTournament)
+				{
+					case 0:
+						beach.showAllVTeams();
+						System.out.println("Enter index of desired team:");
+						int delete0 = getChoice(0,beach.getAmountOfTeams(0));
+						break;
+					case 1:
+						beach.showAllDTeams();
+						System.out.println("Enter index of desired team:");
+						int delete1 = getChoice(0,beach.getAmountOfTeams(1));
+
+						break;
+					case 2:
+						beach.showAllTTeams();
+						System.out.println("Enter index of desired team:");
+						int delete2 = getChoice(0,beach.getAmountOfTeams(2));
+						break;
+				}
+
 			}break;
 			case 3:{
 				//pokaż wszystkie drużyny

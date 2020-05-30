@@ -91,6 +91,7 @@ public class Main {
 			case 1:{
 				System.out.println("Entered desired team name: ");
 				String teamName = keyboard.next();
+				System.out.println("")
 				//dodaj drużynę
 			}break;
 			case 2:{

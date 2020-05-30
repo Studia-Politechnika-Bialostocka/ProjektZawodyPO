@@ -12,9 +12,21 @@ public class Beach{
 	private LinkedList<Referee> listOfReferee = new LinkedList<>();
 	private LinkedList<AssistantReferee> listOfAssistantReferee = new LinkedList<>();
 	private LinkedList<Tournament> listOfTournaments = new LinkedList<>();
+	private LinkedList<Donator> listOfDonators = new LinkedList<>();
 
 	public LinkedList<Tournament> getTournaments() {
 		return listOfTournaments;
+	}
+
+	public void addDonatorToList(Donator donatorInParameter)
+	{
+		listOfDonators.add(donatorInParameter);
+	}
+
+	public void showAllDonatorsFromBeach()
+	{
+		for(Donator exampleDonator: listOfDonators)
+			System.out.println(exampleDonator);
 	}
 
 	public void showAllTournaments() {

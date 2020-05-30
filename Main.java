@@ -134,24 +134,30 @@ public class Main {
 		}
 	}
 
-	private static void manageSponsors(Tournament tournament){
+	private static void manageSponsors(Tournament tournament, Beach beach){
 		System.out.println("1. Add a sponsor");
-		System.out.println("2. Remove a sponsor");
-		System.out.println("3. Show all sponsors");
-		System.out.println("4. Go back");
+		System.out.println("2. Add a sponsor from list");
+		System.out.println("3. Remove a sponsor");
+		System.out.println("4. Show all sponsors");
+		System.out.println("5. Go back");
 		Scanner keyboard = new Scanner(System.in);
 		int choice = 0;
 		choice = keyboard.nextInt();
 		switch (choice){
 			case 1:{
+				//dodaj sponsora
 				System.out.println("Enter name of sponsor: ");
 				String[] sponsorName = keyboard.next().split(" ");
 				System.out.println("Enter initial donation of sponsor: ");
 				int initialDonation = keyboard.nextInt();
-				//dodaj sponsora
 				tournament.addDonator(new Donator(sponsorName[0], sponsorName[1], initialDonation));
+				beach.addDonatorToList(new Donator(sponsorName[0],sponsorName[1], initialDonation));
 			}break;
-			case 2:{
+			case 2: {
+				beach.showAllDonatorsFromBeach();
+
+			}break;
+			case 3:{
 				//usuń sponsora
 				int choice_2;
 				tournament.showDonators();
@@ -159,10 +165,10 @@ public class Main {
 				choice_2=getChoice(0,tournament.getAmountOfDonators());
 				tournament.removeDonator(choice_2);
 			}break;
-			case 3:{
+			case 4:{
 				tournament.showDonators();
 			}
-			case 4:{
+			case 5:{
 				break;
 			}
 			default:break;

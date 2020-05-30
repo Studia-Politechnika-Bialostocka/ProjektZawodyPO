@@ -6,7 +6,6 @@ import java.util.Scanner;
 public class Main {
 	public static Beach beach = new Beach();
 	public static void main(String[] args) {
-		System.out.println("halo");
 		beach.newvTeamList(beach.importFromFileVolleyball());
 		beach.newdTeamList(beach.importFromFileDodgeball());
 		//beach.newtTeamList(beach.importFromFileTug_of_War());

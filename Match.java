@@ -38,7 +38,7 @@ public class Match {
 		finalScore="";
 		boolean check=true;
 		System.out.println("\nKto wygral? Wcisnij \'1\', jezeli "+teamOne+", a \'2\', jezeli "+teamTwo+"\nTwoj wybor:");
-		Scanner in = new Scanner(System.in);
+		Scanner in = new Scanner("System.in");
 		int result;
 		do {
 			result = in.nextInt();

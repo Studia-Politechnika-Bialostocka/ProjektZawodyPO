@@ -12,7 +12,47 @@ public class Beach{
 	private LinkedList<Referee> listOfReferee = new LinkedList<>();
 	private LinkedList<AssistantReferee> listOfAssistantReferee = new LinkedList<>();
 	private LinkedList<Tournament> listOfTournaments = new LinkedList<>();
-	
+	private LinkedList<Donator> listOfDonators = new LinkedList<>();
+
+	public LinkedList<Tournament> getTournaments() {
+		return listOfTournaments;
+	}
+
+	public void addDonatorToList(Donator donatorInParameter)
+	{
+		listOfDonators.add(donatorInParameter);
+	}
+
+	public void showAllDonatorsFromBeach()
+	{
+		int i=0;
+		for(Donator exampleDonator: listOfDonators)
+		{
+			System.out.println(i+" :"+exampleDonator);
+			++i;
+		}
+	}
+
+	public int getAmountOfDonators()
+	{
+		int i=-1;
+		for(Donator exampleDonator: listOfDonators)
+			++i;
+		return i;
+	}
+
+	public Donator getDonator(int index){
+		return listOfDonators.get(index);
+
+	}
+	public void showAllTournaments() {
+		for (int i = 0; i < listOfTournaments.size(); i++) {
+			System.out.println((i) + ". " + listOfTournaments.get(i).getNameOfTournament());
+		}
+	}
+
+	public void removeDonator(int index){ listOfDonators.remove(index);}
+
 	public void addTournament(Tournament t) {
 		listOfTournaments.add(t);
 	}
@@ -21,13 +61,13 @@ public class Beach{
 		vTeams= s;
 	}
 	
-	public LinkedList<Volleyball> getVTeam() { return vTeams; }
+	public LinkedList<Volleyball> getVTeams() { return vTeams; }
 	
-	public LinkedList<Dodgeball> getDTeam() {
+	public LinkedList<Dodgeball> getDTeams() {
 		return dTeams;
 	}
 	
-	public LinkedList<Tug_of_War> getTTeam() {
+	public LinkedList<Tug_of_War> getTTeams() {
 		return tTeams;
 	}
 	
@@ -43,30 +83,79 @@ public class Beach{
 		tTeams.add(t);
 	}
 	
-	public void deleteVTeam(Volleyball v) {
-		vTeams.remove(v);
+	public void deleteVTeam(int index) {
+		vTeams.remove(index);
 	}
 	
-	public void deleteDTeam(Dodgeball d) {
-		dTeams.remove(d);
+	public void deleteDTeam(int index) {
+		dTeams.remove(index);
 	}
 	
-	public void deleteTTeam(Tug_of_War t) {
-		tTeams.remove(t);
+	public void deleteTTeam(int index) {
+		tTeams.remove(index);
 	}
 	
 	public void showAllVTeams() {
-		for (Volleyball vteam : vTeams) System.out.println(vteam);
+		int i = 0;
+		for (Volleyball vteam : vTeams) {
+			System.out.println(i + " :" + vteam);
+			i++;
+		}
 	}
 	
-	public void showAllDTeams() {
-		for (Dodgeball dteam : dTeams) System.out.println(dteam);
+	public void showAllDTeams()
+	{
+		int i=0;
+		for (Dodgeball dteam : dTeams) {
+			System.out.println(i+" :"+dteam);
+			++i;
+		}
 	}
 	
-	public void showAllTTeams() {
-		for (Tug_of_War tteam : tTeams) System.out.println(tteam);
+	public void showAllTTeams()
+	{
+		int i=0;
+		for (Tug_of_War tteam : tTeams) {
+			System.out.println(i + " :" + tteam);
+			++i;
+		}
 	}
-	
+	public void showAllVDTTeams()
+	{
+		int i=0;
+		for(Volleyball exampleMatch: vTeams) {
+			System.out.println(i+" :"+exampleMatch);
+			++i;
+		}
+		for(Dodgeball exampleMatch: dTeams) {
+			System.out.println(i + " :" + exampleMatch);
+			++i;
+		}
+		for(Tug_of_War exampleMatch: tTeams){
+			System.out.println(i+" :"+exampleMatch);
+			++i;
+		}
+	}
+	public int getAmountOfTeams(int parameter)
+	{
+		int i=-1;
+		switch(parameter){
+			case 0:
+				for(Volleyball exampleTeam: vTeams)
+					++i;
+				return i;
+			case 1:
+				for(Dodgeball exampleTeam: dTeams)
+					++i;
+				return i;
+			case 2:
+				for(Tug_of_War exampleTeam: tTeams)
+					++i;
+				return i;
+			default:
+				return 0;
+		}
+	}
 	public void addReferee(Referee r) {
 		listOfReferee.add(r);
 	}
@@ -75,26 +164,66 @@ public class Beach{
 		listOfAssistantReferee.add(ar);
 	}
 	
-	public void deleteReferee(Referee r) {
+	public void deleteReferee(int r) {
 		listOfReferee.remove(r);
 	}
 	
-	public void deleteAssistantReferee(AssistantReferee ar) {
+	public void deleteAssistantReferee(int ar) {
 		listOfAssistantReferee.remove(ar);
 	}
 	
-	public void showAllReferee() {
-		for (Referee ref : listOfReferee) System.out.println(ref);
+
+	public void showAllReferees(){
+		System.out.println("Sedziowie glowni");
+		int i=0;
+		for (Referee exampleReferee : listOfReferee) {
+			System.out.println(i + " :" + exampleReferee);
+			++i;
+		}
 	}
-	
-	public void showAllAssistantReferee() {
-		for (AssistantReferee aref : listOfAssistantReferee) System.out.println(aref);
+	public void showAllAssistantReferee(){
+		System.out.println("Sedziowie asystujacy");
+		int i=0;
+		for (AssistantReferee exampleAssReferee : listOfAssistantReferee) {
+			System.out.println(i + " :" + exampleAssReferee);
+			++i;
+		}
+	}
+	public void showReferees_MainAndAssistant(){
+		int i=0;
+		System.out.println("Sedziowie glowni");
+		for (Referee exampleReferee : listOfReferee) {
+			System.out.println(exampleReferee);
+			++i;
+		}
+		System.out.println("Sedziowie asystujacy");
+		for (AssistantReferee exampleAssReferee : listOfAssistantReferee) {
+			System.out.println(exampleAssReferee);
+			++i;
+		}
 	}
 	public LinkedList<Referee> getReferee(){ return listOfReferee;}
 
 	public LinkedList<AssistantReferee> getAssistantReferee(){return listOfAssistantReferee;}
 
 	public LinkedList<Tournament> getTournament(){return listOfTournaments;}
+
+	public int getAmountOfReferee()
+	{
+		int i=-1;
+		for (Referee exampleReferee : listOfReferee)
+			++i;
+		return i;
+	}
+	public int getAmountOfAssistantReferee(){
+		int i=-1;
+		for (AssistantReferee exampleAssReferee : listOfAssistantReferee)
+			++i;
+		return i;
+	}
+	public LinkedList<Referee> getListOfReferee() {return listOfReferee;}
+
+	public LinkedList<AssistantReferee> getListOfAssistantReferee() {return listOfAssistantReferee;}
 
 	public void saveToFile(LinkedList<Volleyball> v,LinkedList<Dodgeball> d,LinkedList<Tug_of_War> t, LinkedList<Referee> r, LinkedList<AssistantReferee> ar, LinkedList<Tournament> tour) {
 		try {

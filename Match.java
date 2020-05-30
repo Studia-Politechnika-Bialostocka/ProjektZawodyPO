@@ -97,9 +97,6 @@ public class Match {
 	public String toString() {
 		String typeOfMatchInString = null;
 		switch (typeOfMatch) {
-			case 0:
-				typeOfMatchInString = "Siatkowka";
-				break;
 			case 1:
 				typeOfMatchInString = "Dwa ognie";
 				break;
@@ -109,10 +106,10 @@ public class Match {
 			default:
 				break;
 		}
-		if (isScoreSet) {
-			return "Konkurencja" + typeOfMatchInString + ". " + teamOne + " i " + teamTwo + ". Zwyciezca:" + winner + ". Wynik: " + finalScore;
-		} else {
-			return "Konkurencja" + typeOfMatchInString + ". " + teamOne + " i " + teamTwo + ". Zwyciezca: nieustalony. Wynik: nieustalony";
-		}
+		if (isScoreSet)
+			return "Konkurencja" + typeOfMatchInString + ". " + teamOne + " i " + teamTwo + ". Zwyciezca:" + winner + ". Wynik: " + finalScore+"\n";
+		 else
+			return "Konkurencja" + typeOfMatchInString + ". " + teamOne + " i " + teamTwo + ". Zwyciezca: nieustalony. Wynik: nieustalony\n";
+
 	}
 }

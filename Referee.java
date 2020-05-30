@@ -1,6 +1,8 @@
 package def;
 
-public class Referee {
+
+
+public class Referee{
 	protected String name;
 	protected String lastName;
 	protected int numOfMatches = 0;
@@ -10,15 +12,12 @@ public class Referee {
 		this.lastName = lastName;
 	}
 
-	public String getFullName() {
-		return name + " " + lastName;
-	}
 
 	public void documentMatch() {
 		numOfMatches++;
 	}
 
 	public String toString() {
-		return "Name: " + getFullName() + "\nMatches reffed: " + numOfMatches;
+		return name + " " +lastName + " " + numOfMatches;
 	}
 }

@@ -38,7 +38,7 @@ public class Match {
 		finalScore="";
 		boolean check=true;
 		System.out.println("\nKto wygral? Wcisnij \'1\', jezeli "+teamOne+", a \'2\', jezeli "+teamTwo+"\nTwoj wybor:");
-		Scanner in = new Scanner("System.in");
+		Scanner in = new Scanner(System.in);
 		int result;
 		do {
 			result = in.nextInt();
@@ -49,6 +49,7 @@ public class Match {
 			winner = teamOne;
 		else
 			winner = teamTwo;
+
 		check=true;
 		System.out.println("\nIle setow druga druzyna wygrala? Wybierz miedzy wartoscia 0, 1 oraz 2\nTwoj wybor:");
 		do {
@@ -84,13 +85,17 @@ public class Match {
 		return winner;
 	}
 
+	public Team getLoser()
+	{
+		if (winner.equals(teamOne))
+			return teamTwo;
+		else
+			return teamOne;
+	}
 
 	public String toString() {
 		String typeOfMatchInString = null;
 		switch (typeOfMatch) {
-			case 0:
-				typeOfMatchInString = "Siatkowka";
-				break;
 			case 1:
 				typeOfMatchInString = "Dwa ognie";
 				break;
@@ -100,10 +105,10 @@ public class Match {
 			default:
 				break;
 		}
-		if (isScoreSet) {
-			return "Konkurencja" + typeOfMatchInString + ". " + teamOne + " i " + teamTwo + ". Zwyciezca:" + winner + ". Wynik: " + finalScore;
-		} else {
-			return "Konkurencja" + typeOfMatchInString + ". " + teamOne + " i " + teamTwo + ". Zwyciezca: nieustalony. Wynik: nieustalony";
-		}
+		if (isScoreSet)
+			return "Konkurencja" + typeOfMatchInString + ". " + teamOne + " i " + teamTwo + " Sędzia:"+referee+". Zwyciezca:" + winner + ". Wynik: " + finalScore+ "\n";
+		 else
+			return "Konkurencja" + typeOfMatchInString + ". " + teamOne + " i " + teamTwo + " Sędzia:"+referee+". Zwyciezca: nieustalony. Wynik: nieustalony\n";
+
 	}
 }

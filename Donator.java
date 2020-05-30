@@ -1,6 +1,6 @@
 package def;
 
-public class Donator {
+public class Donator{
 	private String name;
 	private String lastName;
 	private double allMoneyDonated;

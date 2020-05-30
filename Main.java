@@ -328,8 +328,17 @@ public class Main {
 					beach.addAssistantReferee(new AssistantReferee(refereename[0],refereename[1]));
 			}break;
 			case 2:{
+				//usun sedziow
+				System.out.println("Pokazac sedziow glownych(0) czy asystujacych(1):");
+				int choice_oftype=getChoice(0,1);
+				if(choice_oftype==0)
+				{
+					beach.showAllReferees();
+					System.out.println("Podaj swoj wybor:");
+					int delete=getChoice(0,)
+					beach.deleteReferee();
 
-				//usuń sędziego
+
 			}break;
 			case 3:{
 				//pokaż wszystkich sędziów

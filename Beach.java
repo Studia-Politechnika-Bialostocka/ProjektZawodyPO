@@ -115,25 +115,41 @@ public class Beach{
 		listOfAssistantReferee.add(ar);
 	}
 	
-	public void deleteReferee(Referee r) {
+	public void deleteReferee(int r) {
 		listOfReferee.remove(r);
 	}
 	
-	public void deleteAssistantReferee(AssistantReferee ar) {
+	public void deleteAssistantReferee(int ar) {
 		listOfAssistantReferee.remove(ar);
 	}
 	
-	public void showAllReferee() {
-		for (Referee ref : listOfReferee) System.out.println(ref);
+
+	public void showAllReferees(){
+		System.out.println("Sedziowie glowni");
+		int i=0;
+		for (Referee exampleReferee : listOfReferee) {
+			System.out.println(i + " :" + exampleReferee);
+			++i;
+		}
+	}
+	public void showAllAssistantReferee(){
+		System.out.println("Sedziowie asystujacy");
+		int i=0;
+		for (AssistantReferee exampleAssReferee : listOfAssistantReferee) {
+			System.out.println(i + " :" + exampleAssReferee);
+			++i;
+		}
+
+	}
+
+	public int getAmountOfReferee()
+	{
+
 	}
 
 	public LinkedList<Referee> getListOfReferee() {return listOfReferee;}
 
 	public LinkedList<AssistantReferee> getListOfAssistantReferee() {return listOfAssistantReferee;}
-
-	public void showAllAssistantReferee() {
-		for (AssistantReferee aref : listOfAssistantReferee) System.out.println(aref);
-	}
 
 	public void saveToFile(LinkedList<Volleyball> v,LinkedList<Dodgeball> d,LinkedList<Tug_of_War> t, LinkedList<Referee> r, LinkedList<AssistantReferee> ar, LinkedList<Tournament> tour) {
 		try {

@@ -212,7 +212,7 @@ public class Tournament  {
 	public void showDonators() {
 		int i = 0;
 		for (Donator exampleDonators : donators) {
-			System.out.println(i+" "+exampleDonators);
+			System.out.println(i+":"+exampleDonators);
 			++i;
 		}
 	}

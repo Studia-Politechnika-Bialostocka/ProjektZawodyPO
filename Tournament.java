@@ -23,7 +23,7 @@ public class Tournament  {
 	public String AllMaches="";
 	private int refChoice = 0;
 	private int aRefChoice = 0;
-	private int nrofMatches;
+	public int nrofMatches=0;
 
 
 
@@ -357,11 +357,16 @@ public class Tournament  {
 	public String matchesToString()
 	{
 		String s="";
-		for(Match match : matches)
-			s+=match.toString();
-		for(Match match : matchesOfSemiFinal)
-			s+=match.toString();
+		for(Match match : matches) {
+			s += match.toString();
+			++nrofMatches;
+		}
+		for(Match match : matchesOfSemiFinal) {
+			s += match.toString();
+			++nrofMatches;
+		}
 		s+=matchOfFinal.toString();
+		++nrofMatches;
 		AllMaches = s;
 		return s;
 	}
@@ -394,10 +399,8 @@ public class Tournament  {
 				int i = -1;
 				for (Match exampleMatch : matches)
 					++i;
-				nrofMatches =i+6;
 				return i;
 			case 1:
-				nrofMatches=3+6;
 				return 3;
 			default:
 				return 0;
@@ -413,7 +416,7 @@ public class Tournament  {
 		return lines;
 	}
 	public String toString(){
-		return nameOfTheTournament + " "+ prizePool + " " +typeOfTournament+" "+nrofMatches+  "\n" ;
+		return nameOfTheTournament + " "+ prizePool + " " +typeOfTournament+" "+nrofMatches ;
 	}
 
 }

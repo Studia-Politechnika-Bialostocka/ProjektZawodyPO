@@ -144,9 +144,17 @@ public class Beach{
 
 	public int getAmountOfReferee()
 	{
-
+		int i=-1;
+		for (Referee exampleReferee : listOfReferee)
+			++i;
+		return i;
 	}
-
+	public int getAmountOfAssistantReferee(){
+		int i=-1;
+		for (AssistantReferee exampleAssReferee : listOfAssistantReferee)
+			++i;
+		return i;
+	}
 	public LinkedList<Referee> getListOfReferee() {return listOfReferee;}
 
 	public LinkedList<AssistantReferee> getListOfAssistantReferee() {return listOfAssistantReferee;}

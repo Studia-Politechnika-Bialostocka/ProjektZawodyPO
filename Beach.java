@@ -51,6 +51,8 @@ public class Beach{
 		}
 	}
 
+	public void removeDonator(int index){ listOfDonators.remove(index);}
+
 	public void addTournament(Tournament t) {
 		listOfTournaments.add(t);
 	}

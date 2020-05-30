@@ -316,15 +316,19 @@ public class Main {
 		int choice = 0;
 		choice = keyboard.nextInt();
 		switch (choice){
-			case 1:{
+			case 1: {
+				//dodaj sędziego
 				System.out.println("Enter name of referee: ");
-				String nazwaSędziego = keyboard.next();
+				String[] refereename = keyboard.next().split(" ");
 				System.out.println("Czy to sedzia glowny(0) czy sedzia asystujacy(1):");
 				int typeOfReferee=keyboard.nextInt();
-
-				//dodaj sędziego
+				if(typeOfReferee==0)
+					beach.addReferee(new Referee(refereename[0],refereename[1]));
+				else
+					beach.addAssistantReferee(new AssistantReferee(refereename[0],refereename[1]));
 			}break;
 			case 2:{
+
 				//usuń sędziego
 			}break;
 			case 3:{
@@ -339,10 +343,9 @@ public class Main {
 
 	private static void manageSponsorsForBeach(){
 		System.out.println("1. Add a sponsor");
-		System.out.println("2. Add a sponsor from list");
-		System.out.println("3. Remove a sponsor");
-		System.out.println("4. Show all sponsors");
-		System.out.println("5. Go back");
+		System.out.println("2. Remove a sponsor");
+		System.out.println("3. Show all sponsors");
+		System.out.println("4. Go back");
 		Scanner keyboard = new Scanner(System.in);
 		int choice = 0;
 		choice = keyboard.nextInt();
@@ -353,27 +356,20 @@ public class Main {
 				String[] sponsorName = keyboard.next().split(" ");
 				System.out.println("Enter initial donation of sponsor: ");
 				int initialDonation = keyboard.nextInt();
-				tournament.addDonator(new Donator(sponsorName[0], sponsorName[1], initialDonation));
 				beach.addDonatorToList(new Donator(sponsorName[0],sponsorName[1], initialDonation));
 			}break;
-			case 2: {
-				beach.showAllDonatorsFromBeach();
-				System.out.println("Wybierz swoj wybor<0:"+beach.getAmountOfDonators()+"> :");
-				int choice_2=getChoice(0,beach.getAmountOfDonators());
-				tournament.addDonator(beach.getDonator(choice_2));
-			}break;
-			case 3:{
+			case 2:{
 				//usuń sponsora
 				int choice_2;
-				tournament.showDonators();
-				System.out.println("Wybierz swoj wybor<0:"+tournament.getAmountOfDonators()+"> :");
-				choice_2=getChoice(0,tournament.getAmountOfDonators());
-				tournament.removeDonator(choice_2);
+				beach.showAllDonatorsFromBeach();
+				System.out.println("Wybierz swoj wybor<0:"+beach.getAmountOfDonators()+"> :");
+				choice_2=getChoice(0,beach.getAmountOfDonators());
+				beach.removeDonator(choice_2);
 			}break;
-			case 4:{
-				tournament.showDonators();
+			case 3:{
+				beach.showAllDonatorsFromBeach();
 			}
-			case 5:{
+			case 4:{
 				break;
 			}
 			default:break;

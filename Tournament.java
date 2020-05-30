@@ -87,6 +87,10 @@ public class Tournament  {
 		teams.add(team);
 	}
 
+	public void removeTeam(int index){
+		teams.remove(index);
+	}
+
 	public void roundRobin(){
 		for(Match exampleMatch:matches)
 		{
@@ -277,7 +281,11 @@ public class Tournament  {
 		return typeOfTournament;
 	}
 	public void showAllTeams() {
-		for (Team team : teams) System.out.println(team);
+		int i=0;
+		for (Team team : teams) {
+			System.out.println(team);
+			++i;
+		}
 	}
 	public void removeDonator(int index) {
 		donators.remove(index);
@@ -296,6 +304,12 @@ public class Tournament  {
 		return i;
 	}
 
+	public int getAmountOfTeams(){
+		int i=-1;
+		for(Team exampleTeam: teams)
+			++i;
+		return i;
+	}
 	public void showFinalScores() {
 
 	}

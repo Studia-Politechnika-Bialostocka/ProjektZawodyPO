@@ -185,11 +185,41 @@ public class Main {
 		switch (choice){
 			case 1:{
 				System.out.println("Enter name of referee: ");
-				String refereeName = keyboard.next();
+				String[] refereeName = keyboard.next().split(" ");
 				//dodaj sędziego
+				if(tournament.getTypeOfTournament()==0) {
+					System.out.println("Czy to sedzia glowny(0) czy sedzia asystujacy(1):");
+					int typeOfReferee = getChoice(0,1);
+					if (typeOfReferee == 0) {
+						tournament.addReferee(new Referee(refereeName[0], refereeName[1]));
+						beach.addReferee(new Referee(refereeName[0]),refereeName[1]);
+					}
+					else {
+						tournament.addAssistantReferee(new AssistantReferee(refereeName[0], refereeName[1]));
+						beach.addAssistantReferee(new AssistantReferee(refereeName[0],refereeName[1]));
+					}
+				}
+				else				{
+					tournament.addReferee(new Referee(refereeName[0],refereeName[1]));
+					beach.addReferee(new Referee(refereeName[0],refereeName[1]));
+				}
 			}break;
 			case 2:{
-				//usuń sędziego
+				//usun sedziow
+				System.out.println("Pokazac sedziow glownych(0) czy asystujacych(1):");
+				int choice_oftype = getChoice(0, 1);
+				if (choice_oftype == 0) {
+					tournament.showAllReferees();
+					System.out.println("Podaj swoj wybor:");
+					int delete = getChoice(0, beach.getAmountOfReferee());
+					beach.deleteReferee(delete);
+				}
+				else {
+					beach.showAllAssistantReferee();
+					System.out.println("Podaj swoj wybor:");
+					int delete = getChoice(0, beach.getAmountOfAssistantReferee());
+					beach.deleteAssistantReferee(delete);
+
 			}break;
 			case 3:{
 				//pokaż wszystkich sędziów

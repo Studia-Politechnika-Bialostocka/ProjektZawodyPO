@@ -5,7 +5,6 @@ public class VolleyballMatch extends Match {
 	
 	public VolleyballMatch(Team teamOne, Team teamTwo, Referee ref, int typeOfMatch, AssistantReferee ar1, AssistantReferee ar2) {
 		super(teamOne, teamTwo, ref, typeOfMatch);
-		assistantReferees = new AssistantReferee[2];
 		assistantReferees[0] = ar1;
 		assistantReferees[1] = ar2;
 		ar1.documentMatch();

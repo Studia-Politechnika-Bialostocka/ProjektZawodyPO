@@ -16,14 +16,15 @@ public class Main {
 			System.out.println("1. Add a tournament.");
 			System.out.println("2. Display list of tournaments.");
 			System.out.println("3. Select a tournament.");
-			System.out.println("4. Exit the program.");
+			System.out.println("4. Select a tournament.");
+			System.out.println("5. Exit the program.");
 			choice = keyboard.nextInt();
 			switch (choice){
 				case 1:{
 					System.out.println("Enter desired tournament name: ");
 					String nazwa = keyboard.next();
-					System.out.println("Enter desired type_Of_Tournament prize: ");
-					int type_Of_Match = keyboard.nextInt();
+					System.out.println("Enter desired type_Of_Tournament<0,2>:");
+					int type_Of_Match = getChoice(0,2);
 					System.out.println("Enter desired initial prize: ");
 					int initialPrize = keyboard.nextInt();
 					beach.addTournament(new Tournament(nazwa,100,beach.getListOfReferee(),beach.getListOfAssistantReferee(),type_Of_Match));
@@ -41,6 +42,9 @@ public class Main {
 					//przejdź do turnieju
 				}break;
 				case 4:{
+
+				}break;
+				case 5:{
 					System.exit(0);
 				}
 			}
@@ -49,11 +53,12 @@ public class Main {
 	}
 
 	private static void menu2(Tournament tournament){
-		System.out.println("---------------MENU2---------------");
+
 		Scanner klawiatura = new Scanner(System.in);
 		int goBack = 0;
 		int choice2 = 0;
 		while(goBack == 0){
+			System.out.println("---------------MENU2---------------");
 			System.out.println("1. Manage teams");
 			System.out.println("2. Manage referees");
 			System.out.println("3. Manage sponsors");
@@ -218,7 +223,6 @@ public class Main {
 				case 2: {
 					//pokaż wyniki meczów
 					tournament.showAllMatchesIn_RoundRobin_SemiFinals_Finals(levelOfGaming);
-
 				}
 				break;
 				case 3: {

@@ -26,7 +26,10 @@ public class Tournament  {
 
 	public Tournament(String nameOfTheTournament, double Initialprize, LinkedList<Referee> refs, LinkedList<AssistantReferee> arefs,int typeOfTournament) {
 		this.nameOfTheTournament = nameOfTheTournament;
-		prizePool = Initialprize;
+		if(Initialprize>0)
+			prizePool = Initialprize;
+		else
+			prizePool+=0;
 		referees = refs;
 		aReferees = arefs;
 		Random rand = new Random();

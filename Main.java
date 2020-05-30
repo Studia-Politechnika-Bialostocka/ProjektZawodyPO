@@ -22,7 +22,7 @@ public class Main {
 				case 1:{
 					System.out.println("Enter desired tournament name: ");
 					String nazwa = keyboard.next();
-					beach.addTournament(new Tournament());
+					beach.addTournament(new Tournament(beach));
 				}break;
 				case 2:{
 					//wyświetla listę turniejów
@@ -91,7 +91,7 @@ public class Main {
 			case 1:{
 				System.out.println("Entered desired team name: ");
 				String teamName = keyboard.next();
-				System.out.println("")
+				System.out.println("");
 				//dodaj drużynę
 			}break;
 			case 2:{

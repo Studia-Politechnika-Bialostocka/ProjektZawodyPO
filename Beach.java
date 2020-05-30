@@ -124,7 +124,11 @@ public class Beach{
 	public void showAllReferee() {
 		for (Referee ref : listOfReferee) System.out.println(ref);
 	}
-	
+
+	public LinkedList<Referee> getListOfReferee() {return listOfReferee;}
+
+	public LinkedList<AssistantReferee> getListOfAssistantReferee() {return listOfAssistantReferee;}
+
 	public void showAllAssistantReferee() {
 		for (AssistantReferee aref : listOfAssistantReferee) System.out.println(aref);
 	}

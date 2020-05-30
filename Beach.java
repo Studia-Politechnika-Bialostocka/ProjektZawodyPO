@@ -61,13 +61,13 @@ public class Beach{
 		vTeams= s;
 	}
 	
-	public LinkedList<Volleyball> getVTeam() { return vTeams; }
+	public LinkedList<Volleyball> getVTeams() { return vTeams; }
 	
-	public LinkedList<Dodgeball> getDTeam() {
+	public LinkedList<Dodgeball> getDTeams() {
 		return dTeams;
 	}
 	
-	public LinkedList<Tug_of_War> getTTeam() {
+	public LinkedList<Tug_of_War> getTTeams() {
 		return tTeams;
 	}
 	
@@ -96,7 +96,8 @@ public class Beach{
 	}
 	
 	public void showAllVTeams() {
-		for (Volleyball vteam : vTeams) System.out.println(vteam);
+		int i = 1;
+		for (Volleyball vteam : vTeams) {System.out.println(i + ". " + vteam); i++;}
 	}
 	
 	public void showAllDTeams() {

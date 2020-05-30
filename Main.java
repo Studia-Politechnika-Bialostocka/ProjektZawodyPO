@@ -98,18 +98,77 @@ public class Main {
 		choice = keyboard.nextInt();
 		switch (choice){
 			case 1:{
-				System.out.println("Entered desired team name: ");
-				String teamName = keyboard.next();
-				System.out.println("");
-				//dodaj drużynę
+				addTeam(tournament);
 			}break;
 			case 2:{
 				//usuń drużynę
 			}break;
 			case 3:{
 				//pokaż wszystkie drużyny
+				tournament.showAllTeams();
 			}
 			case 4:{
+				break;
+			}
+			default:break;
+		}
+	}
+
+	private static void addTeam(Tournament tournament){
+		System.out.println("1. Add an existing team");
+		System.out.println("2. Create a new team");
+		System.out.println("3. Go back");
+		Scanner keyboard = new Scanner(System.in);
+		int choice = 0;
+		choice = keyboard.nextInt();
+		switch (choice){
+			case 1:{
+				//Adding existing teams from list
+				int teamIndex;
+				switch (tournament.getTypeOfTournament()) {
+					case 0:
+						beach.showAllVTeams();
+						System.out.print("Choose a volleyball team: ");
+						teamIndex = keyboard.nextInt() - 1;
+						tournament.addTeam(beach.getVTeams().get(teamIndex));
+						break;
+					case 1:
+						beach.showAllDTeams();
+						System.out.print("Choose a dodgeball team: ");
+						teamIndex = keyboard.nextInt() - 1;
+						tournament.addTeam(beach.getDTeams().get(teamIndex));
+						break;
+					case 2:
+						beach.showAllTTeams();
+						System.out.print("Choose a tug of war team: ");
+						teamIndex = keyboard.nextInt() - 1;
+						tournament.addTeam(beach.getTTeams().get(teamIndex));
+						break;
+				}
+			}break;
+			case 2:{
+				//Creating and adding new teams;
+				System.out.print("Enter desired team name: ");
+				String teamName = keyboard.next();
+				switch (tournament.getTypeOfTournament()) {
+					case 0:
+						Volleyball newVTeam = new Volleyball(teamName);
+						beach.addVTeam(newVTeam);
+						tournament.addTeam(newVTeam);
+						break;
+					case 1:
+						Dodgeball newDTeam = new Dodgeball(teamName);
+						beach.addDTeam(newDTeam);
+						tournament.addTeam(newDTeam);
+						break;
+					case 2:
+						Tug_of_War newTTeam = new Tug_of_War(teamName);
+						beach.addTTeam(newTTeam);
+						tournament.addTeam(newTTeam);
+						break;
+				}
+			}break;
+			case 3:{
 				break;
 			}
 			default:break;
@@ -127,7 +186,7 @@ public class Main {
 		switch (choice){
 			case 1:{
 				System.out.println("Enter name of referee: ");
-				String nazwaSędziego = keyboard.next();
+				String refereeName = keyboard.next();
 				//dodaj sędziego
 			}break;
 			case 2:{
@@ -332,18 +391,18 @@ public class Main {
 				//usun sedziow
 				System.out.println("Pokazac sedziow glownych(0) czy asystujacych(1):");
 				int choice_oftype = getChoice(0, 1);
-				if (choice_oftype == 0) {
-					beach.showAllReferees();
-					System.out.println("Podaj swoj wybor:");
-					int delete = getChoice(0, beach.getAmountOfReferee());
-					beach.deleteReferee(delete);
-				}
-					else {
-						beach.showAllAssistantReferee();
-					System.out.println("Podaj swoj wybor:");
-					int delete = getChoice(0, beach.getAmountOfAssistantReferee());
-					beach.deleteAssistantReferee(delete);
-				}
+					if (choice_oftype == 0) {
+						beach.showAllReferees();
+						System.out.println("Podaj swoj wybor:");
+						int delete = getChoice(0, beach.getAmountOfReferee());
+						beach.deleteReferee(delete);
+					}
+						else {
+							beach.showAllAssistantReferee();
+						System.out.println("Podaj swoj wybor:");
+						int delete = getChoice(0, beach.getAmountOfAssistantReferee());
+						beach.deleteAssistantReferee(delete);
+					}
 				} break;
 				case 3: {
 					//pokaż wszystkich sędziów
@@ -356,7 +415,7 @@ public class Main {
 					break;
 			}
 		}
-	}
+
 
 	private static void manageSponsorsForBeach(){
 		System.out.println("1. Add a sponsor");

@@ -35,6 +35,7 @@ public class Tournament  {
 		Random rand = new Random();
 		//Random rand = new Random();
 		this.typeOfTournament=typeOfTournament;
+		teams = new LinkedList<Team>();
 	}
 
 	private boolean sortCondition(Team t1, Team t2) {
@@ -80,6 +81,10 @@ public class Tournament  {
 				refChoice++;
 			}
 		}
+	}
+
+	public void addTeam(Team team) {
+		teams.add(team);
 	}
 
 	public void roundRobin(){
@@ -215,6 +220,10 @@ public class Tournament  {
 			++i;
 		}
 	}
+
+	public void showAllTeams() {
+		for (Team team : teams) System.out.println(team);
+	}
 	public void removeDonator(int index) {
 		donators.remove(index);
 	}
@@ -242,6 +251,10 @@ public class Tournament  {
 	public Match getMatchRoundRobin(int index)
 	{
 		return matches.get(index);
+	}
+
+	public int getTypeOfTournament() {
+		return typeOfTournament;
 	}
 
 	public void saveToFile() {

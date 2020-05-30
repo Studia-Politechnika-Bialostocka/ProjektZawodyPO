@@ -16,7 +16,7 @@ public class Main {
 			System.out.println("1. Add a tournament.");
 			System.out.println("2. Display list of tournaments.");
 			System.out.println("3. Select a tournament.");
-			System.out.println("4. Select a tournament.");
+			System.out.println("4. Manage teams, referees etc. in beach");
 			System.out.println("5. Exit the program.");
 			choice = keyboard.nextInt();
 			switch (choice){
@@ -42,7 +42,7 @@ public class Main {
 					//przejdź do turnieju
 				}break;
 				case 4:{
-
+					menuForBeach();
 				}break;
 				case 5:{
 					System.exit(0);
@@ -67,10 +67,10 @@ public class Main {
 			choice2 = klawiatura.nextInt();
 			switch (choice2){
 				case 1:{
-					manageTeams();
+					manageTeams(tournament);
 				}break;
 				case 2:{
-					manageReferees();
+					manageReferees(tournament);
 				}break;
 				case 3:{
 					manageSponsors(tournament);
@@ -88,7 +88,7 @@ public class Main {
 		}
 	}
 
-	private static void manageTeams(){
+	private static void manageTeams(Tournament tournament){
 		System.out.println("1. Add a team");
 		System.out.println("2. Remove a team");
 		System.out.println("3. Show all teams");
@@ -116,7 +116,7 @@ public class Main {
 		}
 	}
 
-	private static void manageReferees(){
+	private static void manageReferees(Tournament tournament){
 		System.out.println("1. Add a referee");
 		System.out.println("2. Remove a referee");
 		System.out.println("3. Show all referees");
@@ -247,6 +247,137 @@ public class Main {
 			choice_within_method = in.nextInt();
 		}while(choice_within_method<d_gran  || choice_within_method > g_gran);
 		return choice_within_method;
+	}
+	private static void menuForBeach(){
+
+		Scanner klawiatura = new Scanner(System.in);
+		int goBack = 0;
+		int choice2 = 0;
+		while(goBack == 0){
+			System.out.println("---------------EDIT_BEACH---------------");
+			System.out.println("1. Manage teams");
+			System.out.println("2. Manage referees");
+			System.out.println("3. Manage sponsors");
+			System.out.println("4. Go back");
+			choice2 = klawiatura.nextInt();
+			switch (choice2){
+				case 1:{
+					manageTeamsForBeach();
+				}break;
+				case 2:{
+					manageRefereesForBeach();
+				}break;
+				case 3:{
+					manageSponsorsForBeach();
+				}break;
+				case 4:{
+					goBack = 1;
+				}
+				break;
+				default: break;
+
+			}
+		}
+	}
+	private static void manageTeamsForBeach(){
+		System.out.println("1. Add a team");
+		System.out.println("2. Remove a team");
+		System.out.println("3. Show all teams");
+		System.out.println("4. Go back");
+		Scanner keyboard = new Scanner(System.in);
+		int choice = 0;
+		choice = keyboard.nextInt();
+		switch (choice){
+			case 1:{
+				System.out.println("Entered desired team name: ");
+				String teamName = keyboard.next();
+				System.out.println("");
+				//dodaj drużynę
+			}break;
+			case 2:{
+				//usuń drużynę
+			}break;
+			case 3:{
+				//pokaż wszystkie drużyny
+			}
+			case 4:{
+				break;
+			}
+			default:break;
+		}
+	}
+
+	private static void manageRefereesForBeach(){
+		System.out.println("1. Add a referee");
+		System.out.println("2. Remove a referee");
+		System.out.println("3. Show all referees");
+		System.out.println("4. Go back");
+		Scanner keyboard = new Scanner(System.in);
+		int choice = 0;
+		choice = keyboard.nextInt();
+		switch (choice){
+			case 1:{
+				System.out.println("Enter name of referee: ");
+				String nazwaSędziego = keyboard.next();
+				System.out.println("Czy to sedzia glowny(0) czy sedzia asystujacy(1):");
+				int typeOfReferee=keyboard.nextInt();
+
+				//dodaj sędziego
+			}break;
+			case 2:{
+				//usuń sędziego
+			}break;
+			case 3:{
+				//pokaż wszystkich sędziów
+			}
+			case 4:{
+				break;
+			}
+			default:break;
+		}
+	}
+
+	private static void manageSponsorsForBeach(){
+		System.out.println("1. Add a sponsor");
+		System.out.println("2. Add a sponsor from list");
+		System.out.println("3. Remove a sponsor");
+		System.out.println("4. Show all sponsors");
+		System.out.println("5. Go back");
+		Scanner keyboard = new Scanner(System.in);
+		int choice = 0;
+		choice = keyboard.nextInt();
+		switch (choice){
+			case 1:{
+				//dodaj sponsora
+				System.out.println("Enter name of sponsor: ");
+				String[] sponsorName = keyboard.next().split(" ");
+				System.out.println("Enter initial donation of sponsor: ");
+				int initialDonation = keyboard.nextInt();
+				tournament.addDonator(new Donator(sponsorName[0], sponsorName[1], initialDonation));
+				beach.addDonatorToList(new Donator(sponsorName[0],sponsorName[1], initialDonation));
+			}break;
+			case 2: {
+				beach.showAllDonatorsFromBeach();
+				System.out.println("Wybierz swoj wybor<0:"+beach.getAmountOfDonators()+"> :");
+				int choice_2=getChoice(0,beach.getAmountOfDonators());
+				tournament.addDonator(beach.getDonator(choice_2));
+			}break;
+			case 3:{
+				//usuń sponsora
+				int choice_2;
+				tournament.showDonators();
+				System.out.println("Wybierz swoj wybor<0:"+tournament.getAmountOfDonators()+"> :");
+				choice_2=getChoice(0,tournament.getAmountOfDonators());
+				tournament.removeDonator(choice_2);
+			}break;
+			case 4:{
+				tournament.showDonators();
+			}
+			case 5:{
+				break;
+			}
+			default:break;
+		}
 	}
 }
 

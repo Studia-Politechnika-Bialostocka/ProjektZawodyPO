@@ -335,13 +335,19 @@ public class Main {
 				if (choice_oftype == 0) {
 					beach.showAllReferees();
 					System.out.println("Podaj swoj wybor:");
-					int delete = getChoice(0, )
-					beach.deleteReferee();
-
-
+					int delete = getChoice(0, beach.getAmountOfReferee());
+					beach.deleteReferee(delete);
+				}
+					else {
+						beach.showAllAssistantReferee();
+					System.out.println("Podaj swoj wybor:");
+					int delete = getChoice(0, beach.getAmountOfAssistantReferee());
+					beach.deleteAssistantReferee(delete);
+				}
 				} break;
 				case 3: {
 					//pokaż wszystkich sędziów
+					beach.showReferees_MainAndAssistant();
 				}
 				case 4: {
 					break;

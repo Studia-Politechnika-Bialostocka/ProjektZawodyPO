@@ -1,11 +1,17 @@
 package def;
 
+import java.util.LinkedList;
 import java.util.Scanner;
 
 public class Main {
 	public static Beach beach = new Beach();
 	public static void main(String[] args) {
-
+		beach.newvTeamList(beach.importFromFileVolleyball());
+		beach.newdTeamList(beach.importFromFileDodgeball());
+		//beach.newtTeamList(beach.importFromFileTug_of_War());
+		beach.newReferee(beach.importFromFileRefeere());
+		beach.newAssistanceReferee(beach.importFromFileAssistantReferee());
+		beach.importFromFileTournament(beach);
 		int menu = 0;
 		int menu2 = 0;
 		int choice = 0;
@@ -32,7 +38,7 @@ public class Main {
 				case 2:{
 					//wyświetla listę turniejów
 					beach.showAllTournaments();
-					beach.saveToFile(beach.getVTeams(), beach.getDTeams(), beach.getTTeams(), beach.getListOfReferee(), beach.getListOfAssistantReferee(), beach.getTournaments());
+					beach.saveToFile(beach.getVTeams(), beach.getDTeams(), beach.getTTeams(), beach.getListOfReferee(), beach.getListOfAssistantReferee(), beach.getTournament());
 				}break;
 				case 3:{
 					beach.showAllTournaments();
@@ -198,17 +204,15 @@ public class Main {
 					System.out.println("Czy to sedzia glowny(0) czy sedzia asystujacy(1):");
 					int typeOfReferee = getChoice(0,1);
 					if (typeOfReferee == 0) {
-						tournament.addReferee(new Referee(refereeName, refereelastName));
 						beach.addReferee(new Referee(refereeName,refereelastName));
 					}
 					else {
-						tournament.addAssistantReferee(new AssistantReferee(refereeName, refereelastName));
 						beach.addAssistantReferee(new AssistantReferee(refereeName, refereelastName));
 					}
 				}
 				else				{
-					tournament.addReferee(new Referee(refereeName, refereelastName));
-					beach.addReferee(new Referee(refereeName, refereelastName));
+					Referee r = new Referee(refereeName,refereelastName);
+					beach.addReferee(r);
 				}
 			}break;
 			case 2:{
@@ -262,11 +266,13 @@ public class Main {
 			case 1:{
 				//dodaj sponsora
 				System.out.println("Enter name of sponsor: ");
-				String[] sponsorName = keyboard.next().split(" ");
+				String sponsorName = keyboard.next();
+				System.out.println("Enter lastname of sponsor: ");
+				String sponsorLastname= keyboard.next();
 				System.out.println("Enter initial donation of sponsor: ");
 				int initialDonation = keyboard.nextInt();
-				tournament.addDonator(new Donator(sponsorName[0], sponsorName[1], initialDonation));
-				beach.addDonatorToList(new Donator(sponsorName[0],sponsorName[1], initialDonation));
+				tournament.addDonator(new Donator(sponsorName, sponsorLastname, initialDonation));
+				beach.addDonatorToList(new Donator(sponsorName, sponsorLastname, initialDonation));
 			}break;
 			case 2: {
 				beach.showAllDonatorsFromBeach();
@@ -462,13 +468,15 @@ public class Main {
 			case 1: {
 				//dodaj sędziego
 				System.out.println("Enter name of referee: ");
-				String[] refereename = keyboard.next().split(" ");
+				String refereename = keyboard.next();
+				System.out.println("Enter lastname of referee: ");
+				String refereeLastname = keyboard.next();
 				System.out.println("Czy to sedzia glowny(0) czy sedzia asystujacy(1):");
 				int typeOfReferee = keyboard.nextInt();
 				if (typeOfReferee == 0)
-					beach.addReferee(new Referee(refereename[0], refereename[1]));
+					beach.addReferee(new Referee(refereename, refereeLastname));
 				else
-					beach.addAssistantReferee(new AssistantReferee(refereename[0], refereename[1]));
+					beach.addAssistantReferee(new AssistantReferee(refereename, refereeLastname));
 			}
 			break;
 			case 2: {
@@ -513,10 +521,12 @@ public class Main {
 			case 1:{
 				//dodaj sponsora
 				System.out.println("Enter name of sponsor: ");
-				String[] sponsorName = keyboard.next().split(" ");
+				String sponsorName = keyboard.next();
+				System.out.println("Enter name of sponsor: ");
+				String sponsorLastname = keyboard.next();
 				System.out.println("Enter initial donation of sponsor: ");
 				int initialDonation = keyboard.nextInt();
-				beach.addDonatorToList(new Donator(sponsorName[0],sponsorName[1], initialDonation));
+				beach.addDonatorToList(new Donator(sponsorName,sponsorLastname, initialDonation));
 			}break;
 			case 2:{
 				//usuń sponsora

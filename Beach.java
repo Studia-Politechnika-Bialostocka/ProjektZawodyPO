@@ -48,6 +48,7 @@ public class Beach{
 	public void showAllTournaments() {
 		for (int i = 0; i < listOfTournaments.size(); i++) {
 			System.out.println((i) + ". " + listOfTournaments.get(i).getNameOfTournament());
+			System.out.println(listOfTournaments.get(i).AllMaches);
 		}
 	}
 
@@ -59,6 +60,19 @@ public class Beach{
 
 	public void newvTeamList(LinkedList<Volleyball> s){
 		vTeams= s;
+	}
+	public void newdTeamList(LinkedList<Dodgeball> d){
+		dTeams= d;
+	}
+	public void newtTeamList(LinkedList<Tug_of_War> t){
+		tTeams= t;
+	}
+
+	public void newReferee(LinkedList<Referee> r){
+		listOfReferee= r;
+	}
+	public void newAssistanceReferee(LinkedList<AssistantReferee> ar){
+		listOfAssistantReferee= ar;
 	}
 	
 	public LinkedList<Volleyball> getVTeams() { return vTeams; }
@@ -282,15 +296,19 @@ public class Beach{
 			System.out.println(e);
 		}
 		try {
+			System.out.println("halo");
 			FileWriter fileWriter = new FileWriter("TournamentFile.txt");
 			PrintWriter printWriter = new PrintWriter(fileWriter);
+			System.out.println(tour.size());
 			for (Tournament tournament : tour) {
 				printWriter.print(tournament.toString());
 				printWriter.print("\n");
+				printWriter.print((tournament.AllMaches));
 			}
 			printWriter.close();
 		} catch (Exception e) {
 			System.out.println(e);
+
 		}
 	}
 	public LinkedList<Volleyball> importFromFileVolleyball() {
@@ -299,7 +317,6 @@ public class Beach{
 		try {
 			in = new BufferedReader(new FileReader("VolleyballFile.txt"));
 			String buf;
-			int index=0;
 			while ((buf = in.readLine()) != null)
 			{
 				String[] s = buf.split(" ");
@@ -308,6 +325,7 @@ public class Beach{
 				v1.setLosses(Integer.parseInt(s[2]));
 				v1.setSetsWon(Integer.parseInt(s[3]));
 				v.add(v1);
+
 			}
 			} catch (FileNotFoundException fileNotFoundException) {
 			fileNotFoundException.printStackTrace();
@@ -316,6 +334,126 @@ public class Beach{
 		}
 
 		return v;
+	}
+	public LinkedList<Dodgeball> importFromFileDodgeball() {
+		LinkedList<Dodgeball> d = new LinkedList<>();
+		BufferedReader in = null;
+		try {
+			in = new BufferedReader(new FileReader("DodgeballFile.txt"));
+			String buf;
+			while ((buf = in.readLine()) != null)
+			{
+				String[] s = buf.split(" ");
+				Dodgeball v1 = new Dodgeball(s[0]);
+				v1.setWins(Integer.parseInt(s[1]));
+				v1.setLosses(Integer.parseInt(s[2]));
+				v1.setSetsWon(Integer.parseInt(s[3]));
+				d.add(v1);
+			}
+		} catch (FileNotFoundException fileNotFoundException) {
+			fileNotFoundException.printStackTrace();
+		} catch (IOException ioException) {
+			ioException.printStackTrace();
+		}
+
+		return d;
+	}
+	public LinkedList<Tug_of_War> importFromFileTug_of_War() {
+		LinkedList<Tug_of_War> t = new LinkedList<>();
+		BufferedReader in = null;
+		try {
+			in = new BufferedReader(new FileReader("Tug_of_War.txt"));
+			String buf;
+			while ((buf = in.readLine()) != null)
+			{
+				String[] s = buf.split(" ");
+				Tug_of_War v1 = new Tug_of_War(s[0]);
+				v1.setWins(Integer.parseInt(s[1]));
+				v1.setLosses(Integer.parseInt(s[2]));
+				v1.setSetsWon(Integer.parseInt(s[3]));
+				t.add(v1);
+			}
+		} catch (FileNotFoundException fileNotFoundException) {
+			fileNotFoundException.printStackTrace();
+		} catch (IOException ioException) {
+			ioException.printStackTrace();
+		}
+
+		return t;
+	}
+	public LinkedList<Referee> importFromFileRefeere() {
+		LinkedList<Referee> r = new LinkedList<>();
+		BufferedReader in = null;
+		try {
+			in = new BufferedReader(new FileReader("RefereeFile.txt"));
+			String buf;
+			while ((buf = in.readLine()) != null)
+			{
+				String[] s = buf.split(" ");
+				Referee v1 = new Referee(s[0],s[1]);
+				v1.numOfMatches = Integer.parseInt(s[2]);
+				r.add(v1);
+			}
+		} catch (FileNotFoundException fileNotFoundException) {
+			fileNotFoundException.printStackTrace();
+		} catch (IOException ioException) {
+			ioException.printStackTrace();
+		}
+
+		return r;
+	}
+
+	public LinkedList<AssistantReferee> importFromFileAssistantReferee() {
+		LinkedList<AssistantReferee> ar = new LinkedList<>();
+		BufferedReader in = null;
+		try {
+			in = new BufferedReader(new FileReader("AssistanceRefereeFile.txt"));
+			String buf;
+			while ((buf = in.readLine()) != null)
+			{
+				String[] s = buf.split(" ");
+				AssistantReferee v1 = new AssistantReferee(s[0],s[1]);
+				v1.numOfMatches = Integer.parseInt(s[2]);
+				ar.add(v1);
+			}
+		} catch (FileNotFoundException fileNotFoundException) {
+			fileNotFoundException.printStackTrace();
+		} catch (IOException ioException) {
+			ioException.printStackTrace();
+		}
+
+		return ar;
+	}
+	public void importFromFileTournament(Beach b) {
+		LinkedList<Tournament> tou = new LinkedList<>();
+		BufferedReader in = null;
+		try {
+			in = new BufferedReader(new FileReader("TournamentFile.txt"));
+			String buf;
+			String buff;
+			int index;
+			while ((buf = in.readLine()) != null && buf!="")
+			{
+				String[] s = buf.split(" ");
+					Tournament v1 = new Tournament(s[0], Double.parseDouble(s[1]), b.getReferee(), b.getAssistantReferee(), Integer.parseInt(s[2]));
+				for(int i=0;i<Integer.parseInt(s[3]);++i)
+				{
+					buf=in.readLine();
+					v1.AllMaches+=buf+"\n";
+				}
+				b.addTournament(v1);
+				}
+
+
+
+
+		} catch (FileNotFoundException fileNotFoundException) {
+			fileNotFoundException.printStackTrace();
+		} catch (IOException ioException) {
+			ioException.printStackTrace();
+		}
+
+
 	}
 
 

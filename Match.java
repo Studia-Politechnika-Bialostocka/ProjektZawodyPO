@@ -93,7 +93,6 @@ public class Match {
 			return teamOne;
 	}
 
-
 	public String toString() {
 		String typeOfMatchInString = null;
 		switch (typeOfMatch) {
@@ -107,9 +106,9 @@ public class Match {
 				break;
 		}
 		if (isScoreSet)
-			return "Konkurencja" + typeOfMatchInString + ". " + teamOne + " i " + teamTwo + ". Zwyciezca:" + winner + ". Wynik: " + finalScore+"\n";
+			return "Konkurencja" + typeOfMatchInString + ". " + teamOne + " i " + teamTwo + " Sędzia:"+referee+". Zwyciezca:" + winner + ". Wynik: " + finalScore+ "\n";
 		 else
-			return "Konkurencja" + typeOfMatchInString + ". " + teamOne + " i " + teamTwo + ". Zwyciezca: nieustalony. Wynik: nieustalony\n";
+			return "Konkurencja" + typeOfMatchInString + ". " + teamOne + " i " + teamTwo + " Sędzia:"+referee+". Zwyciezca: nieustalony. Wynik: nieustalony\n";
 
 	}
 }

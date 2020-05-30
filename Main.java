@@ -91,6 +91,7 @@ public class Main {
 			case 1:{
 				System.out.println("Entered desired team name: ");
 				String teamName = keyboard.next();
+				System.out.println("")
 				//dodaj drużynę
 			}break;
 			case 2:{
@@ -133,31 +134,43 @@ public class Main {
 		}
 	}
 
-	private static void manageSponsors(Tournament tournament){
+	private static void manageSponsors(Tournament tournament, Beach beach){
 		System.out.println("1. Add a sponsor");
-		System.out.println("2. Remove a sponsor");
-		System.out.println("3. Show all sponsors");
-		System.out.println("4. Go back");
+		System.out.println("2. Add a sponsor from list");
+		System.out.println("3. Remove a sponsor");
+		System.out.println("4. Show all sponsors");
+		System.out.println("5. Go back");
 		Scanner keyboard = new Scanner(System.in);
 		int choice = 0;
 		choice = keyboard.nextInt();
 		switch (choice){
 			case 1:{
+				//dodaj sponsora
 				System.out.println("Enter name of sponsor: ");
 				String[] sponsorName = keyboard.next().split(" ");
 				System.out.println("Enter initial donation of sponsor: ");
 				int initialDonation = keyboard.nextInt();
-				//dodaj sponsora
 				tournament.addDonator(new Donator(sponsorName[0], sponsorName[1], initialDonation));
+				beach.addDonatorToList(new Donator(sponsorName[0],sponsorName[1], initialDonation));
 			}break;
-			case 2:{
-
-				//usuń sponsora
+			case 2: {
+				beach.showAllDonatorsFromBeach();
+				System.out.println("Wybierz swoj wybor<0:"+beach.getAmountOfDonators()+"> :");
+				int choice_2=getChoice(0,beach.getAmountOfDonators());
+				tournament.addDonator(beach.getDonator(choice_2));
 			}break;
 			case 3:{
+				//usuń sponsora
+				int choice_2;
+				tournament.showDonators();
+				System.out.println("Wybierz swoj wybor<0:"+tournament.getAmountOfDonators()+"> :");
+				choice_2=getChoice(0,tournament.getAmountOfDonators());
+				tournament.removeDonator(choice_2);
+			}break;
+			case 4:{
 				tournament.showDonators();
 			}
-			case 4:{
+			case 5:{
 				break;
 			}
 			default:break;
@@ -209,7 +222,7 @@ public class Main {
 					int wybor;
 					tournament.showAllMatchesIn_RoundRobin_SemiFinals_Finals(levelOfGaming);
 					System.out.println("Podaj swoj wybor <0:" + tournament.countingAmountOfMatchesInRoundRobin(levelOfGaming) + ">:");
-					wybor = wczytaj(0, tournament.countingAmountOfMatchesInRoundRobin(levelOfGaming));
+					wybor = getChoice(0, tournament.countingAmountOfMatchesInRoundRobin(levelOfGaming));
 					tournament.getMatchRoundRobin(wybor).setResult();
 				}
 				break;
@@ -219,13 +232,13 @@ public class Main {
 			}
 		}
 	}
-		private static int wczytaj(int d_gran, int g_gran) {
-		int wybor;
+		private static int getChoice(int d_gran, int g_gran) {
+		int choice_within_method;
 		Scanner in = new Scanner(System.in);
 		do {
-			wybor = in.nextInt();
-		}while(wybor>d_gran  || wybor < g_gran);
-		return wybor;
+			choice_within_method = in.nextInt();
+		}while(choice_within_method<d_gran  || choice_within_method > g_gran);
+		return choice_within_method;
 	}
 }
 

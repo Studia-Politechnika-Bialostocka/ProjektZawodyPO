@@ -128,19 +128,19 @@ public class Main {
 					case 0:
 						beach.showAllVTeams();
 						System.out.print("Choose a volleyball team: ");
-						teamIndex = keyboard.nextInt() - 1;
+						teamIndex = keyboard.nextInt();
 						tournament.addTeam(beach.getVTeams().get(teamIndex));
 						break;
 					case 1:
 						beach.showAllDTeams();
 						System.out.print("Choose a dodgeball team: ");
-						teamIndex = keyboard.nextInt() - 1;
+						teamIndex = keyboard.nextInt();
 						tournament.addTeam(beach.getDTeams().get(teamIndex));
 						break;
 					case 2:
 						beach.showAllTTeams();
 						System.out.print("Choose a tug of war team: ");
-						teamIndex = keyboard.nextInt() - 1;
+						teamIndex = keyboard.nextInt();
 						tournament.addTeam(beach.getTTeams().get(teamIndex));
 						break;
 				}
@@ -185,14 +185,55 @@ public class Main {
 		switch (choice){
 			case 1:{
 				System.out.println("Enter name of referee: ");
-				String refereeName = keyboard.next();
+				String[] refereeName = keyboard.next().split(" ");
 				//dodaj sędziego
+				if(tournament.getTypeOfTournament()==0) {
+					System.out.println("Czy to sedzia glowny(0) czy sedzia asystujacy(1):");
+					int typeOfReferee = getChoice(0,1);
+					if (typeOfReferee == 0) {
+						tournament.addReferee(new Referee(refereeName[0], refereeName[1]));
+						beach.addReferee(new Referee(refereeName[0],refereeName[1]));
+					}
+					else {
+						tournament.addAssistantReferee(new AssistantReferee(refereeName[0], refereeName[1]));
+						beach.addAssistantReferee(new AssistantReferee(refereeName[0],refereeName[1]));
+					}
+				}
+				else				{
+					tournament.addReferee(new Referee(refereeName[0],refereeName[1]));
+					beach.addReferee(new Referee(refereeName[0],refereeName[1]));
+				}
 			}break;
 			case 2:{
-				//usuń sędziego
+				//usun sedziow
+				if(tournament.getTypeOfTournament()==0) {
+					System.out.println("Pokazac sedziow glownych(0) czy asystujacych(1):");
+					int choice_oftype = getChoice(0, 1);
+					if (choice_oftype == 0) {
+						tournament.showReferees();
+						System.out.println("Podaj swoj wybor:");
+						int delete = getChoice(0, tournament.getAmountOfReferee());
+						tournament.removeReferee(delete);
+					} else {
+						tournament.showAssistantReferees();
+						System.out.println("Podaj swoj wybor:");
+						int delete = getChoice(0, tournament.getAmountOfAssistantReferee());
+						tournament.removeAssistantReferee(delete);
+					}
+				}
+				else{
+					tournament.showReferees();
+					System.out.println("Podaj swoj wybor:");
+					int delete = getChoice(0, tournament.getAmountOfReferee());
+					tournament.removeReferee(delete);
+				}
 			}break;
 			case 3:{
 				//pokaż wszystkich sędziów
+				if(tournament.getTypeOfTournament()==0)
+					tournament.showReferees_MainAndAssistant();
+				else
+					tournament.showReferees();
 			}
 			case 4:{
 				break;
@@ -347,13 +388,47 @@ public class Main {
 		choice = keyboard.nextInt();
 		switch (choice){
 			case 1:{
+				//dodaj drużynę
 				System.out.println("Entered desired team name: ");
 				String teamName = keyboard.next();
-				System.out.println("");
-				//dodaj drużynę
+				System.out.println("What type of team is that? Volleyball (0), dodgeball(1) or tug_of_war(2)");
+				int typeOfTournament=getChoice(0,2);
+				switch(typeOfTournament){
+					case 0:
+						beach.addVTeam(new Volleyball(teamName));
+						break;
+					case 1:
+						beach.addDTeam(new Dodgeball(teamName));
+						break;
+					case 2:
+						beach.addTTeam(new Tug_of_War(teamName));
+						break;
+				}
 			}break;
 			case 2:{
 				//usuń drużynę
+				System.out.println("What type of team you want to delete? Volleyball (0), dodgeball(1), tyg_of_war(2)?");
+				int typeOfTournament=getChoice(0,2);
+				switch(typeOfTournament)
+				{
+					case 0:
+						beach.showAllVTeams();
+						System.out.println("Enter index of desired team:");
+						int delete0 = getChoice(0,beach.getAmountOfTeams(0));
+						break;
+					case 1:
+						beach.showAllDTeams();
+						System.out.println("Enter index of desired team:");
+						int delete1 = getChoice(0,beach.getAmountOfTeams(1));
+
+						break;
+					case 2:
+						beach.showAllTTeams();
+						System.out.println("Enter index of desired team:");
+						int delete2 = getChoice(0,beach.getAmountOfTeams(2));
+						break;
+				}
+
 			}break;
 			case 3:{
 				//pokaż wszystkie drużyny

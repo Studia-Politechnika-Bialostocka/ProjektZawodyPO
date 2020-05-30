@@ -220,13 +220,75 @@ public class Tournament  {
 			++i;
 		}
 	}
+	public void addReferee(Referee example_referee)
+	{
+		referees.add(example_referee);
+	}
 
+	public void addAssistantReferee(AssistantReferee example_Ass_referee)
+	{
+		aReferees.add(example_Ass_referee);
+	}
+
+	public void showReferees()
+	{
+		int i=0;
+		for(Referee exampleReferee: referees) {
+			System.out.println(i+" :"+exampleReferee);
+			++i;
+		}
+	}
+	public void showAssistantReferees()
+	{
+		int i=0;
+			for(AssistantReferee exampleAssReferee :aReferees)
+			{
+				System.out.println(i+" :"+exampleAssReferee);
+				++i;
+			}
+	}
+	public void showReferees_MainAndAssistant(){
+		int i=0;
+		System.out.println("Sedziowie glowni");
+		for (Referee exampleReferee : referees) {
+			System.out.println(i + " :" + exampleReferee);
+			++i;
+		}System.out.println("Sedziowie asystujacy");
+		for (AssistantReferee exampleAssReferee : aReferees) {
+			System.out.println(exampleAssReferee);
+			++i;
+		}
+	}
+
+	public int getAmountOfReferee()
+	{
+		int i=-1;
+		for (Referee exampleReferee : referees)
+			++i;
+		return i;
+	}
+	public int getAmountOfAssistantReferee(){
+		int i=-1;
+		for (AssistantReferee exampleAssReferee : aReferees)
+			++i;
+		return i;
+	}
+	public int getTypeOfTournament(){
+		return typeOfTournament;
+	}
 	public void showAllTeams() {
 		for (Team team : teams) System.out.println(team);
 	}
 	public void removeDonator(int index) {
 		donators.remove(index);
 	}
+	public void removeReferee(int index){
+		referees.remove(index);
+	}
+	public void removeAssistantReferee(int index){
+		aReferees.remove(index);
+	}
+
 	public int getAmountOfDonators(){
 		int i=-1;
 		for(Donator exampleDonators:donators)
@@ -248,10 +310,6 @@ public class Tournament  {
 	public Match getMatchRoundRobin(int index)
 	{
 		return matches.get(index);
-	}
-
-	public int getTypeOfTournament() {
-		return typeOfTournament;
 	}
 
 	public void saveToFile() {

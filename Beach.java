@@ -107,7 +107,27 @@ public class Beach{
 	public void showAllTTeams() {
 		for (Tug_of_War tteam : tTeams) System.out.println(tteam);
 	}
-	
+
+	public int getAmountOfTeams(int parameter)
+	{
+		int i=-1;
+		switch(parameter){
+			case 0:
+				for(Volleyball exampleTeam: vTeams)
+					++i;
+				return i;
+			case 1:
+				for(Dodgeball exampleTeam: dTeams)
+					++i;
+				return i;
+			case 2:
+				for(Tug_of_War exampleTeam: tTeams)
+					++i;
+				return i;
+			default:
+				return 0;
+		}
+	}
 	public void addReferee(Referee r) {
 		listOfReferee.add(r);
 	}
@@ -142,12 +162,17 @@ public class Beach{
 		}
 	}
 	public void showReferees_MainAndAssistant(){
+		int i=0;
 		System.out.println("Sedziowie glowni");
-		for (Referee exampleReferee : listOfReferee)
+		for (Referee exampleReferee : listOfReferee) {
 			System.out.println(exampleReferee);
+			++i;
+		}
 		System.out.println("Sedziowie asystujacy");
-		for (AssistantReferee exampleAssReferee : listOfAssistantReferee)
+		for (AssistantReferee exampleAssReferee : listOfAssistantReferee) {
 			System.out.println(exampleAssReferee);
+			++i;
+		}
 	}
 
 	public int getAmountOfReferee()

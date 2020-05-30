@@ -36,7 +36,7 @@ public class Main {
 				case 3:{
 					beach.showAllTournaments();
 					System.out.print("Choose a tournament: ");
-					int tIndex = keyboard.nextInt() - 1; //-1 bo showTournaments zaczyna od jedynki
+					int tIndex = keyboard.nextInt(); //-1 bo showTournaments zaczyna od jedynki
 					menu2(beach.getTournaments().get(tIndex));
 					//przejdź do turnieju
 				}break;

@@ -1,13 +1,11 @@
 package def;
 
-public class InvalidIndexException extends Exception {
+public class InvalidIndexException {
     int invalidIndex;
-
-    InvalidIndexException(int invalidIndex) {
+    InvalidIndexException(int invalidIndex){
         this.invalidIndex = invalidIndex;
     }
-
-    public int InvalidIndex() {
+public int InvalidIndex(){
         return invalidIndex;
-    }
+}
 }

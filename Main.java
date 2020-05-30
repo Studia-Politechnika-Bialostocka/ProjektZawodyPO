@@ -356,7 +356,6 @@ public class Main {
 					break;
 			}
 		}
-	}
 
 	private static void manageSponsorsForBeach(){
 		System.out.println("1. Add a sponsor");

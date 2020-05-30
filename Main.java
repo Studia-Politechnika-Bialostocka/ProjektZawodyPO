@@ -344,8 +344,12 @@ public class Main {
 					tournament.getMatchRoundRobin(wybor).setResult();
 					break;
 						case 1:
-							tournament.getsemi(wybor).setResult();
-				}
+							tournament.getMatchSemiFinals(wybor).setResult();
+							break;
+						case 2:
+							tournament.getMatchFinal().setResult();
+							break;
+					}
 				}
 				break;
 				case 4: {

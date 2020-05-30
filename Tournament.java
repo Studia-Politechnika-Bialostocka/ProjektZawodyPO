@@ -326,6 +326,16 @@ public class Tournament  {
 		return matches.get(index);
 	}
 
+	public Match getMatchSemiFinals(int index)
+	{
+		return matchesOfSemiFinal.get(index);
+	}
+
+	public Match getMatchFinal()
+	{
+		return matchOfFinal;
+	}
+
 	public void saveToFile() {
 
 	}

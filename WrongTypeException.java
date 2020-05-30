@@ -1,7 +1,7 @@
 package def;
 
-public class WrongTypeException {
-    public WrongTypeException(){
+public class WrongTypeException extends Exception {
+    public WrongTypeException() {
 
     }
 }

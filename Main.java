@@ -101,6 +101,10 @@ public class Main {
 			}break;
 			case 2:{
 				//usuń drużynę
+				tournament.showAllTeams();
+				System.out.println("Wybierz druzyne, ktora chcesz usunac:");
+				int delete = getChoice(0,tournament.getAmountOfTeams());
+				tournament.removeTeam(delete);
 			}break;
 			case 3:{
 				//pokaż wszystkie drużyny
@@ -300,22 +304,24 @@ public class Main {
 			switch (choice) {
 				case 1: {
 					if (levelOfGaming == 0) {
-						tournament.roundRobin();
+						tournament.matchesOfRoundRobin();
 						++levelOfGaming;
 					}
-					if (levelOfGaming == 1 && tournament.areAllMatchesPlayedInRoundRobin() == true) {
+					else if (levelOfGaming == 1 && tournament.areAllMatchesPlayedInRoundRobin() == true) {
+						tournament.roundRobin();
 						tournament.matchesOfSemiFinals();
 						++levelOfGaming;
 					}
-					if (levelOfGaming == 2 && tournament.areAllMatchesPlayedInSemiFinals() == true) {
+					else if (levelOfGaming == 2 && tournament.areAllMatchesPlayedInSemiFinals() == true) {
+						tournament.semiFinal();
 						tournament.matchOfFinal();
 						++levelOfGaming;
 					}
-					if (levelOfGaming == 3 && tournament.areAllMatchesPlayedInFinals() == true) {
+					else if (levelOfGaming == 3 && tournament.areAllMatchesPlayedInFinals() == true) {
 						tournament.finalGame();
 						++levelOfGaming;
 					}
-					if (levelOfGaming == 4)
+					else if (levelOfGaming == 4)
 						System.out.println("Zwyciezyl:" + tournament.getWinner().getTeamName());
 				}
 				break;
@@ -430,7 +436,6 @@ public class Main {
 						beach.deleteTTeam(delete2);
 						break;
 				}
-
 			}break;
 			case 3:{
 				beach.showAllVDTTeams();

@@ -192,7 +192,7 @@ public class Main {
 					int typeOfReferee = getChoice(0,1);
 					if (typeOfReferee == 0) {
 						tournament.addReferee(new Referee(refereeName[0], refereeName[1]));
-						beach.addReferee(new Referee(refereeName[0]),refereeName[1]);
+						beach.addReferee(new Referee(refereeName[0],refereeName[1]));
 					}
 					else {
 						tournament.addAssistantReferee(new AssistantReferee(refereeName[0], refereeName[1]));
@@ -206,23 +206,34 @@ public class Main {
 			}break;
 			case 2:{
 				//usun sedziow
-				System.out.println("Pokazac sedziow glownych(0) czy asystujacych(1):");
-				int choice_oftype = getChoice(0, 1);
-				if (choice_oftype == 0) {
-					tournament.showAllReferees();
-					System.out.println("Podaj swoj wybor:");
-					int delete = getChoice(0, beach.getAmountOfReferee());
-					beach.deleteReferee(delete);
+				if(tournament.getTypeOfTournament()==0) {
+					System.out.println("Pokazac sedziow glownych(0) czy asystujacych(1):");
+					int choice_oftype = getChoice(0, 1);
+					if (choice_oftype == 0) {
+						tournament.showReferees();
+						System.out.println("Podaj swoj wybor:");
+						int delete = getChoice(0, tournament.getAmountOfReferee());
+						tournament.removeReferee(delete);
+					} else {
+						tournament.showAssistantReferees();
+						System.out.println("Podaj swoj wybor:");
+						int delete = getChoice(0, tournament.getAmountOfAssistantReferee());
+						tournament.removeAssistantReferee(delete);
+					}
 				}
-				else {
-					beach.showAllAssistantReferee();
+				else{
+					tournament.showReferees();
 					System.out.println("Podaj swoj wybor:");
-					int delete = getChoice(0, beach.getAmountOfAssistantReferee());
-					beach.deleteAssistantReferee(delete);
-
+					int delete = getChoice(0, tournament.getAmountOfReferee());
+					tournament.removeReferee(delete);
+				}
 			}break;
 			case 3:{
 				//pokaż wszystkich sędziów
+				if(tournament.getTypeOfTournament()==0)
+					tournament.showReferees_MainAndAssistant();
+				else
+					tournament.showReferees();
 			}
 			case 4:{
 				break;

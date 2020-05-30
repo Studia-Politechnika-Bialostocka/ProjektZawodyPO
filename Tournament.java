@@ -247,7 +247,32 @@ public class Tournament  {
 				++i;
 			}
 	}
+	public void showReferees_MainAndAssistant(){
+		int i=0;
+		System.out.println("Sedziowie glowni");
+		for (Referee exampleReferee : referees) {
+			System.out.println(i + " :" + exampleReferee);
+			++i;
+		}System.out.println("Sedziowie asystujacy");
+		for (AssistantReferee exampleAssReferee : aReferees) {
+			System.out.println(exampleAssReferee);
+			++i;
+		}
+	}
 
+	public int getAmountOfReferee()
+	{
+		int i=-1;
+		for (Referee exampleReferee : referees)
+			++i;
+		return i;
+	}
+	public int getAmountOfAssistantReferee(){
+		int i=-1;
+		for (AssistantReferee exampleAssReferee : aReferees)
+			++i;
+		return i;
+	}
 	public int getTypeOfTournament(){
 		return typeOfTournament;
 	}
@@ -256,6 +281,12 @@ public class Tournament  {
 	}
 	public void removeDonator(int index) {
 		donators.remove(index);
+	}
+	public void removeReferee(int index){
+		referees.remove(index);
+	}
+	public void removeAssistantReferee(int index){
+		aReferees.remove(index);
 	}
 
 	public int getAmountOfDonators(){

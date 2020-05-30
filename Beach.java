@@ -296,7 +296,6 @@ public class Beach{
 			System.out.println(e);
 		}
 		try {
-			System.out.println("halo");
 			FileWriter fileWriter = new FileWriter("TournamentFile.txt");
 			PrintWriter printWriter = new PrintWriter(fileWriter);
 			System.out.println(tour.size());
@@ -436,6 +435,7 @@ public class Beach{
 			{
 				String[] s = buf.split(" ");
 					Tournament v1 = new Tournament(s[0], Double.parseDouble(s[1]), b.getReferee(), b.getAssistantReferee(), Integer.parseInt(s[2]));
+					v1.nrofMatches=Integer.parseInt(s[3]);
 				for(int i=0;i<Integer.parseInt(s[3]);++i)
 				{
 					buf=in.readLine();

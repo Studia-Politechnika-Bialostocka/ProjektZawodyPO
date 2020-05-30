@@ -22,7 +22,11 @@ public class Main {
 				case 1:{
 					System.out.println("Enter desired tournament name: ");
 					String nazwa = keyboard.next();
-					beach.addTournament(new Tournament(beach));
+					System.out.println("Enter desired type_Of_Tournament prize: ");
+					int type_Of_Match = keyboard.nextInt();
+					System.out.println("Enter desired initial prize: ");
+					int initialPrize = keyboard.nextInt();
+					beach.addTournament(new Tournament(nazwa,100,beach.getListOfReferee(),beach.getListOfAssistantReferee(),type_Of_Match));
 				}break;
 				case 2:{
 					//wyświetla listę turniejów
@@ -67,7 +71,7 @@ public class Main {
 					manageSponsors(tournament);
 				}break;
 				case 4:{
-					goToPlayoffs();
+					goToPlayoffs(tournament);
 				}break;
 				case 5:{
 					goBack = 1;
@@ -134,7 +138,7 @@ public class Main {
 		}
 	}
 
-	private static void manageSponsors(Tournament tournament, Beach beach){
+	private static void manageSponsors(Tournament tournament){
 		System.out.println("1. Add a sponsor");
 		System.out.println("2. Add a sponsor from list");
 		System.out.println("3. Remove a sponsor");

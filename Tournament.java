@@ -36,6 +36,9 @@ public class Tournament  {
 		//Random rand = new Random();
 		this.typeOfTournament=typeOfTournament;
 		teams = new LinkedList<Team>();
+		semiTeams = new LinkedList<Team>();
+		finalTeams = new LinkedList<Team>();
+		matchesOfSemiFinal = new LinkedList<>();
 	}
 
 	private boolean sortCondition(Team t1, Team t2) {
@@ -62,6 +65,7 @@ public class Tournament  {
 	}
 
 	public void matchesOfRoundRobin() {
+		matches = new LinkedList<Match>();
 		for (int i = 0; i < teams.size(); i++) {
 			for (int j = i + 1; j < teams.size(); j++) {
 				int mainRefIdx = refChoice % referees.size();
@@ -98,8 +102,6 @@ public class Tournament  {
 		}
 		LinkedList<Team> sortedTeams = sortTeams();
 
-		LinkedList<Team> semiTeams = new LinkedList<Team>();
-
 		for (int i = 0; i < 4; i++) semiTeams.add(sortedTeams.get(i));
 	}
 
@@ -109,13 +111,11 @@ public class Tournament  {
 		{
 			exampleMatch.assignPointsAndSets();
 		}
-		finalTeams = new LinkedList<>();
 		finalTeams.add(matchesOfSemiFinal.get(0).winner);
 		finalTeams.add(matchesOfSemiFinal.get(1).winner);
 	}
 
 	public void matchesOfSemiFinals() {
-		matchesOfSemiFinal = new LinkedList<>();
 		for (int i = 0; i < 2; ++i) {
 			int numberOfMainReferee = refChoice % referees.size();
 			if (semiTeams.get(i) instanceof Volleyball) {

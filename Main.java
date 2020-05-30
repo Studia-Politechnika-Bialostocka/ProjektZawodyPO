@@ -16,7 +16,7 @@ public class Main {
 			System.out.println("1. Add a tournament.");
 			System.out.println("2. Display list of tournaments.");
 			System.out.println("3. Select a tournament.");
-			System.out.println("4. Manage teams, referees etc. in beach");
+			System.out.println("4. Manage teams, referees etc. in beach(main base for info)");
 			System.out.println("5. Exit the program.");
 			choice = keyboard.nextInt();
 			switch (choice){
@@ -31,7 +31,6 @@ public class Main {
 				}break;
 				case 2:{
 					//wyświetla listę turniejów
-					int i=1;
 					beach.showAllTournaments();
 				}break;
 				case 3:{

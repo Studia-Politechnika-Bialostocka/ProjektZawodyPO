@@ -407,8 +407,8 @@ public class Tournament {
         return lines;
     }
 
-    public String toString() {
-        return nameOfTheTournament + " " + prizePool + " " + typeOfTournament + " " + nrofMatches;
+    public String toStr1ing() {
+        return nameOfTheTournament + " " + prizePool + " " + typeOfTournament + " " + nrofMatches; //FIXME to też średnio działa, bo mi przeszkadza i nie mogę skorzystaż z metody .toString bo ta która jest tutaj ja nadpisuje
     }
 
 }

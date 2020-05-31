@@ -1,5 +1,6 @@
 package def;
 
+import java.util.InputMismatchException;
 import java.util.LinkedList;
 import java.util.Scanner;
 
@@ -17,47 +18,66 @@ public class Main {
         int menu2 = 0;
         int choice = 0;
         int choice2 = 0;
+
+
         while (true) {
-            Scanner keyboard = new Scanner(System.in);
-            System.out.println("---------------MENU---------------");
-            System.out.println("1. Add a tournament.");
-            System.out.println("2. Diments.");
-            System.out.println("3. Select a tournament.");
-            System.out.println("4. Manage teams, referees etc. in beach(main base for info)");
-            System.out.println("5. Exit the program.");
-            choice = keyboard.nextInt();
-            switch (choice) {
-                case 1: {
-                    System.out.println("Enter desired tournament name: ");
-                    String nazwa = keyboard.next();
-                    System.out.println("Enter desired type_Of_Tournament<0,2>:");
-                    int type_Of_Match = getChoice(0, 2);
-                    System.out.println("Enter desired initial prize: ");
-                    int initialPrize = keyboard.nextInt();
-                    beach.addTournament(new Tournament(nazwa, 100, beach.getListOfReferee(), beach.getListOfAssistantReferee(), type_Of_Match));
+            try {
+                Scanner keyboard = new Scanner(System.in);
+                System.out.println("---------------MENU---------------");
+                System.out.println("1. Add a tournament.");
+                System.out.println("2. Display list of tournaments.");
+                System.out.println("3. Select a tournament.");
+                System.out.println("4. Manage teams, referees etc. in beach(main base for info)");
+                System.out.println("5. Exit the program.");
+                System.out.println("6. Help Me.");
+                choice = keyboard.nextInt();
+                switch (choice) {
+                    case 1:
+                        while (true) {
+                            System.out.println("Enter desired tournament name: ");
+                            String nazwa = keyboard.next();
+                            if (beach.ifExistInList(nazwa))
+                                throw new IfExistInListException(); //TODO to kompletnie nie działa, napraw to
+                            System.out.println("Enter desired type_Of_Tournament<0,2>:");
+                            int type_Of_Match = getChoice(0, 2);
+                            System.out.println("Enter desired initial prize: ");
+                            int initialPrize = keyboard.nextInt();
+                            beach.addTournament(new Tournament(nazwa, 100, beach.getListOfReferee(), beach.getListOfAssistantReferee(), type_Of_Match));
+                            break;
+                        }
+                        break;
+                    case 2:
+                        //wyświetla listę turniejów
+                        beach.showAllTournaments();
+                        beach.saveToFile(beach.getVTeams(), beach.getDTeams(), beach.getTTeams(), beach.getListOfReferee(), beach.getListOfAssistantReferee(), beach.getTournament());
+                        break;
+                    case 3:
+                        beach.showAllTournaments();
+                        System.out.print("Choose a tournament: ");
+                        int tIndex = keyboard.nextInt(); //-1 bo showTournaments zaczyna od jedynki
+                        menu2(beach.getTournaments().get(tIndex));
+                        //przejdź do turnieju
+                        break;
+                    case 4:
+                        menuForBeach();
+                        break;
+                    case 5:
+                        System.exit(0);
+                    case 6:
+                        helpMeMenu();
+                        break;
+                    default:
+                        throw new InvalidValueException(choice);
                 }
-                break;
-                case 2: {
-                    //wyświetla listę turniejów
-                    beach.showAllTournaments();
-                    beach.saveToFile(beach.getVTeams(), beach.getDTeams(), beach.getTTeams(), beach.getListOfReferee(), beach.getListOfAssistantReferee(), beach.getTournament());
-                }
-                break;
-                case 3: {
-                    beach.showAllTournaments();
-                    System.out.print("Choose a tournament: ");
-                    int tIndex = keyboard.nextInt(); //-1 bo showTournaments zaczyna od jedynki
-                    menu2(beach.getTournaments().get(tIndex));
-                    //przejdź do turnieju
-                }
-                break;
-                case 4: {
-                    menuForBeach();
-                }
-                break;
-                case 5: {
-                    System.exit(0);
-                }
+            } catch (InvalidValueException e) {
+                System.out.println("Invalid value: " + e.getInvalidValue() + ". Try again");
+            } catch (InputMismatchException e) {
+                System.out.println("Wpisz poprawną wartość. Spróbuj ponownie. ");
+            } catch (IfExistInListException e) {
+                System.out.println("Taka nazwa już istnieje. Spróbuj ponownie.");
+                System.out.println(e.fillInStackTrace());
+            } catch (IndexOutOfBoundsException e) {
+                System.out.println("Invalid Index");
             }
         }
 
@@ -75,30 +95,33 @@ public class Main {
             System.out.println("3. Manage sponsors");
             System.out.println("4. Go to playoffs");
             System.out.println("5. Go back");
+            System.out.println("6. Help Me");
             choice2 = klawiatura.nextInt();
             switch (choice2) {
-                case 1: {
+                case 1:
                     manageTeams(tournament);
-                }
-                break;
-                case 2: {
-                    manageReferees(tournament);
-                }
-                break;
-                case 3: {
-                    manageSponsors(tournament);
-                }
-                break;
-                case 4: {
-                    goToPlayoffs(tournament);
-                }
-                break;
-                case 5: {
-                    goBack = 1;
-                }
-                break;
-                default:
                     break;
+                case 2:
+                    manageReferees(tournament);
+                    break;
+                case 3:
+                    manageSponsors(tournament);
+                    break;
+                case 4:
+                    goToPlayoffs(tournament);
+                    break;
+                case 5:
+                    goBack = 1;
+                    break;
+                case 6:
+                    helpMeMenu2();
+                    break;
+                default:
+                    try {
+                        throw new InvalidValueException(choice2);
+                    } catch (InvalidValueException e) {
+                        System.out.println("Invalid value: " + e.getInvalidValue() + ". Try again");
+                    }
 
             }
         }
@@ -109,29 +132,28 @@ public class Main {
         System.out.println("2. Remove a team");
         System.out.println("3. Show all teams");
         System.out.println("4. Go back");
+        System.out.println("5. Help Me");
         Scanner keyboard = new Scanner(System.in);
         int choice = 0;
         choice = keyboard.nextInt();
         switch (choice) {
-            case 1: {
+            case 1:
                 addTeam(tournament);
-            }
-            break;
-            case 2: {
+                break;
+            case 2:
                 //usuń drużynę
                 tournament.showAllTeams();
                 System.out.println("Wybierz druzyne, ktora chcesz usunac:");
                 int delete = getChoice(0, tournament.getAmountOfTeams());
                 tournament.removeTeam(delete);
-            }
-            break;
-            case 3: {
+                break;
+            case 3:
                 //pokaż wszystkie drużyny
                 tournament.showAllTeams();
-            }
-            case 4: {
+            case 4:
                 break;
-            }
+            case 5:
+                helpMeMenuMenageTeams();
             default:
                 break;
         }
@@ -583,421 +605,16 @@ public class Main {
                 break;
         }
     }
+
+    private static void helpMeMenu() {
+        System.out.println("Już ci pomagam"); //TODO tutaj trzeba dodać instrukcję gdyby się chłop zagubił
+    }
+
+    private static void helpMeMenu2() {
+        System.out.println("Już ci pomagam"); //TODO tutaj trzeba dodać instrukcję gdyby się chłop zagubił
+    }
+
+    private static void helpMeMenuMenageTeams() {
+        System.out.println("Już ci pomagam"); //TODO tutaj trzeba dodać instrukcję gdyby się chłop zagubił
+    }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

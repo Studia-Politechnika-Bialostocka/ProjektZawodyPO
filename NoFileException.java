@@ -1,6 +1,6 @@
 package def;
 
-public class NoFileException {
+public class NoFileException extends Exception{
     public NoFileException(){
 
     }

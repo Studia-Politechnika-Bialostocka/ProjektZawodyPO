@@ -45,7 +45,7 @@ public class Beach {
     public void showAllTournaments() {
         for (int i = 0; i < listOfTournaments.size(); i++) {
             System.out.println((i) + ". " + listOfTournaments.get(i).getNameOfTournament());
-            System.out.println(listOfTournaments.get(i).AllMaches);
+            System.out.println(listOfTournaments.get(i).getAllMaches());
         }
     }
 
@@ -319,7 +319,7 @@ public class Beach {
             for (Tournament tournament : tour) {
                 printWriter.print(tournament.toString());
                 printWriter.print("\n");
-                printWriter.print((tournament.AllMaches));
+                printWriter.print((tournament.getAllMaches()));
             }
             printWriter.close();
         } catch (Exception e) {
@@ -454,7 +454,7 @@ public class Beach {
                 v1.nrofMatches = Integer.parseInt(s[3]);
                 for (int i = 0; i < Integer.parseInt(s[3]); ++i) {
                     buf = in.readLine();
-                    v1.AllMaches += buf + "\n";
+                    v1.expandAllMaches(buf+"\n");
                 }
                 b.addTournament(v1);
             }

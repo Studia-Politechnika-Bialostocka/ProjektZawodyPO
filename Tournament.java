@@ -423,4 +423,3 @@ public class Tournament {
     }
 
 }
-//lol sam nie wiem

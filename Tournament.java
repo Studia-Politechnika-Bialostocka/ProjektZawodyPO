@@ -23,7 +23,7 @@ public class Tournament {
     private LinkedList<Referee> referees;
     private LinkedList<AssistantReferee> aReferees;
     private Team winner;
-    public String AllMaches = "";
+    private String AllMaches = "";
     private int refChoice = 0;
     private int aRefChoice = 0;
     public int nrofMatches = 0;
@@ -180,6 +180,17 @@ public class Tournament {
             loserOfFirstSemiFinals.addPrizesWon(0.125 * prizePool);
             loserOfSecondSemiFinals.addPrizesWon(0.125 * prizePool);
         }
+    }
+
+    public String getAllMaches(){
+        return AllMaches;
+    }
+
+    public void setAllMaches(String exampleString){
+        AllMaches = exampleString;
+    }
+    public void expandAllMaches(String exampleString){
+        AllMaches+=exampleString;
     }
 
     public boolean areAllMatchesPlayedInRoundRobin() {

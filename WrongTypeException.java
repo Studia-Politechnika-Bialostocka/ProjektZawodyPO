@@ -1,6 +1,6 @@
 package def;
 
-public class WrongTypeException {
+public class WrongTypeException extends Exception{
     public WrongTypeException(){
 
     }

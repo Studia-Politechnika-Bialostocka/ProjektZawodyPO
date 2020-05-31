@@ -469,5 +469,13 @@ public class Beach {
 
     }
 
-
+    public String getNameOfIndexInTournament(int index){
+        return listOfTournaments.get(index).toString();
+    }
+    public boolean ifExistInList(String dowolnaNazwa){
+        for(int i = 0; i < listOfTournaments.size(); ++i){
+            if(dowolnaNazwa == getNameOfIndexInTournament(i)) return true;
+        }
+        return false;
+    }
 }

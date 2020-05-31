@@ -75,7 +75,6 @@ public class Main {
                 System.out.println("Wpisz poprawną wartość. Spróbuj ponownie. ");
             } catch (IfExistInListException e) {
                 System.out.println("Taka nazwa już istnieje. Spróbuj ponownie.");
-                System.out.println(e.fillInStackTrace());
             } catch (IndexOutOfBoundsException e) {
                 System.out.println("Invalid Index");
             }

@@ -10,7 +10,7 @@ public class Main {
     public static void main(String[] args) {
         beach.newvTeamList(beach.importFromFileVolleyball());
         beach.newdTeamList(beach.importFromFileDodgeball());
-        //beach.newtTeamList(beach.importFromFileTug_of_War());
+        beach.newtTeamList(beach.importFromFileTug_of_War());
         beach.newReferee(beach.importFromFileRefeere());
         beach.newAssistanceReferee(beach.importFromFileAssistantReferee());
         beach.importFromFileTournament(beach);

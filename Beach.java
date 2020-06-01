@@ -154,20 +154,13 @@ public class Beach {
     }
 
     public int getAmountOfTeams(int parameter) {
-        int i = -1;
         switch (parameter) {
             case 0:
-                for (Volleyball exampleTeam : vTeams)
-                    ++i;
-                return i;
+                return (vTeams.size()-1);
             case 1:
-                for (Dodgeball exampleTeam : dTeams)
-                    ++i;
-                return i;
+                return (dTeams.size()-1);
             case 2:
-                for (Tug_of_War exampleTeam : tTeams)
-                    ++i;
-                return i;
+                return (tTeams.size()-1);
             default:
                 return 0;
         }
@@ -210,16 +203,24 @@ public class Beach {
 
     public void showReferees_MainAndAssistant() {
         int i = 0;
-        System.out.println("Sedziowie glowni");
-        for (Referee exampleReferee : listOfReferee) {
-            System.out.println(exampleReferee);
-            ++i;
+        if(listOfReferee.size()!=0) {
+            System.out.println("Sedziowie glowni");
+            for (Referee exampleReferee : listOfReferee) {
+                System.out.println(i + ":" + exampleReferee);
+                ++i;
+            }
         }
-        System.out.println("Sedziowie asystujacy");
-        for (AssistantReferee exampleAssReferee : listOfAssistantReferee) {
-            System.out.println(exampleAssReferee);
-            ++i;
+        else
+            System.out.println("Brak sedziow glownych");
+        if(listOfAssistantReferee.size()!=0) {
+            System.out.println("Sedziowie asystujacy");
+            for (AssistantReferee exampleAssReferee : listOfAssistantReferee) {
+                System.out.println(i + ":" + exampleAssReferee);
+                ++i;
+            }
         }
+        else
+            System.out.println("Brak sedziow asystujacych");
     }
 
     public LinkedList<Referee> getReferee() {
@@ -235,17 +236,11 @@ public class Beach {
     }
 
     public int getAmountOfReferee() {
-        int i = -1;
-        for (Referee exampleReferee : listOfReferee)
-            ++i;
-        return i;
+        return (listOfReferee.size()-1);
     }
 
     public int getAmountOfAssistantReferee() {
-        int i = -1;
-        for (AssistantReferee exampleAssReferee : listOfAssistantReferee)
-            ++i;
-        return i;
+        return (listOfAssistantReferee.size()-1);
     }
 
     public LinkedList<Referee> getListOfReferee() {

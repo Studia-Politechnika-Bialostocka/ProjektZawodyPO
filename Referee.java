@@ -10,7 +10,6 @@ public class Referee {
         this.lastName = lastName;
     }
 
-
     public void documentMatch() {
         numOfMatches++;
     }

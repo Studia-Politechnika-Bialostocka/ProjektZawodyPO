@@ -82,7 +82,7 @@ public class Main {
 
         Scanner klawiatura = new Scanner(System.in);
         int goBack = 0;
-        int choice2 = 0;
+        int choice2;
         while (goBack == 0) {
             System.out.println("---------------MENU2---------------");
             System.out.println("1. Manage teams");
@@ -129,8 +129,7 @@ public class Main {
         System.out.println("4. Go back");
         System.out.println("5. Help Me");
         Scanner keyboard = new Scanner(System.in);
-        int choice = 0;
-        choice = keyboard.nextInt();
+        int choice = keyboard.nextInt();
         switch (choice) {
             case 1:
                 addTeam(tournament);
@@ -159,8 +158,7 @@ public class Main {
         System.out.println("2. Create a new team");
         System.out.println("3. Go back");
         Scanner keyboard = new Scanner(System.in);
-        int choice = 0;
-        choice = keyboard.nextInt();
+        int choice = keyboard.nextInt();
         switch (choice) {
             case 1: {
                 //Adding existing teams from list
@@ -224,8 +222,7 @@ public class Main {
         System.out.println("3. Show all referees");
         System.out.println("4. Go back");
         Scanner keyboard = new Scanner(System.in);
-        int choice = 0;
-        choice = keyboard.nextInt();
+        int choice = keyboard.nextInt();
         switch (choice) {
             case 1: {
                 System.out.println("Enter name of referee: ");
@@ -293,8 +290,7 @@ public class Main {
         System.out.println("4. Show all sponsors");
         System.out.println("5. Go back");
         Scanner keyboard = new Scanner(System.in);
-        int choice = 0;
-        choice = keyboard.nextInt();
+        int choice = keyboard.nextInt();
         switch (choice) {
             case 1: {
                 //dodaj sponsora
@@ -338,7 +334,7 @@ public class Main {
     private static void goToPlayoffs(Tournament tournament) {
         Scanner keyboard = new Scanner(System.in);
         int menu = 0;
-        int choice = 0;
+        int choice;
         int levelOfGaming = 0;
         while (menu == 0) {
             System.out.println("---------------MENU3---------------");
@@ -352,15 +348,15 @@ public class Main {
                     if (levelOfGaming == 0) {
                         tournament.matchesOfRoundRobin();
                         ++levelOfGaming;
-                    } else if (levelOfGaming == 1 && tournament.areAllMatchesPlayedInRoundRobin() == true) {
+                    } else if (levelOfGaming == 1 && tournament.areAllMatchesPlayedInRoundRobin()) {
                         tournament.roundRobin();
                         tournament.matchesOfSemiFinals();
                         ++levelOfGaming;
-                    } else if (levelOfGaming == 2 && tournament.areAllMatchesPlayedInSemiFinals() == true) {
+                    } else if (levelOfGaming == 2 && tournament.areAllMatchesPlayedInSemiFinals()) {
                         tournament.semiFinal();
                         tournament.matchOfFinal();
                         ++levelOfGaming;
-                    } else if (levelOfGaming == 3 && tournament.areAllMatchesPlayedInFinals() == true) {
+                    } else if (levelOfGaming == 3 && tournament.areAllMatchesPlayedInFinals()) {
                         tournament.finalGame();
                         System.out.println("Zwyciezyl:" + tournament.getWinner().getTeamName());
                         ++levelOfGaming;
@@ -416,7 +412,7 @@ public class Main {
     private static void menuForBeach() {
         Scanner klawiatura = new Scanner(System.in);
         int goBack = 0;
-        int choice2 = 0;
+        int choice2;
         while (goBack == 0) {
             System.out.println("---------------EDIT_BEACH---------------");
             System.out.println("1. Manage teams");
@@ -454,8 +450,7 @@ public class Main {
         System.out.println("3. Show all teams");
         System.out.println("4. Go back");
         Scanner keyboard = new Scanner(System.in);
-        int choice = 0;
-        choice = keyboard.nextInt();
+        int choice = keyboard.nextInt();
         switch (choice) {
             case 1: {
                 //dodaj drużynę
@@ -519,8 +514,7 @@ public class Main {
         System.out.println("3. Show all referees");
         System.out.println("4. Go back");
         Scanner keyboard = new Scanner(System.in);
-        int choice = 0;
-        choice = keyboard.nextInt();
+        int choice = keyboard.nextInt();
         switch (choice) {
             case 1: {
                 //dodaj sędziego
@@ -572,8 +566,7 @@ public class Main {
         System.out.println("3. Show all sponsors");
         System.out.println("4. Go back");
         Scanner keyboard = new Scanner(System.in);
-        int choice = 0;
-        choice = keyboard.nextInt();
+        int choice = keyboard.nextInt();
         switch (choice) {
             case 1: {
                 //dodaj sponsora

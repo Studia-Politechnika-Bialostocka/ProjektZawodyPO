@@ -186,9 +186,6 @@ public class Tournament {
         return AllMaches;
     }
 
-    public void setAllMaches(String exampleString){
-        AllMaches = exampleString;
-    }
     public void expandAllMaches(String exampleString){
         AllMaches+=exampleString;
     }

@@ -14,12 +14,7 @@ public class Main {
         beach.newReferee(beach.importFromFileRefeere());
         beach.newAssistanceReferee(beach.importFromFileAssistantReferee());
         beach.importFromFileTournament(beach);
-        int menu = 0;
-        int menu2 = 0;
         int choice = 0;
-        int choice2 = 0;
-
-
         while (true) {
             try {
                 Scanner keyboard = new Scanner(System.in);

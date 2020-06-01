@@ -419,7 +419,6 @@ public class Main {
     }
 
     private static void menuForBeach() {
-
         Scanner klawiatura = new Scanner(System.in);
         int goBack = 0;
         int choice2 = 0;

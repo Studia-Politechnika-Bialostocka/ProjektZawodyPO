@@ -354,7 +354,9 @@ public class Tournament {
     public void importFromFile() {
 
     }
-
+    public void setNRofMatches(int exampleInteger){
+        nrofMatches=exampleInteger;
+    }
     public Team getWinner() {
         return winner;
     }

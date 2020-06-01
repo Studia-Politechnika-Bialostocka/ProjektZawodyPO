@@ -116,17 +116,13 @@ public class Tournament {
             if (typeOfTournament==0) {
                 int numberOfFirstReferee = aRefChoice % aReferees.size();
                 int numberOfSecondReferee = (aRefChoice + 1) % aReferees.size();
-                matchesOfSemiFinal.add(new VolleyballMatch(semiTeams.get(i), semiTeams.get(i + 2),
-                        referees.get(numberOfMainReferee), 0, aReferees.get(numberOfFirstReferee), aReferees.get(numberOfSecondReferee)));
+                matchesOfSemiFinal.add(new VolleyballMatch(semiTeams.get(i), semiTeams.get(i + 2),referees.get(numberOfMainReferee),
+                        0, aReferees.get(numberOfFirstReferee), aReferees.get(numberOfSecondReferee)));
                 aRefChoice += 2;
-            } else {
-                if (typeOfTournament==1)
-                    matchesOfSemiFinal.add(new Match(semiTeams.get(i), semiTeams.get(i + 2),
-                            referees.get(numberOfMainReferee), 1));
-                else
-                    matchesOfSemiFinal.add(new Match(semiTeams.get(i), semiTeams.get(i + 2),
-                            referees.get(numberOfMainReferee), 2));
             }
+            else
+                matchesOfSemiFinal.add(new Match(semiTeams.get(i), semiTeams.get(i + 2),
+                        referees.get(numberOfMainReferee), typeOfTournament));
             ++refChoice;
         }
     }
@@ -147,12 +143,9 @@ public class Tournament {
             matchOfFinal = (new VolleyballMatch(finalTeams.get(0), finalTeams.get(1), referees.get(numberOfMainReferee),
                     0, aReferees.get(numberOfFirstReferee), aReferees.get(numberOfSecondReferee)));
             aRefChoice += 2;
-        } else {
-            if (typeOfTournament == 1)
-                matchOfFinal = (new Match(finalTeams.get(0), finalTeams.get(1), referees.get(numberOfMainReferee), 1));
-            else
-                matchOfFinal = (new Match(finalTeams.get(0), finalTeams.get(1), referees.get(numberOfMainReferee), 2));
         }
+        else
+            matchOfFinal = (new Match(finalTeams.get(0), finalTeams.get(1), referees.get(numberOfMainReferee), typeOfTournament));
         ++refChoice;
     }
 

@@ -8,23 +8,13 @@ public class Main {
     public static Beach beach = new Beach();
 
     public static void main(String[] args) {
-        beach.newvTeamList(beach.importFromFileVolleyball());
-        beach.newdTeamList(beach.importFromFileDodgeball());
-        beach.newtTeamList(beach.importFromFileTug_of_War());
-        beach.newReferee(beach.importFromFileRefeere());
-        beach.newAssistanceReferee(beach.importFromFileAssistantReferee());
-        beach.importFromFileTournament(beach);
+        importInfo();
         int choice = 0;
         while (true) {
             try {
                 Scanner keyboard = new Scanner(System.in);
-                System.out.println("---------------MENU---------------");
-                System.out.println("1. Add a tournament.");
-                System.out.println("2. Display list of tournaments.");
-                System.out.println("3. Select a tournament.");
-                System.out.println("4. Manage teams, referees etc. in beach(main base for info)");
-                System.out.println("5. Exit the program.");
-                System.out.println("6. Help Me.");
+                //caly napis do main
+                mainMenuShowUp();
                 choice = keyboard.nextInt();
                 switch (choice) {
                     case 1:
@@ -75,11 +65,26 @@ public class Main {
                 System.out.println("Invalid Index");
             }
         }
-
     }
-
+    //importowanie danych
+    private static void importInfo(){
+        beach.newvTeamList(beach.importFromFileVolleyball());
+        beach.newdTeamList(beach.importFromFileDodgeball());
+        beach.newtTeamList(beach.importFromFileTug_of_War());
+        beach.newReferee(beach.importFromFileRefeere());
+        beach.newAssistanceReferee(beach.importFromFileAssistantReferee());
+        beach.importFromFileTournament(beach);
+    }
+    private static void mainMenuShowUp(){
+        System.out.println("---------------MENU---------------");
+        System.out.println("1. Add a tournament.");
+        System.out.println("2. Display list of tournaments.");
+        System.out.println("3. Select a tournament.");
+        System.out.println("4. Manage teams, referees etc. in beach(main base for info)");
+        System.out.println("5. Exit the program.");
+        System.out.println("6. Help Me.");
+    }
     private static void menu2(Tournament tournament) {
-
         Scanner klawiatura = new Scanner(System.in);
         int goBack = 0;
         int choice2;

@@ -367,6 +367,7 @@ public class Main {
                         ++levelOfGaming;
                     } else if (levelOfGaming == 3 && tournament.areAllMatchesPlayedInFinals() == true) {
                         tournament.finalGame();
+                        System.out.println("Zwyciezyl:" + tournament.getWinner().getTeamName());
                         ++levelOfGaming;
                     } else if (levelOfGaming == 4)
                         System.out.println("Zwyciezyl:" + tournament.getWinner().getTeamName());
@@ -374,25 +375,30 @@ public class Main {
                 break;
                 case 2: {
                     //pokaż wyniki meczów
-                    tournament.showAllMatchesIn_RoundRobin_SemiFinals_Finals(levelOfGaming - 1);
+                    if(levelOfGaming==4)
+                        tournament.showFinalScores();
+                    else if(levelOfGaming!=0)
+                        tournament.showAllMatchesIn_RoundRobin_SemiFinals_Finals(levelOfGaming - 1);
                 }
                 break;
                 case 3: {
                     //ustaw wynik meczu
-                    int wybor;
-                    tournament.showAllMatchesIn_RoundRobin_SemiFinals_Finals(levelOfGaming - 1);
-                    System.out.println("Podaj swoj wybor <0:" + tournament.countingAmountOfMatchesInRoundRobin(levelOfGaming - 1) + ">:");
-                    wybor = getChoice(0, tournament.countingAmountOfMatchesInRoundRobin(levelOfGaming - 1));
-                    switch (levelOfGaming - 1) {
-                        case 0:
-                            tournament.getMatchRoundRobin(wybor).setResult();
-                            break;
-                        case 1:
-                            tournament.getMatchSemiFinals(wybor).setResult();
-                            break;
-                        case 2:
-                            tournament.getMatchFinal().setResult();
-                            break;
+                    if(levelOfGaming!=0) {
+                        int wybor;
+                        tournament.showAllMatchesIn_RoundRobin_SemiFinals_Finals(levelOfGaming - 1);
+                        System.out.println("Podaj swoj wybor <0:" + tournament.countingAmountOfMatchesInRoundRobin(levelOfGaming - 1) + ">:");
+                        wybor = getChoice(0, tournament.countingAmountOfMatchesInRoundRobin(levelOfGaming - 1));
+                        switch (levelOfGaming - 1) {
+                            case 0:
+                                tournament.getMatchRoundRobin(wybor).setResult();
+                                break;
+                            case 1:
+                                tournament.getMatchSemiFinals(wybor).setResult();
+                                break;
+                            case 2:
+                                tournament.getMatchFinal().setResult();
+                                break;
+                        }
                     }
                 }
                 break;

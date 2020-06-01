@@ -198,6 +198,7 @@ public class Tournament {
 
     public void addDonator(Donator d) {
         donators.add(d);
+        prizePool+=d.getMoney();
     }
 
     public void showDonators() {

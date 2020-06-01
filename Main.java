@@ -300,8 +300,9 @@ public class Main {
                 String sponsorLastname = keyboard.next();
                 System.out.println("Enter initial donation of sponsor: ");
                 int initialDonation = keyboard.nextInt();
-                tournament.addDonator(new Donator(sponsorName, sponsorLastname, initialDonation));
-                beach.addDonatorToList(new Donator(sponsorName, sponsorLastname, initialDonation));
+                Donator donatorForMoment = new Donator(sponsorName, sponsorLastname, initialDonation);
+                tournament.addDonator(donatorForMoment);
+                beach.addDonatorToList(donatorForMoment);
             }
             break;
             case 2: {

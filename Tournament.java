@@ -186,9 +186,6 @@ public class Tournament {
         return AllMaches;
     }
 
-    public void setAllMaches(String exampleString){
-        AllMaches = exampleString;
-    }
     public void expandAllMaches(String exampleString){
         AllMaches+=exampleString;
     }
@@ -354,7 +351,9 @@ public class Tournament {
     public void importFromFile() {
 
     }
-
+    public void setNRofMatches(int exampleInteger){
+        nrofMatches=exampleInteger;
+    }
     public Team getWinner() {
         return winner;
     }

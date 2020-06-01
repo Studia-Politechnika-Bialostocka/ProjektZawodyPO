@@ -52,7 +52,6 @@ public class Match {
             winner = teamOne;
         else
             winner = teamTwo;
-
         check = true;
         System.out.println("\nIle setow druga druzyna wygrala? Wybierz miedzy wartoscia 0, 1 oraz 2\nTwoj wybor:");
         do {
@@ -62,7 +61,6 @@ public class Match {
         } while (check);
         isScoreSet = true;
         setFinalScoreString(setsOfLoser);
-
     }
 
     //przypisywanie wyniku, setow, wygranych/przegranych dla danej druzyny
@@ -75,11 +73,6 @@ public class Match {
         else
             teamOne.LostAMatch(setsOfLoser);
     }
-
-    public String getFinalScore() {
-        return finalScore;
-    }
-
 
     public Team getWinner() {
         return winner;
@@ -94,20 +87,10 @@ public class Match {
 
     public String toString() {
         String typeOfMatchInString = null;
-        switch (typeOfMatch) {
-            case 1:
-                typeOfMatchInString = "Dwa ognie";
-                break;
-            case 2:
-                typeOfMatchInString = "Przeciaganie liny";
-                break;
-            default:
-                break;
-        }
         if (isScoreSet)
-            return "Konkurencja" + typeOfMatchInString + ". " + teamOne + " i " + teamTwo + " Sędzia:" + referee + ". Zwyciezca:" + winner + ". Wynik: " + finalScore + "\n";
+            return "Zespoly:" + teamOne + " i " + teamTwo + " Sędzia:" + referee + ". Zwyciezca:" + winner + ". Wynik: " + finalScore + "\n";
         else
-            return "Konkurencja" + typeOfMatchInString + ". " + teamOne + " i " + teamTwo + " Sędzia:" + referee + ". Zwyciezca: nieustalony. Wynik: nieustalony\n";
+            return "Zespoly: " + teamOne + " i " + teamTwo + " Sędzia:" + referee + ". Zwyciezca: nieustalony. Wynik: nieustalony\n";
 
     }
 }

@@ -248,17 +248,11 @@ public class Tournament {
     }
 
     public int getAmountOfReferee() {
-        int i = -1;
-        for (Referee exampleReferee : referees)
-            ++i;
-        return i;
+        return (referees.size()-1);
     }
 
     public int getAmountOfAssistantReferee() {
-        int i = -1;
-        for (AssistantReferee exampleAssReferee : aReferees)
-            ++i;
-        return i;
+        return (aReferees.size()-1);
     }
 
     public int getTypeOfTournament() {
@@ -268,7 +262,7 @@ public class Tournament {
     public void showAllTeams() {
         int i = 0;
         for (Team team : teams) {
-            System.out.println(team);
+            System.out.println(i + ":" + team);
             ++i;
         }
     }
@@ -286,17 +280,11 @@ public class Tournament {
     }
 
     public int getAmountOfDonators() {
-        int i = -1;
-        for (Donator exampleDonators : donators)
-            ++i;
-        return i;
+        return (donators.size()-1);
     }
 
     public int getAmountOfTeams() {
-        int i = -1;
-        for (Team exampleTeam : teams)
-            ++i;
-        return i;
+        return (teams.size()-1);
     }
 
     public void showFinalScores() {
@@ -307,10 +295,6 @@ public class Tournament {
                 System.out.println(match);
             }
             System.out.println(matchOfFinal);
-    }
-
-    public void addMatch(Match m) {
-        matches.add(m);
     }
 
     public LinkedList<Match> getMatches() {
@@ -388,10 +372,7 @@ public class Tournament {
         switch (parameter) {
 
             case 0:
-                int i = -1;
-                for (Match exampleMatch : matches)
-                    ++i;
-                return i;
+                return (matches.size()-1);
             case 1:
                 return 3;
             default:

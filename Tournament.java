@@ -318,7 +318,13 @@ public class Tournament {
     }
 
     public void showFinalScores() {
-
+            for (Match match : matches) {
+                System.out.println(match);
+            }
+            for (Match match : matchesOfSemiFinal) {
+                System.out.println(match);
+            }
+            System.out.println(matchOfFinal);
     }
 
     public void addMatch(Match m) {

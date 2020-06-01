@@ -9,10 +9,10 @@ import java.util.Random;
 
 public class Tournament {
 
-    private String nameOfTheTournament;
+    private final String nameOfTheTournament;
 
     private double prizePool;
-    private int typeOfTournament; // 0=Volleyball, 1=Dodgeball, 2 = Tug_of_War
+    private final int typeOfTournament; // 0=Volleyball, 1=Dodgeball, 2 = Tug_of_War
     private LinkedList<Donator> donators;
     private LinkedList<Match> matches;
     private LinkedList<Match> matchesOfSemiFinal;
@@ -26,7 +26,7 @@ public class Tournament {
     private String AllMaches = "";
     private int refChoice = 0;
     private int aRefChoice = 0;
-    public int nrofMatches = 0;
+    private int nrofMatches = 0;
 
 
     public Tournament(String nameOfTheTournament, double Initialprize, LinkedList<Referee> refs, LinkedList<AssistantReferee> arefs, int typeOfTournament) {

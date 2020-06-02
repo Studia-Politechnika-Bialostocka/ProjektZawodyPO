@@ -11,6 +11,8 @@ public class Tournament {
 
     private final String nameOfTheTournament;
 
+    boolean finished = false;
+
     private double prizePool;
     private final int typeOfTournament; // 0=Volleyball, 1=Dodgeball, 2 = Tug_of_War
     private LinkedList<Donator> donators;
@@ -133,6 +135,7 @@ public class Tournament {
         winner = matchOfFinal.getWinner();
         assignPrizes();
         matchesToString();
+        finished = true;
     }
 
     public void matchOfFinal() {
@@ -199,6 +202,10 @@ public class Tournament {
     public void addDonator(Donator d) {
         donators.add(d);
         prizePool+=d.getMoney();
+    }
+
+    public boolean getFinished() {
+        return finished;
     }
 
     public void showDonators() {

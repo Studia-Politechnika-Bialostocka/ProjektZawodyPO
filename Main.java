@@ -424,25 +424,20 @@ public class Main {
             System.out.println("4. Go back");
             choice2 = klawiatura.nextInt();
             switch (choice2) {
-                case 1: {
+                case 1:
                     manageTeamsForBeach();
-                }
-                break;
-                case 2: {
+                    break;
+                case 2:
                     manageRefereesForBeach();
-                }
-                break;
-                case 3: {
+                    break;
+                case 3:
                     manageSponsorsForBeach();
-                }
-                break;
-                case 4: {
+                    break;
+                case 4:
                     goBack = 1;
-                }
-                break;
+                    break;
                 default:
                     break;
-
             }
         }
     }

@@ -318,9 +318,11 @@ public class Beach {
             FileWriter fileWriter = new FileWriter("TournamentFile.txt");
             PrintWriter printWriter = new PrintWriter(fileWriter);
             for (Tournament tournament : listOfTournaments) {
-                printWriter.print(tournament.toString());
-                printWriter.print("\n");
-                printWriter.print((tournament.getAllMaches()));
+                if (tournament.getFinished()) {
+                    printWriter.print(tournament.toString());
+                    printWriter.print("\n");
+                    printWriter.print((tournament.getAllMaches()));
+                }
             }
             printWriter.close();
         } catch (Exception e) {

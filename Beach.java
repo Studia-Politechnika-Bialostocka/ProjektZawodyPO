@@ -459,15 +459,11 @@ public class Beach {
                 }
                 addTournament(v1);
             }
-
-
         } catch (FileNotFoundException fileNotFoundException) {
             fileNotFoundException.printStackTrace();
         } catch (IOException ioException) {
             ioException.printStackTrace();
         }
-
-
     }
 
     public String getNameOfIndexInTournament(int index){

@@ -79,8 +79,8 @@ public class Main {
         System.out.println("3. Select a tournament.");
         System.out.println("4. Manage teams, referees etc. in beach(main base for info)");
         System.out.println("5. Save to file");
-        System.out.println("6. Exit the program.");
-        System.out.println("7. Help Me.");
+        System.out.println("6. Import from file all ");
+        System.out.println("7. Exit the program.");
     }
     //cale glowne menu
     private static void menu2(Tournament tournament) {
@@ -94,7 +94,6 @@ public class Main {
             System.out.println("3. Manage sponsors");
             System.out.println("4. Go to playoffs");
             System.out.println("5. Go back");
-            System.out.println("6. Help Me");
             choice2 = klawiatura.nextInt();
             switch (choice2) {
                 case 1:
@@ -128,7 +127,6 @@ public class Main {
         System.out.println("2. Remove a team");
         System.out.println("3. Show all teams");
         System.out.println("4. Go back");
-        System.out.println("5. Help Me");
         Scanner keyboard = new Scanner(System.in);
         int choice = keyboard.nextInt();
         switch (choice) {

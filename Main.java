@@ -18,23 +18,19 @@ public class Main {
                 choice = keyboard.nextInt();
                 switch (choice) {
                     case 1:
-                        while (true) {
-                            System.out.println("Enter desired tournament name: ");
-                            String nazwa = keyboard.next();
-                            if (beach.ifExistInList(nazwa))
-                                throw new IfExistInListException(); //TODO to kompletnie nie działa, napraw to
-                            System.out.println("Enter desired type_Of_Tournament<0,2>:");
-                            int type_Of_Match = getChoice(0, 2);
-                            System.out.println("Enter desired initial prize: ");
-                            int initialPrize = keyboard.nextInt();
-                            beach.addTournament(new Tournament(nazwa, 100, beach.getListOfReferee(), beach.getListOfAssistantReferee(), type_Of_Match));
-                            break;
-                        }
+                        System.out.println("Enter desired tournament name: ");
+                        String nazwa = keyboard.next();
+                        if (beach.ifExistInList(nazwa))
+                            throw new IfExistInListException(); //TODO to kompletnie nie działa, napraw to
+                        System.out.println("Enter desired type_Of_Tournament<0,2>:");
+                        int type_Of_Match = getChoice(0, 2);
+                        System.out.println("Enter desired initial prize: ");
+                        int initialPrize = keyboard.nextInt();
+                        beach.addTournament(new Tournament(nazwa, 100, beach.getListOfReferee(), beach.getListOfAssistantReferee(), type_Of_Match));
                         break;
                     case 2:
                         //wyświetla listę turniejów
                         beach.showAllTournaments();
-                        beach.saveToFile(beach.getVTeams(), beach.getDTeams(), beach.getTTeams(), beach.getListOfReferee(), beach.getListOfAssistantReferee(), beach.getTournament());
                         break;
                     case 3:
                         beach.showAllTournaments();
@@ -47,8 +43,11 @@ public class Main {
                         menuForBeach();
                         break;
                     case 5:
-                        System.exit(0);
+                        savingInfo();
+                        break;
                     case 6:
+                        System.exit(0);
+                    case 7:
                         helpMeMenu();
                         break;
                     default:
@@ -76,14 +75,19 @@ public class Main {
         beach.importFromFileTournament(beach);
     }
     //importowanie danych --stop--
+    //zapisywanie danych --start--
+    private static void savingInfo(){
+        beach.saveToFile(beach.getVTeams(), beach.getDTeams(), beach.getTTeams(), beach.getListOfReferee(), beach.getListOfAssistantReferee(), beach.getTournament());
+    }
     private static void mainMenuShowUp(){
         System.out.println("---------------MENU---------------");
         System.out.println("1. Add a tournament.");
         System.out.println("2. Display list of tournaments.");
         System.out.println("3. Select a tournament.");
         System.out.println("4. Manage teams, referees etc. in beach(main base for info)");
-        System.out.println("5. Exit the program.");
-        System.out.println("6. Help Me.");
+        System.out.println("5. Save to file");
+        System.out.println("6. Exit the program.");
+        System.out.println("7. Help Me.");
     }
     //cale glowne menu
     private static void menu2(Tournament tournament) {

@@ -383,7 +383,7 @@ public class Tournament {
             case 0:
                 return (matches.size()-1);
             case 1:
-                return 3;
+                return 1;
             default:
                 return 0;
         }

@@ -30,7 +30,6 @@ public class Main {
                         System.out.println("Enter desired initial prize: ");
                         double initialPrize = 0.0;
 
-                        boolean wyjscieZPętli = true;
                         while (true) {
                             try {
                                 initialPrize = keyboard.nextDouble();

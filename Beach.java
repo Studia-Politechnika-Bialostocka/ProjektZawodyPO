@@ -31,15 +31,11 @@ public class Beach {
     }
 
     public int getAmountOfDonators() {
-        int i = -1;
-        for (Donator exampleDonator : listOfDonators)
-            ++i;
-        return i;
+        return (listOfDonators.size()-1);
     }
 
     public Donator getDonator(int index) {
         return listOfDonators.get(index);
-
     }
 
     public void showAllTournaments() {
@@ -61,13 +57,9 @@ public class Beach {
         vTeams = s;
     }
 
-    public void newdTeamList(LinkedList<Dodgeball> d) {
-        dTeams = d;
-    }
+    public void newdTeamList(LinkedList<Dodgeball> d) { dTeams = d;  }
 
-    public void newtTeamList(LinkedList<Tug_of_War> t) {
-        tTeams = t;
-    }
+    public void newtTeamList(LinkedList<Tug_of_War> t) { tTeams = t;}
 
     public void newReferee(LinkedList<Referee> r) {
         listOfReferee = r;

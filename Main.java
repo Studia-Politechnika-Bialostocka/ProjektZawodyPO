@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class Main {
     public static Beach beach = new Beach();
-
+    //Glowne menu, przy wejsciu do programu
     public static void main(String[] args) {
         importInfo();
         int choice = 0;
@@ -66,7 +66,7 @@ public class Main {
             }
         }
     }
-    //importowanie danych
+    //importowanie danych --start--
     private static void importInfo(){
         beach.newvTeamList(beach.importFromFileVolleyball());
         beach.newdTeamList(beach.importFromFileDodgeball());
@@ -75,6 +75,7 @@ public class Main {
         beach.newAssistanceReferee(beach.importFromFileAssistantReferee());
         beach.importFromFileTournament(beach);
     }
+    //importowanie danych --stop--
     private static void mainMenuShowUp(){
         System.out.println("---------------MENU---------------");
         System.out.println("1. Add a tournament.");
@@ -84,6 +85,7 @@ public class Main {
         System.out.println("5. Exit the program.");
         System.out.println("6. Help Me.");
     }
+    //cale glowne menu
     private static void menu2(Tournament tournament) {
         Scanner klawiatura = new Scanner(System.in);
         int goBack = 0;
@@ -456,13 +458,15 @@ public class Main {
         System.out.println("3. Show all teams");
         System.out.println("4. Go back");
         Scanner keyboard = new Scanner(System.in);
+        boolean check=true;
         int choice = keyboard.nextInt();
+        do{
         switch (choice) {
-            case 1: {
+            case 1:
                 //dodaj drużynę
                 System.out.println("Entered desired team name: ");
                 String teamName = keyboard.next();
-                System.out.println("What type of team is that? Volleyball (0), dodgeball(1) or tug_of_war(2)");
+                System.out.println("What type of team is that? Volleyball(0), dodgeball(1) or tug_of_war(2)");
                 int typeOfTournament = getChoice(0, 2);
                 switch (typeOfTournament) {
                     case 0:
@@ -475,9 +479,8 @@ public class Main {
                         beach.addTTeam(new Tug_of_War(teamName));
                         break;
                 }
-            }
             break;
-            case 2: {
+            case 2:
                 //usuń drużynę
                 System.out.println("What type of team you want to delete? Volleyball (0), dodgeball(1), tyg_of_war(2)?");
                 int typeOfTournament = getChoice(0, 2);
@@ -501,17 +504,16 @@ public class Main {
                         beach.deleteTTeam(delete2);
                         break;
                 }
-            }
             break;
-            case 3: {
+            case 3:
                 beach.showAllVDTTeams();
-            }
-            case 4: {
+            case 4:
+                check = false;
                 break;
-            }
             default:
                 break;
         }
+        while(check);
     }
 
     private static void manageRefereesForBeach() {

@@ -322,13 +322,6 @@ public class Tournament {
         return matchOfFinal;
     }
 
-    public void saveToFile() {
-
-    }
-
-    public void importFromFile() {
-
-    }
     public void setNRofMatches(int exampleInteger){
         nrofMatches=exampleInteger;
     }

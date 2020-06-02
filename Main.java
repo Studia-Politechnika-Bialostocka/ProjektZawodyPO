@@ -458,15 +458,13 @@ public class Main {
         System.out.println("3. Show all teams");
         System.out.println("4. Go back");
         Scanner keyboard = new Scanner(System.in);
-        boolean check=true;
         int choice = keyboard.nextInt();
-        do{
         switch (choice) {
-            case 1:
+            case 1: {
                 //dodaj drużynę
                 System.out.println("Entered desired team name: ");
                 String teamName = keyboard.next();
-                System.out.println("What type of team is that? Volleyball(0), dodgeball(1) or tug_of_war(2)");
+                System.out.println("What type of team is that? Volleyball (0), dodgeball(1) or tug_of_war(2)");
                 int typeOfTournament = getChoice(0, 2);
                 switch (typeOfTournament) {
                     case 0:
@@ -479,8 +477,9 @@ public class Main {
                         beach.addTTeam(new Tug_of_War(teamName));
                         break;
                 }
+            }
             break;
-            case 2:
+            case 2: {
                 //usuń drużynę
                 System.out.println("What type of team you want to delete? Volleyball (0), dodgeball(1), tyg_of_war(2)?");
                 int typeOfTournament = getChoice(0, 2);
@@ -504,16 +503,17 @@ public class Main {
                         beach.deleteTTeam(delete2);
                         break;
                 }
+            }
             break;
-            case 3:
+            case 3: {
                 beach.showAllVDTTeams();
-            case 4:
-                check = false;
+            }
+            case 4: {
                 break;
+            }
             default:
                 break;
         }
-        while(check);
     }
 
     private static void manageRefereesForBeach() {

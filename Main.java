@@ -42,9 +42,6 @@ public class Main {
 
                         }
 
-
-                        //initialPrize = keyboard.nextDouble();
-
                         beach.addTournament(new Tournament(nazwa, initialPrize, beach.getListOfReferee(), beach.getListOfAssistantReferee(), type_Of_Match));
                         break;
                     case 2:
@@ -195,22 +192,22 @@ public class Main {
                             beach.showAllVTeams();
                             System.out.print("Choose a volleyball team: ");
                             teamIndex = keyboard.nextInt();
-                            if (tournament.getTeams().indexOf(tournament.getTeams().get(teamIndex))==-1)
-                            tournament.addTeam(beach.getVTeams().get(teamIndex));
+                            if (tournament.getTeams().indexOf(tournament.getTeams().get(teamIndex)) == -1)
+                                tournament.addTeam(beach.getVTeams().get(teamIndex));
                             break;
                         case 1:
                             beach.showAllDTeams();
                             System.out.print("Choose a dodgeball team: ");
                             teamIndex = keyboard.nextInt();
-                            if (tournament.getTeams().indexOf(tournament.getTeams().get(teamIndex))==-1)
-                            tournament.addTeam(beach.getDTeams().get(teamIndex));
+                            if (tournament.getTeams().indexOf(tournament.getTeams().get(teamIndex)) == -1)
+                                tournament.addTeam(beach.getDTeams().get(teamIndex));
                             break;
                         case 2:
                             beach.showAllTTeams();
                             System.out.print("Choose a tug of war team: ");
                             teamIndex = keyboard.nextInt();
-                            if (tournament.getTeams().indexOf(tournament.getTeams().get(teamIndex))==-1)
-                            tournament.addTeam(beach.getTTeams().get(teamIndex));
+                            if (tournament.getTeams().indexOf(tournament.getTeams().get(teamIndex)) == -1)
+                                tournament.addTeam(beach.getTTeams().get(teamIndex));
                             break;
                     }
                     break;
@@ -341,8 +338,8 @@ public class Main {
                     beach.showAllDonatorsFromBeach();
                     System.out.println("Wybierz swoj wybor<0:" + beach.getAmountOfDonators() + "> :");
                     choice_2 = getChoice(0, beach.getAmountOfDonators());
-                    if (tournament.getDonators().indexOf(tournament.getDonators().get(choice_2))==-1)
-                    tournament.addDonator(beach.getDonator(choice_2));
+                    if (tournament.getDonators().indexOf(tournament.getDonators().get(choice_2)) == -1)
+                        tournament.addDonator(beach.getDonator(choice_2));
                     break;
                 case 3:
                     //usuń sponsora
@@ -592,20 +589,20 @@ public class Main {
 
 
     private static void manageSponsorsForBeach() {
-        System.out.println("1. Add a sponsor");
-        System.out.println("2. Remove a sponsor");
-        System.out.println("3. Show all sponsors");
-        System.out.println("4. Go back");
-        Scanner keyboard = new Scanner(System.in);
         boolean check = true;
-        int choice = keyboard.nextInt();
         do {
+            System.out.println("1. Add a sponsor");
+            System.out.println("2. Remove a sponsor");
+            System.out.println("3. Show all sponsors");
+            System.out.println("4. Go back");
+            Scanner keyboard = new Scanner(System.in);
+            int choice = keyboard.nextInt();
             switch (choice) {
                 case 1:
                     //dodaj sponsora
                     System.out.println("Enter name of sponsor: ");
                     String sponsorName = keyboard.next();
-                    System.out.println("Enter name of sponsor: ");
+                    System.out.println("Enter lastname of sponsor: ");
                     String sponsorLastname = keyboard.next();
                     System.out.println("Enter initial donation of sponsor: ");
                     int initialDonation = keyboard.nextInt();

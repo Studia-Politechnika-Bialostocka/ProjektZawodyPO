@@ -18,4 +18,8 @@ public class Donator{
 	public void addMoney(double sum) {
 		allMoneyDonated += sum;
 	}
+
+	public String toString(){
+		return name +" "+ lastName +" "+ allMoneyDonated;
+	}
 }

@@ -11,13 +11,13 @@ public class Main {
 
     //Glowne menu, przy wejsciu do programu
     public static void main(String[] args) {
-        importInfo();
         int choice = 0;
         while (true) {
             try {
                 Scanner keyboard = new Scanner(System.in);
                 //caly napis do main
                 mainMenuShowUp();
+
                 choice = keyboard.nextInt();
                 switch (choice) {
                     case 1:
@@ -62,6 +62,9 @@ public class Main {
                         beach.saveToFile();
                         break;
                     case 6:
+                        importInfo();
+                        break;
+                    case 7:
                         System.exit(0);
                         break;
                     default:

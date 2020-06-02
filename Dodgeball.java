@@ -1,7 +1,5 @@
 package def;
 
-
-
 public class Dodgeball extends Team{
 private final int playerAmount = 6;
 	

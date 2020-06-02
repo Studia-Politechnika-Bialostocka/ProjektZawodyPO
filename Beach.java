@@ -449,7 +449,7 @@ public class Beach {
         return ar;
     }
 
-    public void importFromFileTournament(Beach b) {
+    public void importFromFileTournament() {
         LinkedList<Tournament> tou = new LinkedList<>();
         BufferedReader in = null;
         try {
@@ -459,13 +459,13 @@ public class Beach {
             int index;
             while ((buf = in.readLine()) != null && buf != "") {
                 String[] s = buf.split(" ");
-                Tournament v1 = new Tournament(s[0], Double.parseDouble(s[1]), b.getReferee(), b.getAssistantReferee(), Integer.parseInt(s[2]));
+                Tournament v1 = new Tournament(s[0], Double.parseDouble(s[1]), listOfReferee, listOfAssistantReferee, Integer.parseInt(s[2]));
                 v1.setNRofMatches(Integer.parseInt(s[3]));
                 for (int i = 0; i < Integer.parseInt(s[3]); ++i) {
                     buf = in.readLine();
                     v1.expandAllMaches(buf+"\n");
                 }
-                b.addTournament(v1);
+                addTournament(v1);
             }
 
 

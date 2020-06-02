@@ -72,7 +72,7 @@ public class Main {
         beach.newtTeamList(beach.importFromFileTug_of_War());
         beach.newReferee(beach.importFromFileRefeere());
         beach.newAssistanceReferee(beach.importFromFileAssistantReferee());
-        beach.importFromFileTournament(beach);
+        beach.importFromFileTournament();
     }
     //importowanie danych --stop--
     //zapisywanie danych --start--

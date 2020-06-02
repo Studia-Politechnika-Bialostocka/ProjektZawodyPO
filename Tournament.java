@@ -397,6 +397,16 @@ public class Tournament {
         return lines;
     }
 
+    public LinkedList<Team> getTeams() {
+        return teams;
+    }
+
+    public LinkedList<Donator> getDonators(){
+        return donators;
+    }
+
+
+
     public String toString() {
         return nameOfTheTournament + " " + prizePool + " " + typeOfTournament + " " + nrofMatches; //FIXME to też średnio działa, bo mi przeszkadza i nie mogę skorzystaż z metody .toString bo ta która jest tutaj ja nadpisuje
     }

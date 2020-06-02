@@ -195,18 +195,21 @@ public class Main {
                             beach.showAllVTeams();
                             System.out.print("Choose a volleyball team: ");
                             teamIndex = keyboard.nextInt();
+                            if (tournament.getTeams().indexOf(tournament.getTeams().get(teamIndex))==-1)
                             tournament.addTeam(beach.getVTeams().get(teamIndex));
                             break;
                         case 1:
                             beach.showAllDTeams();
                             System.out.print("Choose a dodgeball team: ");
                             teamIndex = keyboard.nextInt();
+                            if (tournament.getTeams().indexOf(tournament.getTeams().get(teamIndex))==-1)
                             tournament.addTeam(beach.getDTeams().get(teamIndex));
                             break;
                         case 2:
                             beach.showAllTTeams();
                             System.out.print("Choose a tug of war team: ");
                             teamIndex = keyboard.nextInt();
+                            if (tournament.getTeams().indexOf(tournament.getTeams().get(teamIndex))==-1)
                             tournament.addTeam(beach.getTTeams().get(teamIndex));
                             break;
                     }
@@ -329,7 +332,9 @@ public class Main {
                     System.out.println("Enter lastname of sponsor: ");
                     String sponsorLastname = keyboard.next();
                     System.out.println("Enter initial donation of sponsor: ");
-                    Double initialDonation = keyboard.nextDouble();
+
+                    double initialDonation = keyboard.nextDouble();
+
                     Donator donatorForMoment = new Donator(sponsorName, sponsorLastname, initialDonation);
                     tournament.addDonator(donatorForMoment);
                     beach.addDonatorToList(donatorForMoment);
@@ -338,6 +343,7 @@ public class Main {
                     beach.showAllDonatorsFromBeach();
                     System.out.println("Wybierz swoj wybor<0:" + beach.getAmountOfDonators() + "> :");
                     choice_2 = getChoice(0, beach.getAmountOfDonators());
+                    if (tournament.getDonators().indexOf(tournament.getDonators().get(choice_2))==-1)
                     tournament.addDonator(beach.getDonator(choice_2));
                     break;
                 case 3:

@@ -18,23 +18,19 @@ public class Main {
                 choice = keyboard.nextInt();
                 switch (choice) {
                     case 1:
-                        while (true) {
-                            System.out.println("Enter desired tournament name: ");
-                            String nazwa = keyboard.next();
-                            if (beach.ifExistInList(nazwa))
-                                throw new IfExistInListException(); //TODO to kompletnie nie działa, napraw to
-                            System.out.println("Enter desired type_Of_Tournament<0,2>:");
-                            int type_Of_Match = getChoice(0, 2);
-                            System.out.println("Enter desired initial prize: ");
-                            int initialPrize = keyboard.nextInt();
-                            beach.addTournament(new Tournament(nazwa, 100, beach.getListOfReferee(), beach.getListOfAssistantReferee(), type_Of_Match));
-                            break;
-                        }
+                        System.out.println("Enter desired tournament name: ");
+                        String nazwa = keyboard.next();
+                        if (beach.ifExistInList(nazwa))
+                            throw new IfExistInListException(); //TODO to kompletnie nie działa, napraw to
+                        System.out.println("Enter desired type_Of_Tournament<0,2>:");//TODO lol
+                        int type_Of_Match = getChoice(0, 2);
+                        System.out.println("Enter desired initial prize: ");
+                        int initialPrize = keyboard.nextInt();
+                        beach.addTournament(new Tournament(nazwa, 100, beach.getListOfReferee(), beach.getListOfAssistantReferee(), type_Of_Match));
                         break;
                     case 2:
                         //wyświetla listę turniejów
                         beach.showAllTournaments();
-                        beach.saveToFile(beach.getVTeams(), beach.getDTeams(), beach.getTTeams(), beach.getListOfReferee(), beach.getListOfAssistantReferee(), beach.getTournament());
                         break;
                     case 3:
                         beach.showAllTournaments();
@@ -47,8 +43,11 @@ public class Main {
                         menuForBeach();
                         break;
                     case 5:
-                        System.exit(0);
+                        savingInfo();
+                        break;
                     case 6:
+                        System.exit(0);
+                    case 7:
                         helpMeMenu();
                         break;
                     default:
@@ -75,14 +74,19 @@ public class Main {
         beach.importFromFileTournament(beach);
     }
     //importowanie danych --stop--
+    //zapisywanie danych --start--
+    private static void savingInfo(){
+        beach.saveToFile(beach.getVTeams(), beach.getDTeams(), beach.getTTeams(), beach.getListOfReferee(), beach.getListOfAssistantReferee(), beach.getTournament());
+    }
     private static void mainMenuShowUp(){
         System.out.println("---------------MENU---------------");
         System.out.println("1. Add a tournament.");
         System.out.println("2. Display list of tournaments.");
         System.out.println("3. Select a tournament.");
         System.out.println("4. Manage teams, referees etc. in beach(main base for info)");
-        System.out.println("5. Exit the program.");
-        System.out.println("6. Help Me.");
+        System.out.println("5. Save to file");
+        System.out.println("6. Exit the program.");
+        System.out.println("7. Help Me.");
     }
     //cale glowne menu
     private static void menu2(Tournament tournament) {
@@ -227,66 +231,69 @@ public class Main {
         System.out.println("2. Remove a referee");
         System.out.println("3. Show all referees");
         System.out.println("4. Go back");
+        boolean check = true;
         Scanner keyboard = new Scanner(System.in);
-        int choice = keyboard.nextInt();
-        switch (choice) {
-            case 1: {
-                System.out.println("Enter name of referee: ");
-                String refereeName = keyboard.next();
-                System.out.println("Enter lastname of referee: ");
-                String refereelastName = keyboard.next();
-                //dodaj sędziego
-                if (tournament.getTypeOfTournament() == 0) {
-                    System.out.println("Czy to sedzia glowny(0) czy sedzia asystujacy(1):");
-                    int typeOfReferee = getChoice(0, 1);
-                    if (typeOfReferee == 0) {
-                        beach.addReferee(new Referee(refereeName, refereelastName));
+        do {
+            int choice = keyboard.nextInt();
+            switch (choice) {
+                case 1: {
+                    System.out.println("Enter name of referee: ");
+                    String refereeName = keyboard.next();
+                    System.out.println("Enter lastname of referee: ");
+                    String refereelastName = keyboard.next();
+                    //dodaj sędziego
+                    if (tournament.getTypeOfTournament() == 0) {
+                        System.out.println("Czy to sedzia glowny(0) czy sedzia asystujacy(1):");
+                        int typeOfReferee = getChoice(0, 1);
+                        if (typeOfReferee == 0) {
+                            beach.addReferee(new Referee(refereeName, refereelastName));
+                        } else {
+                            beach.addAssistantReferee(new AssistantReferee(refereeName, refereelastName));
+                        }
                     } else {
-                        beach.addAssistantReferee(new AssistantReferee(refereeName, refereelastName));
+                        Referee r = new Referee(refereeName, refereelastName);
+                        beach.addReferee(r);
                     }
-                } else {
-                    Referee r = new Referee(refereeName, refereelastName);
-                    beach.addReferee(r);
                 }
-            }
-            break;
-            case 2: {
-                //usun sedziow
-                if (tournament.getTypeOfTournament() == 0) {
-                    System.out.println("Pokazac sedziow glownych(0) czy asystujacych(1):");
-                    int choice_oftype = getChoice(0, 1);
-                    if (choice_oftype == 0) {
+                break;
+                case 2: {
+                    //usun sedziow
+                    if (tournament.getTypeOfTournament() == 0) {
+                        System.out.println("Pokazac sedziow glownych(0) czy asystujacych(1):");
+                        int choice_oftype = getChoice(0, 1);
+                        if (choice_oftype == 0) {
+                            tournament.showReferees();
+                            System.out.println("Podaj swoj wybor:");
+                            int delete = getChoice(0, tournament.getAmountOfReferee());
+                            tournament.removeReferee(delete);
+                        } else {
+                            tournament.showAssistantReferees();
+                            System.out.println("Podaj swoj wybor:");
+                            int delete = getChoice(0, tournament.getAmountOfAssistantReferee());
+                            tournament.removeAssistantReferee(delete);
+                        }
+                    } else {
                         tournament.showReferees();
                         System.out.println("Podaj swoj wybor:");
                         int delete = getChoice(0, tournament.getAmountOfReferee());
                         tournament.removeReferee(delete);
-                    } else {
-                        tournament.showAssistantReferees();
-                        System.out.println("Podaj swoj wybor:");
-                        int delete = getChoice(0, tournament.getAmountOfAssistantReferee());
-                        tournament.removeAssistantReferee(delete);
                     }
-                } else {
-                    tournament.showReferees();
-                    System.out.println("Podaj swoj wybor:");
-                    int delete = getChoice(0, tournament.getAmountOfReferee());
-                    tournament.removeReferee(delete);
                 }
-            }
-            break;
-            case 3: {
-                //pokaż wszystkich sędziów
-                if (tournament.getTypeOfTournament() == 0)
-                    tournament.showReferees_MainAndAssistant();
-                else
-                    tournament.showReferees();
-            }
-            case 4: {
                 break;
+                case 3: {
+                    //pokaż wszystkich sędziów
+                    if (tournament.getTypeOfTournament() == 0)
+                        tournament.showReferees_MainAndAssistant();
+                    else
+                        tournament.showReferees();
+                }
+                case 4:
+                    check = false;
+                    break;
+                default:
+                    break;
             }
-            default:
-                break;
-        }
+        }while(check);
     }
 
     private static void manageSponsors(Tournament tournament) {

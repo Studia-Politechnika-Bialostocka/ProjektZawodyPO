@@ -22,7 +22,7 @@ public class Main {
                         String nazwa = keyboard.next();
                         if (beach.ifExistInList(nazwa))
                             throw new IfExistInListException(); //TODO to kompletnie nie działa, napraw to
-                        System.out.println("Enter desired type_Of_Tournament<0,2>:");//TODO lol
+                        System.out.println("Enter desired type_Of_Tournament<0,2>:");
                         int type_Of_Match = getChoice(0, 2);
                         System.out.println("Enter desired initial prize: ");
                         int initialPrize = keyboard.nextInt();
@@ -47,9 +47,6 @@ public class Main {
                         break;
                     case 6:
                         System.exit(0);
-                    case 7:
-                        helpMeMenu();
-                        break;
                     default:
                         throw new InvalidValueException(choice);
                 }
@@ -59,7 +56,6 @@ public class Main {
                 System.out.println("Wpisz poprawną wartość. Spróbuj ponownie. ");
             } catch (IfExistInListException e) {
                 System.out.println("Taka nazwa już istnieje. Spróbuj ponownie.");
-                System.out.println(e.fillInStackTrace());
             } catch (IndexOutOfBoundsException e) {
                 System.out.println("Invalid Index");
             }
@@ -116,9 +112,6 @@ public class Main {
                 case 5:
                     goBack = 1;
                     break;
-                case 6:
-                    helpMeMenu2();
-                    break;
                 default:
                     try {
                         throw new InvalidValueException(choice2);
@@ -154,8 +147,6 @@ public class Main {
                 tournament.showAllTeams();
             case 4:
                 break;
-            case 5:
-                helpMeMenuMenageTeams();
             default:
                 break;
         }
@@ -609,17 +600,5 @@ public class Main {
             default:
                 break;
         }
-    }
-
-    private static void helpMeMenu() {
-        System.out.println("Już ci pomagam"); //TODO tutaj trzeba dodać instrukcję gdyby się chłop zagubił
-    }
-
-    private static void helpMeMenu2() {
-        System.out.println("Już ci pomagam"); //TODO tutaj trzeba dodać instrukcję gdyby się chłop zagubił
-    }
-
-    private static void helpMeMenuMenageTeams() {
-        System.out.println("Już ci pomagam"); //TODO tutaj trzeba dodać instrukcję gdyby się chłop zagubił
     }
 }

@@ -441,7 +441,7 @@ public class Beach {
         return ar;
     }
 
-    public void importFromFileTournament(Beach b) {
+    public void importFromFileTournament() {
         LinkedList<Tournament> tou = new LinkedList<>();
         BufferedReader in = null;
         try {
@@ -451,13 +451,13 @@ public class Beach {
             int index;
             while ((buf = in.readLine()) != null && buf != "") {
                 String[] s = buf.split(" ");
-                Tournament v1 = new Tournament(s[0], Double.parseDouble(s[1]), b.getReferee(), b.getAssistantReferee(), Integer.parseInt(s[2]));
+                Tournament v1 = new Tournament(s[0], Double.parseDouble(s[1]), listOfReferee, listOfAssistantReferee, Integer.parseInt(s[2]));
                 v1.setNRofMatches(Integer.parseInt(s[3]));
                 for (int i = 0; i < Integer.parseInt(s[3]); ++i) {
                     buf = in.readLine();
                     v1.expandAllMaches(buf+"\n");
                 }
-                b.addTournament(v1);
+                addTournament(v1);
             }
 
 
@@ -471,11 +471,11 @@ public class Beach {
     }
 
     public String getNameOfIndexInTournament(int index){
-        return listOfTournaments.get(index).toString();
+        return listOfTournaments.get(index).getNameOfTournament();
     }
     public boolean ifExistInList(String dowolnaNazwa){
         for(int i = 0; i < listOfTournaments.size(); ++i){
-            if(dowolnaNazwa == getNameOfIndexInTournament(i)) return true;
+            if(dowolnaNazwa.equals(getNameOfIndexInTournament(i))) return true;
         }
         return false;
     }

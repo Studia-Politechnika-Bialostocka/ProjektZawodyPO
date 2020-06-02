@@ -86,9 +86,8 @@ public class Match {
     }
 
     public String toString() {
-        String typeOfMatchInString = null;
         if (isScoreSet)
-            return "Zespoly:" + teamOne + " i " + teamTwo + " Sędzia:" + referee + ". Zwyciezca:" + winner + ". Wynik: " + finalScore + "\n";
+            return "Zespoly: " + teamOne + " i " + teamTwo + " Sędzia:" + referee + ". Zwyciezca:" + winner + ". Wynik: " + finalScore + "\n";
         else
             return "Zespoly: " + teamOne + " i " + teamTwo + " Sędzia:" + referee + ". Zwyciezca: nieustalony. Wynik: nieustalony\n";
 

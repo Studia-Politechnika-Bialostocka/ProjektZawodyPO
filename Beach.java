@@ -251,11 +251,11 @@ public class Beach {
         return listOfAssistantReferee;
     }
 
-    public void saveToFile(LinkedList<Volleyball> v, LinkedList<Dodgeball> d, LinkedList<Tug_of_War> t, LinkedList<Referee> r, LinkedList<AssistantReferee> ar, LinkedList<Tournament> tour) {
+    private void saveToFileVolleyball(){
         try {
             FileWriter fileWriter = new FileWriter("VolleyballFile.txt");
             PrintWriter printWriter = new PrintWriter(fileWriter);
-            for (Volleyball volleyball : v) {
+            for (Volleyball volleyball : vTeams) {
                 printWriter.print(volleyball.toString());
                 printWriter.print("\n");
             }
@@ -263,10 +263,13 @@ public class Beach {
         } catch (Exception e) {
             System.out.println(e);
         }
+    }
+
+    private void saveToFileDodgeball() {
         try {
             FileWriter fileWriter = new FileWriter("DodgeballFile.txt");
             PrintWriter printWriter = new PrintWriter(fileWriter);
-            for (Dodgeball dodgeball : d) {
+            for (Dodgeball dodgeball : dTeams) {
                 printWriter.print(dodgeball.toString());
                 printWriter.print("\n");
             }
@@ -274,10 +277,13 @@ public class Beach {
         } catch (Exception e) {
             System.out.println(e);
         }
+    }
+
+    private void saveToFileTug_of_War() {
         try {
             FileWriter fileWriter = new FileWriter("Tug_of_WarFile.txt");
             PrintWriter printWriter = new PrintWriter(fileWriter);
-            for (Tug_of_War tug_of_war : t) {
+            for (Tug_of_War tug_of_war : tTeams) {
                 printWriter.print(tug_of_war.toString());
                 printWriter.print("\n");
             }
@@ -285,10 +291,13 @@ public class Beach {
         } catch (Exception e) {
             System.out.println(e);
         }
+    }
+
+    private void saveToFileReferee(){
         try {
             FileWriter fileWriter = new FileWriter("RefereeFile.txt");
             PrintWriter printWriter = new PrintWriter(fileWriter);
-            for (Referee referee : r) {
+            for (Referee referee : listOfReferee) {
                 printWriter.print(referee.toString());
                 printWriter.print("\n");
             }
@@ -296,10 +305,13 @@ public class Beach {
         } catch (Exception e) {
             System.out.println(e);
         }
+    }
+
+    private void saveToFileAssistantReferee() {
         try {
             FileWriter fileWriter = new FileWriter("AssistanceRefereeFile.txt");
             PrintWriter printWriter = new PrintWriter(fileWriter);
-            for (AssistantReferee assistantReferee : ar) {
+            for (AssistantReferee assistantReferee : listOfAssistantReferee) {
                 printWriter.print(assistantReferee.toString());
                 printWriter.print("\n");
             }
@@ -307,11 +319,13 @@ public class Beach {
         } catch (Exception e) {
             System.out.println(e);
         }
+    }
+
+    private void saveToFileTournament(){
         try {
             FileWriter fileWriter = new FileWriter("TournamentFile.txt");
             PrintWriter printWriter = new PrintWriter(fileWriter);
-            System.out.println(tour.size());
-            for (Tournament tournament : tour) {
+            for (Tournament tournament : listOfTournaments) {
                 printWriter.print(tournament.toString());
                 printWriter.print("\n");
                 printWriter.print((tournament.getAllMaches()));
@@ -374,7 +388,7 @@ public class Beach {
         LinkedList<Tug_of_War> t = new LinkedList<>();
         BufferedReader in = null;
         try {
-            in = new BufferedReader(new FileReader("Tug_of_War.txt"));
+            in = new BufferedReader(new FileReader("Tug_of_WarFile.txt"));
             String buf;
             while ((buf = in.readLine()) != null) {
                 String[] s = buf.split(" ");

@@ -34,7 +34,6 @@ public class Main {
                     case 2:
                         //wyświetla listę turniejów
                         beach.showAllTournaments();
-                        beach.saveToFile(beach.getVTeams(), beach.getDTeams(), beach.getTTeams(), beach.getListOfReferee(), beach.getListOfAssistantReferee(), beach.getTournament());
                         break;
                     case 3:
                         beach.showAllTournaments();

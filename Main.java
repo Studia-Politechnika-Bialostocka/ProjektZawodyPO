@@ -408,6 +408,7 @@ public class Main {
         Scanner in = new Scanner(System.in);
         do {
             choice_within_method = in.nextInt();
+            if(choice_within_method < d_gran || choice_within_method > g_gran) System.out.println("Wpisz poprawną wartość");
         } while (choice_within_method < d_gran || choice_within_method > g_gran);
         return choice_within_method;
     }
@@ -434,7 +435,9 @@ public class Main {
                     manageSponsorsForBeach();
                     break;
                 case 4:
+
                     check=false;
+
                     break;
                 default:
                     break;

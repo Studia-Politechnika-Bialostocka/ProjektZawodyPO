@@ -14,10 +14,6 @@ public class Donator{
 	public double getMoney() {
 		return allMoneyDonated;
 	}
-	
-	public void addMoney(double sum) {
-		allMoneyDonated += sum;
-	}
 
 	public String toString(){
 		return name +" "+ lastName +" "+ allMoneyDonated;

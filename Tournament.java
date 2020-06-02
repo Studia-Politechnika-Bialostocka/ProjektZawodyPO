@@ -29,7 +29,8 @@ public class Tournament {
     private int refChoice = 0;
     private int aRefChoice = 0;
     private int nrofMatches = 0;
-
+    private double thirdPlace;
+    private double fourthPlace;
 
     public Tournament(String nameOfTheTournament, double Initialprize, LinkedList<Referee> refs, LinkedList<AssistantReferee> arefs, int typeOfTournament) {
         this.nameOfTheTournament = nameOfTheTournament;
@@ -162,12 +163,15 @@ public class Tournament {
         if (loserOfFirstSemiFinals.getSetsWon() > loserOfSecondSemiFinals.getSetsWon()) {
             loserOfFirstSemiFinals.addPrizesWon(0.15 * prizePool);
             loserOfSecondSemiFinals.addPrizesWon(0.1 * prizePool);
+            thirdPlace=0.15*prizePool;             fourthPlace=0.1*prizePool;
         } else if (loserOfFirstSemiFinals.getSetsWon() < loserOfSecondSemiFinals.getSetsWon()) {
             loserOfFirstSemiFinals.addPrizesWon(0.1 * prizePool);
             loserOfSecondSemiFinals.addPrizesWon(0.15 * prizePool);
+            thirdPlace=0.15*prizePool;           fourthPlace=0.1*prizePool;
         } else {
             loserOfFirstSemiFinals.addPrizesWon(0.125 * prizePool);
             loserOfSecondSemiFinals.addPrizesWon(0.125 * prizePool);
+            thirdPlace=0.125*prizePool;         fourthPlace=0.125*prizePool;
         }
     }
 
@@ -216,14 +220,6 @@ public class Tournament {
             System.out.println(i + ":" + exampleDonators);
             ++i;
         }
-    }
-
-    public void addReferee(Referee example_referee) {
-        referees.add(example_referee);
-    }
-
-    public void addAssistantReferee(AssistantReferee example_Ass_referee) {
-        aReferees.add(example_Ass_referee);
     }
 
     public void showReferees() {
@@ -306,10 +302,6 @@ public class Tournament {
             System.out.println(matchOfFinal);
     }
 
-    public LinkedList<Match> getMatches() {
-        return matches;
-    }
-
     public Match getMatchRoundRobin(int index) {
         return matches.get(index);
     }
@@ -322,13 +314,6 @@ public class Tournament {
         return matchOfFinal;
     }
 
-    public void saveToFile() {
-
-    }
-
-    public void importFromFile() {
-
-    }
     public void setNRofMatches(int exampleInteger){
         nrofMatches=exampleInteger;
     }
@@ -351,6 +336,11 @@ public class Tournament {
             ++nrofMatches;
         }
         s += matchOfFinal.toString();
+        ++nrofMatches;
+        s += ("Piersze miejsce "+winner.prizesWon+" ");
+        s += ("Drugie miejsce "+matchOfFinal.getLoser().prizesWon + " ");
+        s += ("Trzecie miejsce " + thirdPlace + " ");
+        s += ("Czwarte miejsce " + fourthPlace + " ");
         ++nrofMatches;
         AllMaches = s;
         return s;
@@ -379,7 +369,6 @@ public class Tournament {
 
     public int countingAmountOfMatchesInRoundRobin(int parameter) {
         switch (parameter) {
-
             case 0:
                 return (matches.size()-1);
             case 1:
@@ -389,15 +378,6 @@ public class Tournament {
         }
     }
 
-    private int linesInFile() throws IOException {
-        BufferedReader reader = new BufferedReader(new FileReader(nameOfTheTournament + ".txt"));
-        int lines = 0;
-        while (reader.readLine() != null)
-            lines++;
-        reader.close();
-        return lines;
-    }
-
     public LinkedList<Team> getTeams() {
         return teams;
     }
@@ -405,8 +385,6 @@ public class Tournament {
     public LinkedList<Donator> getDonators(){
         return donators;
     }
-
-
 
     public String toString() {
         return nameOfTheTournament + " " + prizePool + " " + typeOfTournament + " " + nrofMatches; //FIXME to też średnio działa, bo mi przeszkadza i nie mogę skorzystaż z metody .toString bo ta która jest tutaj ja nadpisuje

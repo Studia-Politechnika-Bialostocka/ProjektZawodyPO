@@ -11,7 +11,7 @@ public class Referee {
     }
 
     public void documentMatch() {
-        numOfMatches++;
+        ++numOfMatches;
     }
 
     public String toString() {

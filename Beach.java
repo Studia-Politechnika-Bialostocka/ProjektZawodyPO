@@ -215,14 +215,6 @@ public class Beach {
             System.out.println("Brak sedziow asystujacych");
     }
 
-    public LinkedList<Referee> getReferee() {
-        return listOfReferee;
-    }
-
-    public LinkedList<AssistantReferee> getAssistantReferee() {
-        return listOfAssistantReferee;
-    }
-
     public int getAmountOfReferee() {
         return (listOfReferee.size()-1);
     }

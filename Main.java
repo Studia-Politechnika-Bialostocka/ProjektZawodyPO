@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class Main {
     public static Beach beach = new Beach();
-
+    //Glowne menu, przy wejsciu do programu
     public static void main(String[] args) {
         importInfo();
         int choice = 0;
@@ -66,7 +66,7 @@ public class Main {
             }
         }
     }
-    //importowanie danych
+    //importowanie danych --start--
     private static void importInfo(){
         beach.newvTeamList(beach.importFromFileVolleyball());
         beach.newdTeamList(beach.importFromFileDodgeball());
@@ -75,6 +75,7 @@ public class Main {
         beach.newAssistanceReferee(beach.importFromFileAssistantReferee());
         beach.importFromFileTournament(beach);
     }
+    //importowanie danych --stop--
     private static void mainMenuShowUp(){
         System.out.println("---------------MENU---------------");
         System.out.println("1. Add a tournament.");
@@ -84,6 +85,7 @@ public class Main {
         System.out.println("5. Exit the program.");
         System.out.println("6. Help Me.");
     }
+    //cale glowne menu
     private static void menu2(Tournament tournament) {
         Scanner klawiatura = new Scanner(System.in);
         int goBack = 0;

@@ -6,30 +6,15 @@ import java.util.Scanner;
 
 public class Main {
     public static Beach beach = new Beach();
-
+    //Glowne menu, przy wejsciu do programu
     public static void main(String[] args) {
-        beach.newvTeamList(beach.importFromFileVolleyball());
-        beach.newdTeamList(beach.importFromFileDodgeball());
-        //beach.newtTeamList(beach.importFromFileTug_of_War());
-        beach.newReferee(beach.importFromFileRefeere());
-        beach.newAssistanceReferee(beach.importFromFileAssistantReferee());
-        beach.importFromFileTournament(beach);
-        int menu = 0;
-        int menu2 = 0;
+        importInfo();
         int choice = 0;
-        int choice2 = 0;
-
-
         while (true) {
             try {
                 Scanner keyboard = new Scanner(System.in);
-                System.out.println("---------------MENU---------------");
-                System.out.println("1. Add a tournament.");
-                System.out.println("2. Display list of tournaments.");
-                System.out.println("3. Select a tournament.");
-                System.out.println("4. Manage teams, referees etc. in beach(main base for info)");
-                System.out.println("5. Exit the program.");
-                System.out.println("6. Help Me.");
+                //caly napis do main
+                mainMenuShowUp();
                 choice = keyboard.nextInt();
                 switch (choice) {
                     case 1:
@@ -79,14 +64,31 @@ public class Main {
                 System.out.println("Invalid Index");
             }
         }
-
     }
-
+    //importowanie danych --start--
+    private static void importInfo(){
+        beach.newvTeamList(beach.importFromFileVolleyball());
+        beach.newdTeamList(beach.importFromFileDodgeball());
+        beach.newtTeamList(beach.importFromFileTug_of_War());
+        beach.newReferee(beach.importFromFileRefeere());
+        beach.newAssistanceReferee(beach.importFromFileAssistantReferee());
+        beach.importFromFileTournament(beach);
+    }
+    //importowanie danych --stop--
+    private static void mainMenuShowUp(){
+        System.out.println("---------------MENU---------------");
+        System.out.println("1. Add a tournament.");
+        System.out.println("2. Display list of tournaments.");
+        System.out.println("3. Select a tournament.");
+        System.out.println("4. Manage teams, referees etc. in beach(main base for info)");
+        System.out.println("5. Exit the program.");
+        System.out.println("6. Help Me.");
+    }
+    //cale glowne menu
     private static void menu2(Tournament tournament) {
-
         Scanner klawiatura = new Scanner(System.in);
         int goBack = 0;
-        int choice2 = 0;
+        int choice2;
         while (goBack == 0) {
             System.out.println("---------------MENU2---------------");
             System.out.println("1. Manage teams");
@@ -133,8 +135,7 @@ public class Main {
         System.out.println("4. Go back");
         System.out.println("5. Help Me");
         Scanner keyboard = new Scanner(System.in);
-        int choice = 0;
-        choice = keyboard.nextInt();
+        int choice = keyboard.nextInt();
         switch (choice) {
             case 1:
                 addTeam(tournament);
@@ -163,8 +164,7 @@ public class Main {
         System.out.println("2. Create a new team");
         System.out.println("3. Go back");
         Scanner keyboard = new Scanner(System.in);
-        int choice = 0;
-        choice = keyboard.nextInt();
+        int choice = keyboard.nextInt();
         switch (choice) {
             case 1: {
                 //Adding existing teams from list
@@ -228,8 +228,7 @@ public class Main {
         System.out.println("3. Show all referees");
         System.out.println("4. Go back");
         Scanner keyboard = new Scanner(System.in);
-        int choice = 0;
-        choice = keyboard.nextInt();
+        int choice = keyboard.nextInt();
         switch (choice) {
             case 1: {
                 System.out.println("Enter name of referee: ");
@@ -297,8 +296,7 @@ public class Main {
         System.out.println("4. Show all sponsors");
         System.out.println("5. Go back");
         Scanner keyboard = new Scanner(System.in);
-        int choice = 0;
-        choice = keyboard.nextInt();
+        int choice = keyboard.nextInt();
         switch (choice) {
             case 1: {
                 //dodaj sponsora
@@ -308,8 +306,9 @@ public class Main {
                 String sponsorLastname = keyboard.next();
                 System.out.println("Enter initial donation of sponsor: ");
                 int initialDonation = keyboard.nextInt();
-                tournament.addDonator(new Donator(sponsorName, sponsorLastname, initialDonation));
-                beach.addDonatorToList(new Donator(sponsorName, sponsorLastname, initialDonation));
+                Donator donatorForMoment = new Donator(sponsorName, sponsorLastname, initialDonation);
+                tournament.addDonator(donatorForMoment);
+                beach.addDonatorToList(donatorForMoment);
             }
             break;
             case 2: {
@@ -342,7 +341,7 @@ public class Main {
     private static void goToPlayoffs(Tournament tournament) {
         Scanner keyboard = new Scanner(System.in);
         int menu = 0;
-        int choice = 0;
+        int choice;
         int levelOfGaming = 0;
         while (menu == 0) {
             System.out.println("---------------MENU3---------------");
@@ -356,16 +355,17 @@ public class Main {
                     if (levelOfGaming == 0) {
                         tournament.matchesOfRoundRobin();
                         ++levelOfGaming;
-                    } else if (levelOfGaming == 1 && tournament.areAllMatchesPlayedInRoundRobin() == true) {
+                    } else if (levelOfGaming == 1 && tournament.areAllMatchesPlayedInRoundRobin()) {
                         tournament.roundRobin();
                         tournament.matchesOfSemiFinals();
                         ++levelOfGaming;
-                    } else if (levelOfGaming == 2 && tournament.areAllMatchesPlayedInSemiFinals() == true) {
+                    } else if (levelOfGaming == 2 && tournament.areAllMatchesPlayedInSemiFinals()) {
                         tournament.semiFinal();
                         tournament.matchOfFinal();
                         ++levelOfGaming;
-                    } else if (levelOfGaming == 3 && tournament.areAllMatchesPlayedInFinals() == true) {
+                    } else if (levelOfGaming == 3 && tournament.areAllMatchesPlayedInFinals()) {
                         tournament.finalGame();
+                        System.out.println("Zwyciezyl:" + tournament.getWinner().getTeamName());
                         ++levelOfGaming;
                     } else if (levelOfGaming == 4)
                         System.out.println("Zwyciezyl:" + tournament.getWinner().getTeamName());
@@ -373,25 +373,30 @@ public class Main {
                 break;
                 case 2: {
                     //pokaż wyniki meczów
-                    tournament.showAllMatchesIn_RoundRobin_SemiFinals_Finals(levelOfGaming - 1);
+                    if(levelOfGaming==4)
+                        tournament.showFinalScores();
+                    else if(levelOfGaming!=0)
+                        tournament.showAllMatchesIn_RoundRobin_SemiFinals_Finals(levelOfGaming - 1);
                 }
                 break;
                 case 3: {
                     //ustaw wynik meczu
-                    int wybor;
-                    tournament.showAllMatchesIn_RoundRobin_SemiFinals_Finals(levelOfGaming - 1);
-                    System.out.println("Podaj swoj wybor <0:" + tournament.countingAmountOfMatchesInRoundRobin(levelOfGaming - 1) + ">:");
-                    wybor = getChoice(0, tournament.countingAmountOfMatchesInRoundRobin(levelOfGaming - 1));
-                    switch (levelOfGaming - 1) {
-                        case 0:
-                            tournament.getMatchRoundRobin(wybor).setResult();
-                            break;
-                        case 1:
-                            tournament.getMatchSemiFinals(wybor).setResult();
-                            break;
-                        case 2:
-                            tournament.getMatchFinal().setResult();
-                            break;
+                    if(levelOfGaming!=0) {
+                        int wybor;
+                        tournament.showAllMatchesIn_RoundRobin_SemiFinals_Finals(levelOfGaming - 1);
+                        System.out.println("Podaj swoj wybor <0:" + tournament.countingAmountOfMatchesInRoundRobin(levelOfGaming - 1) + ">:");
+                        wybor = getChoice(0, tournament.countingAmountOfMatchesInRoundRobin(levelOfGaming - 1));
+                        switch (levelOfGaming - 1) {
+                            case 0:
+                                tournament.getMatchRoundRobin(wybor).setResult();
+                                break;
+                            case 1:
+                                tournament.getMatchSemiFinals(wybor).setResult();
+                                break;
+                            case 2:
+                                tournament.getMatchFinal().setResult();
+                                break;
+                        }
                     }
                 }
                 break;
@@ -412,10 +417,9 @@ public class Main {
     }
 
     private static void menuForBeach() {
-
         Scanner klawiatura = new Scanner(System.in);
         int goBack = 0;
-        int choice2 = 0;
+        int choice2;
         while (goBack == 0) {
             System.out.println("---------------EDIT_BEACH---------------");
             System.out.println("1. Manage teams");
@@ -453,8 +457,7 @@ public class Main {
         System.out.println("3. Show all teams");
         System.out.println("4. Go back");
         Scanner keyboard = new Scanner(System.in);
-        int choice = 0;
-        choice = keyboard.nextInt();
+        int choice = keyboard.nextInt();
         switch (choice) {
             case 1: {
                 //dodaj drużynę
@@ -518,8 +521,7 @@ public class Main {
         System.out.println("3. Show all referees");
         System.out.println("4. Go back");
         Scanner keyboard = new Scanner(System.in);
-        int choice = 0;
-        choice = keyboard.nextInt();
+        int choice = keyboard.nextInt();
         switch (choice) {
             case 1: {
                 //dodaj sędziego
@@ -571,8 +573,7 @@ public class Main {
         System.out.println("3. Show all sponsors");
         System.out.println("4. Go back");
         Scanner keyboard = new Scanner(System.in);
-        int choice = 0;
-        choice = keyboard.nextInt();
+        int choice = keyboard.nextInt();
         switch (choice) {
             case 1: {
                 //dodaj sponsora

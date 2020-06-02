@@ -1,9 +1,9 @@
 package def;
 
 public class Donator{
-	private String name;
-	private String lastName;
-	private double allMoneyDonated;
+	private final String name;
+	private final String lastName;
+	private double allMoneyDonated=0.0;
 	
 	public Donator(String name, String lastName, int initialDonation) {
 		this.name = name;

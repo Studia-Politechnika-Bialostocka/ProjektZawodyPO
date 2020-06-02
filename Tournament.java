@@ -9,10 +9,10 @@ import java.util.Random;
 
 public class Tournament {
 
-    private String nameOfTheTournament;
+    private final String nameOfTheTournament;
 
     private double prizePool;
-    private int typeOfTournament; // 0=Volleyball, 1=Dodgeball, 2 = Tug_of_War
+    private final int typeOfTournament; // 0=Volleyball, 1=Dodgeball, 2 = Tug_of_War
     private LinkedList<Donator> donators;
     private LinkedList<Match> matches;
     private LinkedList<Match> matchesOfSemiFinal;
@@ -23,10 +23,10 @@ public class Tournament {
     private LinkedList<Referee> referees;
     private LinkedList<AssistantReferee> aReferees;
     private Team winner;
-    public String AllMaches = "";
+    private String AllMaches = "";
     private int refChoice = 0;
     private int aRefChoice = 0;
-    public int nrofMatches = 0;
+    private int nrofMatches = 0;
 
 
     public Tournament(String nameOfTheTournament, double Initialprize, LinkedList<Referee> refs, LinkedList<AssistantReferee> arefs, int typeOfTournament) {
@@ -74,19 +74,14 @@ public class Tournament {
         for (int i = 0; i < teams.size(); i++) {
             for (int j = i + 1; j < teams.size(); j++) {
                 int mainRefIdx = refChoice % referees.size();
-                if (teams.get(0) instanceof Volleyball) {
+                if (typeOfTournament == 0) {
                     int ar1 = aRefChoice % aReferees.size();
                     int ar2 = (aRefChoice + 1) % aReferees.size();
                     matches.add(new VolleyballMatch(teams.get(i), teams.get(j), referees.get(mainRefIdx),
                             0, aReferees.get(ar1), aReferees.get(ar2)));
                     aRefChoice += 2;
-                } else {
-                    int typeOfMatch = 1;
-                    if (teams.get(0) instanceof Dodgeball) typeOfMatch = 1;
-                    else if (teams.get(0) instanceof Tug_of_War) typeOfMatch = 2;
-
-                    matches.add(new Match(teams.get(i), teams.get(j), referees.get(mainRefIdx), typeOfMatch));
-                }
+                } else
+                    matches.add(new Match(teams.get(i), teams.get(j), referees.get(mainRefIdx), typeOfTournament));
                 refChoice++;
             }
         }
@@ -101,19 +96,16 @@ public class Tournament {
     }
 
     public void roundRobin() {
-        for (Match exampleMatch : matches) {
+        for (Match exampleMatch : matches)
             exampleMatch.assignPointsAndSets();
-        }
         LinkedList<Team> sortedTeams = sortTeams();
-
         for (int i = 0; i < 4; i++) semiTeams.add(sortedTeams.get(i));
     }
 
     //mecze polfinalowe oraz wylonienie finalistow
     public void semiFinal() {
-        for (Match exampleMatch : matchesOfSemiFinal) {
+        for (Match exampleMatch : matchesOfSemiFinal)
             exampleMatch.assignPointsAndSets();
-        }
         finalTeams.add(matchesOfSemiFinal.get(0).winner);
         finalTeams.add(matchesOfSemiFinal.get(1).winner);
     }
@@ -121,20 +113,16 @@ public class Tournament {
     public void matchesOfSemiFinals() {
         for (int i = 0; i < 2; ++i) {
             int numberOfMainReferee = refChoice % referees.size();
-            if (semiTeams.get(i) instanceof Volleyball) {
+            if (typeOfTournament==0) {
                 int numberOfFirstReferee = aRefChoice % aReferees.size();
                 int numberOfSecondReferee = (aRefChoice + 1) % aReferees.size();
-                matchesOfSemiFinal.add(new VolleyballMatch(semiTeams.get(i), semiTeams.get(i + 2),
-                        referees.get(numberOfMainReferee), 0, aReferees.get(numberOfFirstReferee), aReferees.get(numberOfSecondReferee)));
+                matchesOfSemiFinal.add(new VolleyballMatch(semiTeams.get(i), semiTeams.get(i + 2),referees.get(numberOfMainReferee),
+                        0, aReferees.get(numberOfFirstReferee), aReferees.get(numberOfSecondReferee)));
                 aRefChoice += 2;
-            } else {
-                if (semiTeams.get(i) instanceof Dodgeball)
-                    matchesOfSemiFinal.add(new Match(semiTeams.get(i), semiTeams.get(i + 2),
-                            referees.get(numberOfMainReferee), 1));
-                else
-                    matchesOfSemiFinal.add(new Match(semiTeams.get(i), semiTeams.get(i + 2),
-                            referees.get(numberOfMainReferee), 2));
             }
+            else
+                matchesOfSemiFinal.add(new Match(semiTeams.get(i), semiTeams.get(i + 2),
+                        referees.get(numberOfMainReferee), typeOfTournament));
             ++refChoice;
         }
     }
@@ -149,18 +137,15 @@ public class Tournament {
 
     public void matchOfFinal() {
         int numberOfMainReferee = refChoice % referees.size();
-        if (finalTeams.get(0) instanceof Volleyball) {
+        if (typeOfTournament == 0) {
             int numberOfFirstReferee = aRefChoice % aReferees.size();
             int numberOfSecondReferee = (aRefChoice + 1) % aReferees.size();
             matchOfFinal = (new VolleyballMatch(finalTeams.get(0), finalTeams.get(1), referees.get(numberOfMainReferee),
                     0, aReferees.get(numberOfFirstReferee), aReferees.get(numberOfSecondReferee)));
             aRefChoice += 2;
-        } else {
-            if (finalTeams.get(0) instanceof Dodgeball)
-                matchOfFinal = (new Match(finalTeams.get(0), finalTeams.get(1), referees.get(numberOfMainReferee), 1));
-            else
-                matchOfFinal = (new Match(finalTeams.get(0), finalTeams.get(1), referees.get(numberOfMainReferee), 2));
         }
+        else
+            matchOfFinal = (new Match(finalTeams.get(0), finalTeams.get(1), referees.get(numberOfMainReferee), typeOfTournament));
         ++refChoice;
     }
 
@@ -182,11 +167,18 @@ public class Tournament {
         }
     }
 
+    public String getAllMaches(){
+        return AllMaches;
+    }
+
+    public void expandAllMaches(String exampleString){
+        AllMaches+=exampleString;
+    }
+
     public boolean areAllMatchesPlayedInRoundRobin() {
-        for (Match exampleMatch : matches) {
+        for (Match exampleMatch : matches)
             if (exampleMatch.isScoreSet == false)
                 return false;
-        }
         return true;
     }
 
@@ -206,6 +198,7 @@ public class Tournament {
 
     public void addDonator(Donator d) {
         donators.add(d);
+        prizePool+=d.getMoney();
     }
 
     public void showDonators() {
@@ -255,17 +248,11 @@ public class Tournament {
     }
 
     public int getAmountOfReferee() {
-        int i = -1;
-        for (Referee exampleReferee : referees)
-            ++i;
-        return i;
+        return (referees.size()-1);
     }
 
     public int getAmountOfAssistantReferee() {
-        int i = -1;
-        for (AssistantReferee exampleAssReferee : aReferees)
-            ++i;
-        return i;
+        return (aReferees.size()-1);
     }
 
     public int getTypeOfTournament() {
@@ -275,7 +262,7 @@ public class Tournament {
     public void showAllTeams() {
         int i = 0;
         for (Team team : teams) {
-            System.out.println(team);
+            System.out.println(i + ":" + team);
             ++i;
         }
     }
@@ -293,25 +280,21 @@ public class Tournament {
     }
 
     public int getAmountOfDonators() {
-        int i = -1;
-        for (Donator exampleDonators : donators)
-            ++i;
-        return i;
+        return (donators.size()-1);
     }
 
     public int getAmountOfTeams() {
-        int i = -1;
-        for (Team exampleTeam : teams)
-            ++i;
-        return i;
+        return (teams.size()-1);
     }
 
     public void showFinalScores() {
-
-    }
-
-    public void addMatch(Match m) {
-        matches.add(m);
+            for (Match match : matches) {
+                System.out.println(match);
+            }
+            for (Match match : matchesOfSemiFinal) {
+                System.out.println(match);
+            }
+            System.out.println(matchOfFinal);
     }
 
     public LinkedList<Match> getMatches() {
@@ -337,7 +320,9 @@ public class Tournament {
     public void importFromFile() {
 
     }
-
+    public void setNRofMatches(int exampleInteger){
+        nrofMatches=exampleInteger;
+    }
     public Team getWinner() {
         return winner;
     }
@@ -387,10 +372,7 @@ public class Tournament {
         switch (parameter) {
 
             case 0:
-                int i = -1;
-                for (Match exampleMatch : matches)
-                    ++i;
-                return i;
+                return (matches.size()-1);
             case 1:
                 return 3;
             default:
@@ -407,7 +389,7 @@ public class Tournament {
         return lines;
     }
 
-    public String toStr1ing() {
+    public String toString() {
         return nameOfTheTournament + " " + prizePool + " " + typeOfTournament + " " + nrofMatches; //FIXME to też średnio działa, bo mi przeszkadza i nie mogę skorzystaż z metody .toString bo ta która jest tutaj ja nadpisuje
     }
 

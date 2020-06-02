@@ -1,7 +1,5 @@
 package def;
 
-import java.text.DecimalFormat;
-import java.text.ParseException;
 import java.util.InputMismatchException;
 import java.util.LinkedList;
 import java.util.Scanner;
@@ -24,7 +22,7 @@ public class Main {
                         System.out.println("Enter desired tournament name: ");
                         String nazwa = keyboard.next();
                         if (beach.ifExistInList(nazwa))
-                            throw new IfExistInListException(); //TODO to kompletnie nie działa, napraw to
+                            throw new IfExistInListException();
                         System.out.println("Enter desired type_Of_Tournament: Volleyball(0), Dodgeball(1), Tug of war(2)");
                         int type_Of_Match = getChoice(0, 2);
                         System.out.println("Enter desired initial prize: ");

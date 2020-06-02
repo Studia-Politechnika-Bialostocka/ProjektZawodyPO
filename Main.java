@@ -329,7 +329,7 @@ public class Main {
                     System.out.println("Enter lastname of sponsor: ");
                     String sponsorLastname = keyboard.next();
                     System.out.println("Enter initial donation of sponsor: ");
-                    int initialDonation = keyboard.nextInt();
+                    Double initialDonation = keyboard.nextDouble();
                     Donator donatorForMoment = new Donator(sponsorName, sponsorLastname, initialDonation);
                     tournament.addDonator(donatorForMoment);
                     beach.addDonatorToList(donatorForMoment);

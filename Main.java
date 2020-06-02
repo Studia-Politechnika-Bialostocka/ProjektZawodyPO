@@ -34,7 +34,6 @@ public class Main {
                         while (true) {
                             try {
                                 initialPrize = keyboard.nextDouble();
-                                System.out.println("DawIDEDED");
                                 break;
                             } catch (Exception e) {
                                 System.out.println("Wpisz poprawną wartość");
@@ -148,14 +147,14 @@ public class Main {
     }
 
     private static void manageTeams(Tournament tournament) {
-        System.out.println("1. Add a team");
-        System.out.println("2. Remove a team");
-        System.out.println("3. Show all teams");
-        System.out.println("4. Go back");
-        Scanner keyboard = new Scanner(System.in);
         boolean check = true;
-        int choice = keyboard.nextInt();
         do {
+            System.out.println("1. Add a team");
+            System.out.println("2. Remove a team");
+            System.out.println("3. Show all teams");
+            System.out.println("4. Go back");
+            Scanner keyboard = new Scanner(System.in);
+            int choice = keyboard.nextInt();
             switch (choice) {
                 case 1:
                     addTeam(tournament);
@@ -181,13 +180,13 @@ public class Main {
     }
 
     private static void addTeam(Tournament tournament) {
-        System.out.println("1. Add an existing team");
-        System.out.println("2. Create a new team");
-        System.out.println("3. Go back");
-        Scanner keyboard = new Scanner(System.in);
         boolean check = true;
-        int choice = keyboard.nextInt();
         do {
+            System.out.println("1. Add an existing team");
+            System.out.println("2. Create a new team");
+            System.out.println("3. Go back");
+            Scanner keyboard = new Scanner(System.in);
+            int choice = keyboard.nextInt();
             switch (choice) {
                 case 1:
                     //Adding existing teams from list
@@ -245,13 +244,13 @@ public class Main {
     }
 
     private static void manageReferees(Tournament tournament) {
-        System.out.println("1. Add a referee");
-        System.out.println("2. Remove a referee");
-        System.out.println("3. Show all referees");
-        System.out.println("4. Go back");
         boolean check = true;
-        Scanner keyboard = new Scanner(System.in);
         do {
+            System.out.println("1. Add a referee");
+            System.out.println("2. Remove a referee");
+            System.out.println("3. Show all referees");
+            System.out.println("4. Go back");
+            Scanner keyboard = new Scanner(System.in);
             int choice = keyboard.nextInt();
             switch (choice) {
                 case 1:
@@ -313,16 +312,16 @@ public class Main {
     }
 
     private static void manageSponsors(Tournament tournament) {
-        System.out.println("1. Add a sponsor");
-        System.out.println("2. Add a sponsor from list");
-        System.out.println("3. Remove a sponsor");
-        System.out.println("4. Show all sponsors");
-        System.out.println("5. Go back");
-        Scanner keyboard = new Scanner(System.in);
-        int choice_2;
         boolean check = true;
-        int choice = keyboard.nextInt();
         do {
+            System.out.println("1. Add a sponsor");
+            System.out.println("2. Add a sponsor from list");
+            System.out.println("3. Remove a sponsor");
+            System.out.println("4. Show all sponsors");
+            System.out.println("5. Go back");
+            Scanner keyboard = new Scanner(System.in);
+            int choice_2;
+            int choice = keyboard.nextInt();
             switch (choice) {
                 case 1:
                     //dodaj sponsora
@@ -472,15 +471,15 @@ public class Main {
     }
 
     private static void manageTeamsForBeach() {
-        System.out.println("1. Add a team");
-        System.out.println("2. Remove a team");
-        System.out.println("3. Show all teams");
-        System.out.println("4. Go back");
-        Scanner keyboard = new Scanner(System.in);
-        int typeOfTournament;
         boolean check = true;
-        int choice = keyboard.nextInt();
         do {
+            System.out.println("1. Add a team");
+            System.out.println("2. Remove a team");
+            System.out.println("3. Show all teams");
+            System.out.println("4. Go back");
+            Scanner keyboard = new Scanner(System.in);
+            int typeOfTournament;
+            int choice = keyboard.nextInt();
             switch (choice) {
                 case 1:
                     //dodaj drużynę
@@ -538,14 +537,14 @@ public class Main {
     }
 
     private static void manageRefereesForBeach() {
-        System.out.println("1. Add a referee");
-        System.out.println("2. Remove a referee");
-        System.out.println("3. Show all referees");
-        System.out.println("4. Go back");
         boolean check = true;
-        Scanner keyboard = new Scanner(System.in);
-        int choice = keyboard.nextInt();
         do {
+            System.out.println("1. Add a referee");
+            System.out.println("2. Remove a referee");
+            System.out.println("3. Show all referees");
+            System.out.println("4. Go back");
+            Scanner keyboard = new Scanner(System.in);
+            int choice = keyboard.nextInt();
             switch (choice) {
                 case 1:
                     //dodaj sędziego
@@ -629,21 +628,5 @@ public class Main {
         } while (check);
     }
 
-//    private static double ifInt(String prize) {
-//        double l = 0.0;
-//        Scanner keyboard = new Scanner(System.in);
-//        while (true) {
-//            try {
-//                l = Double.parseDouble(prize);
-//               // l = DecimalFormat.getNumberInstance().parse(prize).doubleValue();
-//                break;
-//            } catch (InvalidValueException e) {
-//                System.out.println("Wpisz ponownie liczbę");
-//                double initialPrize = ifInt(keyboard.next());
-//
-//            }
-//        }
-//        return l;
-//    }
 }
 

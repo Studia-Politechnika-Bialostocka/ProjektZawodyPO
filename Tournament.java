@@ -39,6 +39,7 @@ public class Tournament {
             prizePool += 0;
         referees = refs;
         aReferees = arefs;
+        donators = new LinkedList<>();
         Random rand = new Random();
         //Random rand = new Random();
         this.typeOfTournament = typeOfTournament;

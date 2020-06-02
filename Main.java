@@ -379,12 +379,11 @@ public class Main {
             switch (choice) {
                 case 1:
                     if (levelOfGaming == 0) {
-                        if (tournament.getTeams().size() < 4) {
-                            System.out.println("\nProsze dodac przynajmniej 4 druzyny przed rozpoczeciem\n");
-                            return;
-                        }
-                        tournament.matchesOfRoundRobin();
-                        ++levelOfGaming;
+                        if (tournament.getTeams().size() >= 4) {
+                            tournament.matchesOfRoundRobin();
+                            ++levelOfGaming;
+                        } else System.out.println("\nProsze dodac przynajmniej 4 druzyny przed rozpoczeciem\n");
+
                     } else if (levelOfGaming == 1 && tournament.areAllMatchesPlayedInRoundRobin()) {
                         tournament.roundRobin();
                         tournament.matchesOfSemiFinals();

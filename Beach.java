@@ -450,13 +450,10 @@ public class Beach {
     }
 
     public void importFromFileTournament() {
-        LinkedList<Tournament> tou = new LinkedList<>();
         BufferedReader in = null;
         try {
             in = new BufferedReader(new FileReader("TournamentFile.txt"));
             String buf;
-            String buff;
-            int index;
             while ((buf = in.readLine()) != null && buf != "") {
                 String[] s = buf.split(" ");
                 Tournament v1 = new Tournament(s[0], Double.parseDouble(s[1]), listOfReferee, listOfAssistantReferee, Integer.parseInt(s[2]));

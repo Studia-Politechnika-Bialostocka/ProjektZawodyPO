@@ -225,7 +225,7 @@ public class Main {
         do {
             int choice = keyboard.nextInt();
             switch (choice) {
-                case 1: {
+                case 1:
                     System.out.println("Enter name of referee: ");
                     String refereeName = keyboard.next();
                     System.out.println("Enter lastname of referee: ");
@@ -243,9 +243,9 @@ public class Main {
                         Referee r = new Referee(refereeName, refereelastName);
                         beach.addReferee(r);
                     }
-                }
+
                 break;
-                case 2: {
+                case 2:
                     //usun sedziow
                     if (tournament.getTypeOfTournament() == 0) {
                         System.out.println("Pokazac sedziow glownych(0) czy asystujacych(1):");
@@ -267,7 +267,7 @@ public class Main {
                         int delete = getChoice(0, tournament.getAmountOfReferee());
                         tournament.removeReferee(delete);
                     }
-                }
+
                 break;
                 case 3: {
                     //pokaż wszystkich sędziów

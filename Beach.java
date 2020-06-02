@@ -223,10 +223,6 @@ public class Beach {
         return listOfAssistantReferee;
     }
 
-    public LinkedList<Tournament> getTournament() {
-        return listOfTournaments;
-    }
-
     public int getAmountOfReferee() {
         return (listOfReferee.size()-1);
     }
@@ -380,7 +376,6 @@ public class Beach {
         } catch (IOException ioException) {
             ioException.printStackTrace();
         }
-
         return d;
     }
 
@@ -403,7 +398,6 @@ public class Beach {
         } catch (IOException ioException) {
             ioException.printStackTrace();
         }
-
         return t;
     }
 
@@ -424,7 +418,6 @@ public class Beach {
         } catch (IOException ioException) {
             ioException.printStackTrace();
         }
-
         return r;
     }
 
@@ -445,7 +438,6 @@ public class Beach {
         } catch (IOException ioException) {
             ioException.printStackTrace();
         }
-
         return ar;
     }
 

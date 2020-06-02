@@ -1,9 +1,6 @@
 package def;
 
-import java.text.DecimalFormat;
-import java.text.ParseException;
 import java.util.InputMismatchException;
-import java.util.LinkedList;
 import java.util.Scanner;
 
 public class Main {
@@ -21,13 +18,13 @@ public class Main {
                 choice = keyboard.nextInt();
                 switch (choice) {
                     case 1:
-                        System.out.println("Enter desired tournament name: ");
+                        System.out.println("Wpisz nazwe turnieju: ");
                         String nazwa = keyboard.next();
                         if (beach.ifExistInList(nazwa))
-                            throw new IfExistInListException(); //TODO to kompletnie nie działa, napraw to
-                        System.out.println("Enter desired type_Of_Tournament: Volleyball(0), Dodgeball(1), Tug of war(2)");
+                            throw new IfExistInListException();
+                        System.out.println("Wybierz rodzaj turnieju: Volleyball(0), Dodgeball(1), Tug of war(2)");
                         int type_Of_Match = getChoice(0, 2);
-                        System.out.println("Enter desired initial prize: ");
+                        System.out.println("Podaj poczatkowa nagrode: ");
                         double initialPrize = 0.0;
 
                         while (true) {
@@ -50,7 +47,7 @@ public class Main {
                         break;
                     case 3:
                         beach.showAllTournaments();
-                        System.out.print("Choose a tournament: ");
+                        System.out.print("Wybierz turniej: ");
                         int tIndex = keyboard.nextInt(); //-1 bo showTournaments zaczyna od jedynki
                         menu2(beach.getTournaments().get(tIndex));
                         //przejdź do turnieju
@@ -71,11 +68,11 @@ public class Main {
                         throw new InvalidValueException(choice);
                 }
             } catch (InvalidValueException e) {
-                System.out.println("Invalid value: " + e.getInvalidValue() + ". Try again");
+                System.out.println("Niepoprawna wartosc: " + e.getInvalidValue() + ". Sprobuj ponownie");
             } catch (InputMismatchException e) {
-                System.out.println("Wpisz poprawną wartość. Spróbuj ponownie. ");
+                System.out.println("Wpisz poprawną wartosc. Sprobuj ponownie. ");
             } catch (IfExistInListException e) {
-                System.out.println("Taka nazwa już istnieje. Spróbuj ponownie.");
+                System.out.println("Taka nazwa już istnieje. Sprobuj ponownie.");
             } catch (IndexOutOfBoundsException e) {
                 System.out.println("Invalid Index");
             }
@@ -97,13 +94,13 @@ public class Main {
     //zapisywanie danych --start--
     private static void mainMenuShowUp() {
         System.out.println("---------------MENU---------------");
-        System.out.println("1. Add a tournament.");
-        System.out.println("2. Display list of tournaments.");
-        System.out.println("3. Select a tournament.");
-        System.out.println("4. Manage teams, referees etc. in beach(main base for info)");
-        System.out.println("5. Save to file");
-        System.out.println("6. Import from file all ");
-        System.out.println("7. Exit the program.");
+        System.out.println("1. Dodaj turniej.");
+        System.out.println("2. Pokaz liste turniejow.");
+        System.out.println("3. Wybierz turniej.");
+        System.out.println("4. Zarzadzaj druzynami, sedziami etc. w plazy");
+        System.out.println("5. Zapisz do pliku");
+        System.out.println("6. Wczytaj z pliku ");
+        System.out.println("7. Zakoncz program");
     }
 
     //cale glowne menu
@@ -113,11 +110,11 @@ public class Main {
         int choice2;
         while (goBack == 0) {
             System.out.println("---------------MENU2---------------");
-            System.out.println("1. Manage teams");
-            System.out.println("2. Manage referees");
-            System.out.println("3. Manage sponsors");
-            System.out.println("4. Go to playoffs");
-            System.out.println("5. Go back");
+            System.out.println("1. Zarzadzaj druzynami");
+            System.out.println("2. Zarzadzaj sedziami");
+            System.out.println("3. Zarzadzaj sponsorami");
+            System.out.println("4. Przejdz do rozgrywek");
+            System.out.println("5. Wroc");
             choice2 = klawiatura.nextInt();
             switch (choice2) {
                 case 1:
@@ -148,10 +145,10 @@ public class Main {
     private static void manageTeams(Tournament tournament) {
         boolean check = true;
         do {
-            System.out.println("1. Add a team");
-            System.out.println("2. Remove a team");
-            System.out.println("3. Show all teams");
-            System.out.println("4. Go back");
+            System.out.println("1. Dodaj druzyne");
+            System.out.println("2. Usun druzyne");
+            System.out.println("3. Pokaz wszystkie druzyny");
+            System.out.println("4. Wroc");
             Scanner keyboard = new Scanner(System.in);
             int choice = keyboard.nextInt();
             switch (choice) {
@@ -181,9 +178,9 @@ public class Main {
     private static void addTeam(Tournament tournament) {
         boolean check = true;
         do {
-            System.out.println("1. Add an existing team");
-            System.out.println("2. Create a new team");
-            System.out.println("3. Go back");
+            System.out.println("1. Dodaj istniejaca druzyne");
+            System.out.println("2. Stworz nowa druzyne");
+            System.out.println("3. Wroc");
             Scanner keyboard = new Scanner(System.in);
             int choice = keyboard.nextInt();
             switch (choice) {
@@ -193,21 +190,21 @@ public class Main {
                     switch (tournament.getTypeOfTournament()) {
                         case 0:
                             beach.showAllVTeams();
-                            System.out.print("Choose a volleyball team: ");
+                            System.out.print("Wybierz druzyne siatkowki: ");
                             teamIndex = keyboard.nextInt();
                             if (tournament.getTeams().indexOf(tournament.getTeams().get(teamIndex)) == -1)
                                 tournament.addTeam(beach.getVTeams().get(teamIndex));
                             break;
                         case 1:
                             beach.showAllDTeams();
-                            System.out.print("Choose a dodgeball team: ");
+                            System.out.print("Wybierz druzyne dwoch ogni: ");
                             teamIndex = keyboard.nextInt();
                             if (tournament.getTeams().indexOf(tournament.getTeams().get(teamIndex)) == -1)
                                 tournament.addTeam(beach.getDTeams().get(teamIndex));
                             break;
                         case 2:
                             beach.showAllTTeams();
-                            System.out.print("Choose a tug of war team: ");
+                            System.out.print("Wybierz druzyne przeciagania liny: ");
                             teamIndex = keyboard.nextInt();
                             if (tournament.getTeams().indexOf(tournament.getTeams().get(teamIndex)) == -1)
                                 tournament.addTeam(beach.getTTeams().get(teamIndex));
@@ -216,7 +213,7 @@ public class Main {
                     break;
                 case 2:
                     //Creating and adding new teams;
-                    System.out.print("Enter desired team name: ");
+                    System.out.print("Wpisz nazwe druzyny: ");
                     String teamName = keyboard.next();
                     switch (tournament.getTypeOfTournament()) {
                         case 0:
@@ -248,17 +245,17 @@ public class Main {
     private static void manageReferees(Tournament tournament) {
         boolean check = true;
         do {
-            System.out.println("1. Add a referee");
-            System.out.println("2. Remove a referee");
-            System.out.println("3. Show all referees");
-            System.out.println("4. Go back");
+            System.out.println("1. Dodaj sedziego");
+            System.out.println("2. Usun sedziego");
+            System.out.println("3. Pokaz wszystkich sedzi");
+            System.out.println("4. Wroc");
             Scanner keyboard = new Scanner(System.in);
             int choice = keyboard.nextInt();
             switch (choice) {
                 case 1:
-                    System.out.println("Enter name of referee: ");
+                    System.out.println("Wpisz imie: ");
                     String refereeName = keyboard.next();
-                    System.out.println("Enter lastname of referee: ");
+                    System.out.println("Wpisz nazwisko: ");
                     String refereelastName = keyboard.next();
                     //dodaj sędziego
                     if (tournament.getTypeOfTournament() == 0) {

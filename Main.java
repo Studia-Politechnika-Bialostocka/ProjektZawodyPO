@@ -43,7 +43,7 @@ public class Main {
                         menuForBeach();
                         break;
                     case 5:
-                        savingInfo();
+                        beach.saveToFile();
                         break;
                     case 6:
                         System.exit(0);
@@ -76,9 +76,6 @@ public class Main {
     }
     //importowanie danych --stop--
     //zapisywanie danych --start--
-    private static void savingInfo(){
-        beach.saveToFile(beach.getVTeams(), beach.getDTeams(), beach.getTTeams(), beach.getListOfReferee(), beach.getListOfAssistantReferee(), beach.getTournament());
-    }
     private static void mainMenuShowUp(){
         System.out.println("---------------MENU---------------");
         System.out.println("1. Add a tournament.");

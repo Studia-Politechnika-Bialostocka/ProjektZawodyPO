@@ -352,6 +352,14 @@ public class Beach {
 
         return v;
     }
+    public void saveToFile(){
+        saveToFileVolleyball();
+        saveToFileDodgeball();
+        saveToFileTug_of_War();
+        saveToFileReferee();
+        saveToFileAssistantReferee();
+        saveToFileTournament();
+    }
 
     public LinkedList<Dodgeball> importFromFileDodgeball() {
         LinkedList<Dodgeball> d = new LinkedList<>();

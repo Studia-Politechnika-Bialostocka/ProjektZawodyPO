@@ -117,14 +117,13 @@ public class Tournament {
     public void matchesOfSemiFinals() {
         for (int i = 0; i < 2; ++i) {
             int numberOfMainReferee = refChoice % referees.size();
-            if (typeOfTournament==0) {
+            if (typeOfTournament == 0) {
                 int numberOfFirstReferee = aRefChoice % aReferees.size();
                 int numberOfSecondReferee = (aRefChoice + 1) % aReferees.size();
-                matchesOfSemiFinal.add(new VolleyballMatch(semiTeams.get(i), semiTeams.get(i + 2),referees.get(numberOfMainReferee),
+                matchesOfSemiFinal.add(new VolleyballMatch(semiTeams.get(i), semiTeams.get(i + 2), referees.get(numberOfMainReferee),
                         0, aReferees.get(numberOfFirstReferee), aReferees.get(numberOfSecondReferee)));
                 aRefChoice += 2;
-            }
-            else
+            } else
                 matchesOfSemiFinal.add(new Match(semiTeams.get(i), semiTeams.get(i + 2),
                         referees.get(numberOfMainReferee), typeOfTournament));
             ++refChoice;
@@ -148,8 +147,7 @@ public class Tournament {
             matchOfFinal = (new VolleyballMatch(finalTeams.get(0), finalTeams.get(1), referees.get(numberOfMainReferee),
                     0, aReferees.get(numberOfFirstReferee), aReferees.get(numberOfSecondReferee)));
             aRefChoice += 2;
-        }
-        else
+        } else
             matchOfFinal = (new Match(finalTeams.get(0), finalTeams.get(1), referees.get(numberOfMainReferee), typeOfTournament));
         ++refChoice;
     }
@@ -163,24 +161,27 @@ public class Tournament {
         if (loserOfFirstSemiFinals.getSetsWon() > loserOfSecondSemiFinals.getSetsWon()) {
             loserOfFirstSemiFinals.addPrizesWon(0.15 * prizePool);
             loserOfSecondSemiFinals.addPrizesWon(0.1 * prizePool);
-            thirdPlace=0.15*prizePool;             fourthPlace=0.1*prizePool;
+            thirdPlace = 0.15 * prizePool;
+            fourthPlace = 0.1 * prizePool;
         } else if (loserOfFirstSemiFinals.getSetsWon() < loserOfSecondSemiFinals.getSetsWon()) {
             loserOfFirstSemiFinals.addPrizesWon(0.1 * prizePool);
             loserOfSecondSemiFinals.addPrizesWon(0.15 * prizePool);
-            thirdPlace=0.15*prizePool;           fourthPlace=0.1*prizePool;
+            thirdPlace = 0.15 * prizePool;
+            fourthPlace = 0.1 * prizePool;
         } else {
             loserOfFirstSemiFinals.addPrizesWon(0.125 * prizePool);
             loserOfSecondSemiFinals.addPrizesWon(0.125 * prizePool);
-            thirdPlace=0.125*prizePool;         fourthPlace=0.125*prizePool;
+            thirdPlace = 0.125 * prizePool;
+            fourthPlace = 0.125 * prizePool;
         }
     }
 
-    public String getAllMaches(){
+    public String getAllMaches() {
         return AllMaches;
     }
 
-    public void expandAllMaches(String exampleString){
-        AllMaches+=exampleString;
+    public void expandAllMaches(String exampleString) {
+        AllMaches += exampleString;
     }
 
     public boolean areAllMatchesPlayedInRoundRobin() {
@@ -207,7 +208,7 @@ public class Tournament {
     public void addDonator(Donator d) {
         donators.add(d);
         if (d.getMoney() > 0)
-            prizePool+=d.getMoney();
+            prizePool += d.getMoney();
     }
 
     public boolean getFinished() {
@@ -257,11 +258,11 @@ public class Tournament {
     }
 
     public int getAmountOfReferee() {
-        return (referees.size()-1);
+        return (referees.size() - 1);
     }
 
     public int getAmountOfAssistantReferee() {
-        return (aReferees.size()-1);
+        return (aReferees.size() - 1);
     }
 
     public int getTypeOfTournament() {
@@ -289,21 +290,21 @@ public class Tournament {
     }
 
     public int getAmountOfDonators() {
-        return (donators.size()-1);
+        return (donators.size() - 1);
     }
 
     public int getAmountOfTeams() {
-        return (teams.size()-1);
+        return (teams.size() - 1);
     }
 
     public void showFinalScores() {
-            for (Match match : matches) {
-                System.out.println(match);
-            }
-            for (Match match : matchesOfSemiFinal) {
-                System.out.println(match);
-            }
-            System.out.println(matchOfFinal);
+        for (Match match : matches) {
+            System.out.println(match);
+        }
+        for (Match match : matchesOfSemiFinal) {
+            System.out.println(match);
+        }
+        System.out.println(matchOfFinal);
     }
 
     public Match getMatchRoundRobin(int index) {
@@ -318,9 +319,10 @@ public class Tournament {
         return matchOfFinal;
     }
 
-    public void setNRofMatches(int exampleInteger){
-        nrofMatches=exampleInteger;
+    public void setNRofMatches(int exampleInteger) {
+        nrofMatches = exampleInteger;
     }
+
     public Team getWinner() {
         return winner;
     }
@@ -341,8 +343,8 @@ public class Tournament {
         }
         s += matchOfFinal.toString();
         ++nrofMatches;
-        s += ("Piersze miejsce "+winner.prizesWon+" ");
-        s += ("Drugie miejsce "+matchOfFinal.getLoser().prizesWon + " ");
+        s += ("Piersze miejsce " + winner.prizesWon + " ");
+        s += ("Drugie miejsce " + matchOfFinal.getLoser().prizesWon + " ");
         s += ("Trzecie miejsce " + thirdPlace + " ");
         s += ("Czwarte miejsce " + fourthPlace + " ");
         ++nrofMatches;
@@ -374,7 +376,7 @@ public class Tournament {
     public int countingAmountOfMatchesInRoundRobin(int parameter) {
         switch (parameter) {
             case 0:
-                return (matches.size()-1);
+                return (matches.size() - 1);
             case 1:
                 return 1;
             default:
@@ -386,12 +388,12 @@ public class Tournament {
         return teams;
     }
 
-    public LinkedList<Donator> getDonators(){
+    public LinkedList<Donator> getDonators() {
         return donators;
     }
 
     public String toString() {
-        return nameOfTheTournament + " " + prizePool + " " + typeOfTournament + " " + nrofMatches; //FIXME to też średnio działa, bo mi przeszkadza i nie mogę skorzystaż z metody .toString bo ta która jest tutaj ja nadpisuje
+        return nameOfTheTournament + " " + prizePool + " " + typeOfTournament + " " + nrofMatches;
     }
 
 }

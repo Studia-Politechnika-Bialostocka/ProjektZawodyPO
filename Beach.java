@@ -40,7 +40,15 @@ public class Beach {
 
     public void showAllTournaments() {
         for (int i = 0; i < listOfTournaments.size(); i++) {
-            System.out.println((i) + ". " + listOfTournaments.get(i).getNameOfTournament());
+            if(listOfTournaments.get(i).getTypeOfTournament() == 0)
+            System.out.println((i) + ". Typ: siatkówka " + listOfTournaments.get(i).getNameOfTournament());
+            if(listOfTournaments.get(i).getTypeOfTournament() == 1)
+            System.out.println((i) + ". Typ: Dwa ognie "+ listOfTournaments.get(i).getNameOfTournament());
+
+            if (listOfTournaments.get(i).getTypeOfTournament() == 2)
+                System.out.println((i) + ". Typ: przeciąganie liny " + listOfTournaments.get(i).getNameOfTournament());
+
+
             System.out.println(listOfTournaments.get(i).getAllMaches());
         }
     }
@@ -467,4 +475,6 @@ public class Beach {
         }
         return false;
     }
+
+
 }

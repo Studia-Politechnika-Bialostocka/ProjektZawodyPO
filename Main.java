@@ -22,7 +22,7 @@ public class Main {
                         String nazwa = keyboard.next();
                         if (beach.ifExistInList(nazwa))
                             throw new IfExistInListException();
-                        System.out.println("Wybierz rodzaj turnieju: Volleyball(0), Dodgeball(1), Tug of war(2)");
+                        System.out.println("Wybierz rodzaj turnieju: Siatkowka(0), Dwa Ognie(1), Przeciaganie Liny(2)");
                         int type_Of_Match = getChoice(0, 2);
                         System.out.println("Podaj poczatkowa nagrode: ");
                         double initialPrize = 0.0;

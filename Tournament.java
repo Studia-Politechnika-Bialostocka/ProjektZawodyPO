@@ -215,6 +215,10 @@ public class Tournament {
         return finished;
     }
 
+    public void setFinished() {
+        finished = true;
+    }
+
     public void showDonators() {
         int i = 0;
         for (Donator exampleDonators : donators) {

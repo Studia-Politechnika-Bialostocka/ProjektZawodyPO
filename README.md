@@ -6,8 +6,6 @@ Politechnika Białostocka
 Dawid Bendarowicz PS7
 Mateusz Białowąs PS8
 Maciej Bociuk PS8
-[mateuszbialowas.pl](https://mateuszbialowas.pl)
-- [ ] Hello My friend
 
 ```
 Treść zadania:

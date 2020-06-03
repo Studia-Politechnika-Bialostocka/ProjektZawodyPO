@@ -140,15 +140,15 @@ public class Beach {
     public void showAllVDTTeams() {
         int i = 0;
         for (Volleyball exampleMatch : vTeams) {
-            System.out.println(i + " :" + exampleMatch);
+            System.out.println(i + "-siatkowka: " + exampleMatch);
             ++i;
         }
         for (Dodgeball exampleMatch : dTeams) {
-            System.out.println(i + " :" + exampleMatch);
+            System.out.println(i + "-dwa ognie: " + exampleMatch);
             ++i;
         }
         for (Tug_of_War exampleMatch : tTeams) {
-            System.out.println(i + " :" + exampleMatch);
+            System.out.println(i + "- przeciaganie liny: " + exampleMatch);
             ++i;
         }
     }

@@ -447,6 +447,7 @@ public class Beach {
                 for (int i = 0; i < Integer.parseInt(s[3]); ++i) {
                     buf = in.readLine();
                     v1.expandAllMaches(buf+"\n");
+                    v1.setFinished();
                 }
                 addTournament(v1);
             }

@@ -639,5 +639,6 @@ public class Main {
         } while (check);
     }
 //sprawdzanie komendy diff
+//sprawdzanie komendy diff2
 }
 

@@ -638,6 +638,6 @@ public class Main {
             }
         } while (check);
     }
-
+//sprawdzanie komendy diff
 }
 

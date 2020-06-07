@@ -640,5 +640,6 @@ public class Main {
     }
 //sprawdzanie komendy diff
 //sprawdzanie komendy diff2
+//sprawdzanie komendy diff2
 }
 
